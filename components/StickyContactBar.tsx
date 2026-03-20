@@ -38,13 +38,13 @@ export default function StickyContactBar() {
             href={waUrl(lang)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[2] flex flex-col items-center justify-center bg-[#25D366] text-white rounded-sm py-2.5 hover:bg-[#22c05e] transition-colors"
+            className="flex-[2] flex flex-col items-center justify-center bg-gold text-black rounded-sm py-2.5 hover:bg-gold/90 transition-colors"
           >
             <div className="flex items-center gap-2 text-sm font-semibold">
               <WaIcon />
               WhatsApp
             </div>
-            <span className="text-[11px] font-normal opacity-80 mt-0.5">{WA_DISPLAY}</span>
+            <span className="text-[11px] font-normal opacity-70 mt-0.5">{WA_DISPLAY}</span>
           </a>
         </div>
       </div>
