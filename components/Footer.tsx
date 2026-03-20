@@ -69,12 +69,14 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-white/45 hover:text-gold transition-colors"
-              >{t.contact.address}</a>
+              >
+                <span className="text-white/25">{lang === 'he' ? 'כתובת' : lang === 'en' ? 'Address' : 'Адрес'}:</span> {t.contact.address}
+              </a>
               <a
                 href={`tel:${t.contact.phone.replace(/[^+\d]/g, '')}`}
                 className="block text-white/45 hover:text-gold transition-colors"
               >
-                {t.contact.phone}
+                <span className="text-white/25">{lang === 'he' ? 'טלפון' : lang === 'en' ? 'Phone' : 'Телефон'}:</span> {t.contact.phone}
               </a>
               <a
                 href="https://wa.me/972506461983"
@@ -82,7 +84,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block text-white/45 hover:text-gold transition-colors"
               >
-                WhatsApp: {t.contact.whatsapp}
+                <span className="text-white/25">WhatsApp:</span> {t.contact.whatsapp}
               </a>
               <a
                 href="https://www.facebook.com/people/Panorama-Style/100041307526123/"
