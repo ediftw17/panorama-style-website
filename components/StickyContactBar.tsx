@@ -1,7 +1,7 @@
 'use client'
 
 import { useLang } from '@/lib/LanguageContext'
-import { waUrl, WA_PHONE_TEL } from '@/lib/wa'
+import { waUrl, WA_PHONE_TEL, WA_PHONE_DISPLAY } from '@/lib/wa'
 
 const WaIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -19,27 +19,29 @@ export default function StickyContactBar() {
   const { lang } = useLang()
 
   const callLabel = lang === 'he' ? 'התקשר' : lang === 'en' ? 'Call' : 'Позвонить'
-  const waLabel   = lang === 'he' ? 'קבל הצעת מחיר' : lang === 'en' ? 'Free Quote' : 'Бесплатный расчёт'
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-      <div className="bg-black/97 backdrop-blur-md border-t border-white/10 px-4 py-3 pb-safe flex gap-2.5">
-        <a
-          href={`tel:${WA_PHONE_TEL}`}
-          className="flex-1 flex items-center justify-center gap-2 border border-white/20 text-white/75 text-sm font-sans py-3 rounded-sm hover:border-white/40 transition-colors"
-        >
-          <PhoneIcon />
-          {callLabel}
-        </a>
-        <a
-          href={waUrl(lang)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-[2] flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-semibold py-3 rounded-sm hover:bg-[#22c05e] transition-colors"
-        >
-          <WaIcon />
-          {waLabel}
-        </a>
+      <div className="bg-black/97 backdrop-blur-md border-t border-white/10 px-4 pt-3 pb-safe">
+        <div className="flex gap-2.5 mb-2">
+          <a
+            href={`tel:${WA_PHONE_TEL}`}
+            className="flex-1 flex items-center justify-center gap-2 border border-white/20 text-white/75 text-sm font-sans py-3 rounded-sm hover:border-white/40 transition-colors"
+          >
+            <PhoneIcon />
+            {callLabel}
+          </a>
+          <a
+            href={waUrl(lang)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-[2] flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-semibold py-3 rounded-sm hover:bg-[#22c05e] transition-colors"
+          >
+            <WaIcon />
+            WhatsApp
+          </a>
+        </div>
+        <p className="text-center text-white/30 text-[11px] font-sans pb-1">{WA_PHONE_DISPLAY}</p>
       </div>
     </div>
   )

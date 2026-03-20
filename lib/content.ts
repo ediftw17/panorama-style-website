@@ -26,7 +26,7 @@ export const content = {
     hero: {
       headline: 'המסעדה הטובה ביותר בחיפה',
       subline: '40–350 אורחים · מוזיקה חיה · פתוחים בשבת · מ-₪250 לאדם',
-      ctaPrimary: 'קבל הצעת מחיר חינם',
+      ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'תאריכי קיץ 2026 מתמלאים במהירות',
     },
@@ -190,7 +190,7 @@ export const content = {
     hero: {
       headline: 'Лучший ресторан Хайфы',
       subline: '40–350 гостей · живая музыка · работаем в Шаббат · от ₪250',
-      ctaPrimary: 'Получить бесплатный расчёт',
+      ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'Летние 2026 даты заполняются быстро',
     },
@@ -354,7 +354,7 @@ export const content = {
     hero: {
       headline: "Haifa's Best Restaurant",
       subline: '40–350 guests · live entertainment · open on Shabbat · from ₪250',
-      ctaPrimary: 'Get a Free Quote',
+      ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'Summer 2026 dates filling fast',
     },
