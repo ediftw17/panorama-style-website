@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-import { waUrl, WA_PHONE_DISPLAY, WA_PHONE_TEL } from '@/lib/wa'
+import { waUrl, WA_PHONE_DISPLAY, WA_PHONE_TEL, MAPS_URL } from '@/lib/wa'
 
 export default function Hero() {
   const { lang } = useLang()
@@ -50,12 +50,18 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-5 max-w-5xl mx-auto">
         {/* Location eyebrow */}
-        <div className="animate-fade-in-up inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8" style={{ animationDelay: '200ms' }}>
+        <a
+          href={MAPS_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="animate-fade-in-up inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 hover:border-gold/40 transition-colors"
+          style={{ animationDelay: '200ms' }}
+        >
           <div className="w-1 h-1 rounded-full bg-gold" />
           <span className="text-white/60 text-[11px] font-sans tracking-[0.3em] uppercase">
             {t.ui.locationLabel}
           </span>
-        </div>
+        </a>
 
         {/* Venue name */}
         <p className="animate-fade-in-up font-playfair text-white text-4xl sm:text-5xl font-light tracking-normal mb-3" style={{ animationDelay: '300ms' }}>
@@ -84,7 +90,7 @@ export default function Hero() {
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
           </svg>
           <a
-            href="https://maps.apple.com/?q=חלוצי+התעשייה+19+חיפה"
+            href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/45 hover:text-white/70 text-xs font-sans transition-colors"

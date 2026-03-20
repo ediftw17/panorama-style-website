@@ -3,7 +3,7 @@ export type Lang = 'ru' | 'he' | 'en'
 export const content = {
   he: {
     ui: {
-      locationLabel: 'חיפה, ישראל',
+      locationLabel: 'חלוצי התעשייה 19, חיפה',
       aboutLabel: 'מי אנחנו',
       photosLabel: 'צילומים',
       galleryTitle: 'גלריה',
@@ -167,7 +167,7 @@ export const content = {
   },
   ru: {
     ui: {
-      locationLabel: 'Хайфа, Израиль',
+      locationLabel: 'Халуцей ха-Тасия 19, Хайфа',
       aboutLabel: 'О нас',
       photosLabel: 'Фотографии',
       galleryTitle: 'Галерея',
@@ -331,7 +331,7 @@ export const content = {
   },
   en: {
     ui: {
-      locationLabel: 'Haifa, Israel',
+      locationLabel: 'Halutzei HaTa\'asiya 19, Haifa',
       aboutLabel: 'Who We Are',
       photosLabel: 'Photography',
       galleryTitle: 'Gallery',

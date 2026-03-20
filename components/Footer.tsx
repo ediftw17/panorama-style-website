@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
+import { MAPS_URL } from '@/lib/wa'
 
 export default function Footer() {
   const { lang } = useLang()
@@ -63,7 +64,12 @@ export default function Footer() {
               {t.ui.contactLabel}
             </h3>
             <div className="space-y-2.5 text-sm font-sans">
-              <p className="text-white/45">{t.contact.address}</p>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white/45 hover:text-gold transition-colors"
+              >{t.contact.address}</a>
               <a
                 href={`tel:${t.contact.phone.replace(/[^+\d]/g, '')}`}
                 className="block text-white/45 hover:text-gold transition-colors"
