@@ -45,16 +45,22 @@ export default function EventsCTA() {
   return (
     <section className="relative bg-background border-t-2 border-gold/40 py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left: details */}
-          <div>
-            <h2 className="reveal font-playfair text-4xl md:text-5xl font-bold text-gold mb-4">
-              {t.title}
-            </h2>
-            <p className="text-cream/70 text-lg mb-8 font-sans leading-relaxed">
-              {t.subtitle}
-            </p>
 
+        {/* Full-width header */}
+        <div className="mb-12 pb-10 border-b border-white/8">
+          <h2 className="reveal font-playfair text-4xl md:text-5xl font-bold text-gold mb-4">
+            {t.title}
+          </h2>
+          <p className="text-cream/70 text-lg font-sans leading-relaxed max-w-2xl">
+            {t.subtitle}
+          </p>
+        </div>
+
+        {/* Two equal-height columns */}
+        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+
+          {/* Left: details */}
+          <div className="flex flex-col bg-white/[0.02] border border-white/8 rounded-xl p-8">
             {/* Badges */}
             <div className="flex flex-wrap gap-4 mb-8">
               <div className="bg-gold/10 border border-gold/30 rounded-sm px-4 py-2">
@@ -68,14 +74,14 @@ export default function EventsCTA() {
             </div>
 
             {/* Includes */}
-            <div className="mb-6">
-              <h3 className="text-gold/80 text-sm uppercase tracking-widest font-sans mb-3">
+            <div className="mb-6 flex-1">
+              <h3 className="text-gold/80 text-xs uppercase tracking-widest font-sans mb-4">
                 {lang === 'he' ? 'כלול במחיר' : lang === 'en' ? 'Included in price' : 'Включено в стоимость'}
               </h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {t.includes.map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-cream/80 text-sm font-sans">
-                    <span className="text-gold text-xs">✓</span>
+                    <span className="text-gold text-xs flex-shrink-0">✓</span>
                     {item}
                   </li>
                 ))}
@@ -84,15 +90,12 @@ export default function EventsCTA() {
 
             {/* Add-ons */}
             <div>
-              <h3 className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-2">
+              <h3 className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-3">
                 {lang === 'he' ? 'תוספות (בתשלום נפרד)' : lang === 'en' ? 'Add-ons (extra charge)' : 'Дополнительно (за доп. плату)'}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {t.addons.map((addon, i) => (
-                  <span
-                    key={i}
-                    className="text-cream/50 text-xs border border-cream/10 rounded px-2 py-1 font-sans"
-                  >
+                  <span key={i} className="text-cream/50 text-xs border border-cream/10 rounded px-2 py-1 font-sans">
                     {addon}
                   </span>
                 ))}
@@ -100,12 +103,12 @@ export default function EventsCTA() {
             </div>
           </div>
 
-          {/* Right: event types */}
-          <div>
-            <h3 className="text-gold/80 text-sm uppercase tracking-widest font-sans mb-6">
+          {/* Right: event types + note + CTAs */}
+          <div className="flex flex-col bg-white/[0.02] border border-white/8 rounded-xl p-8">
+            <h3 className="text-gold/80 text-xs uppercase tracking-widest font-sans mb-5">
               {lang === 'he' ? 'סוגי אירועים' : lang === 'en' ? 'Event types' : 'Типы мероприятий'}
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 flex-1">
               {t.types.map((type, i) => (
                 <div
                   key={i}
@@ -118,7 +121,7 @@ export default function EventsCTA() {
             </div>
 
             {/* Note */}
-            <div className="bg-gold/5 border border-gold/20 rounded-sm p-4 mb-8">
+            <div className="bg-gold/5 border border-gold/20 rounded-sm p-4 mb-6">
               <p className="text-cream/60 text-sm font-sans leading-relaxed">
                 {lang === 'he'
                   ? 'פתוחים בשבת · אפשר להביא אלכוהול · לא כשר'
@@ -152,6 +155,7 @@ export default function EventsCTA() {
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
