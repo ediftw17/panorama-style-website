@@ -33,7 +33,6 @@ export default function Nav() {
     { label: t.home, href: '/' },
     { label: t.menu, href: '/menu' },
     { label: t.events, href: '/events' },
-    { label: t.gallery, href: '/gallery' },
     { label: t.contact, href: '/contact' },
   ]
 
