@@ -27,37 +27,37 @@ export default function HomePage() {
       <Hero />
 
       {/* About */}
-      <section className="py-24 px-5 sm:px-8 bg-[#0e0e0e]">
+      <section className="py-32 px-5 sm:px-8 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-4">
-                {t.ui.aboutLabel}
-              </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                {t.about.title}
-              </h2>
-              <p className="text-white/55 text-base leading-relaxed font-sans">{t.about.text}</p>
-            </div>
+          <span className="inline-block text-gold text-[10px] tracking-[0.35em] uppercase font-sans border border-gold/25 px-3 py-1 rounded-full mb-8">
+            {t.ui.aboutLabel}
+          </span>
+          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight max-w-3xl">
+            {t.about.title}
+          </h2>
+          <p className="text-white/50 text-base leading-relaxed font-sans max-w-2xl">{t.about.text}</p>
 
-            <div className="grid grid-cols-3 gap-px bg-white/5 rounded-lg overflow-hidden">
-              {[
-                { val: t.about.stat1Value, label: t.about.stat1Label },
-                { val: t.about.stat2Value, label: t.about.stat2Label },
-                { val: t.about.stat3Value, label: t.about.stat3Label },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-[#0e0e0e] p-6 text-center">
-                  <div className="font-playfair text-3xl font-bold text-gold mb-1">{stat.val}</div>
-                  <div className="text-white/35 text-xs font-sans tracking-wide">{stat.label}</div>
-                </div>
-              ))}
+          <div className="flex flex-wrap items-center gap-8 mt-10 pt-10 border-t border-white/8">
+            <div>
+              <div className="font-playfair text-4xl font-light text-gold">{t.about.stat1Value}</div>
+              <div className="text-white/35 text-xs font-sans tracking-wide mt-1">{t.about.stat1Label}</div>
+            </div>
+            <div className="w-px h-10 bg-white/10" />
+            <div>
+              <div className="font-playfair text-4xl font-light text-white">{t.about.stat2Value}</div>
+              <div className="text-white/35 text-xs font-sans tracking-wide mt-1">{t.about.stat2Label}</div>
+            </div>
+            <div className="w-px h-10 bg-white/10" />
+            <div>
+              <div className="font-playfair text-4xl font-light text-white">{t.about.stat3Value}</div>
+              <div className="text-white/35 text-xs font-sans tracking-wide mt-1">{t.about.stat3Label}</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Gallery — full bleed grid */}
-      <section className="bg-black">
+      <section className="bg-black border-t border-white/5">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-4">
           <div className="flex items-end justify-between mb-8">
             <div>
@@ -77,8 +77,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Asymmetric photo grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
+        {/* Asymmetric photo grid — full bleed, no horizontal padding */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-[2px]">
           {galleryImages.map((src, i) => (
             <Link
               key={src}
@@ -175,18 +175,18 @@ export default function HomePage() {
               </div>
             </div>
 
-            <a
-              href="https://maps.google.com/maps?q=חלוצי+התעשייה+19+חיפה"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block bg-white/3 border border-white/8 rounded-lg p-10 text-center hover:border-gold/30 transition-all"
-            >
-              <svg className="w-10 h-10 text-gold/30 group-hover:text-gold/60 transition-colors mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-              </svg>
-              <p className="text-white/40 text-sm font-sans mb-1">{t.ui.openInMaps}</p>
-              <p className="text-gold/40 text-xs font-sans">{t.contact.address}</p>
-            </a>
+            <div className="relative rounded-lg overflow-hidden border border-white/8" style={{ height: '360px' }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.4536!2d35.01!3d32.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db816d5d3cb5f%3A0x8e6bc7b3a2e06ef0!2sPanorama%20Style!5e0!3m2!1sru!2sil!4v1710000000000!5m2!1sru!2sil"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Panorama Style location"
+              />
+            </div>
           </div>
         </div>
       </section>
