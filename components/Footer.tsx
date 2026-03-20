@@ -100,7 +100,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block text-white/45 hover:text-gold transition-colors"
               >
-                <span className="text-white/25">TikTok:</span> @panorama.style.res
+                {lang === 'he' ? 'עמוד טיקטוק' : lang === 'en' ? 'TikTok Page' : 'Страница TikTok'}
               </a>
             </div>
           </div>
