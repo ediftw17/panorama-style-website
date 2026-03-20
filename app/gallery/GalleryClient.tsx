@@ -1,12 +1,78 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { waUrl, WA_DISPLAY, WA_PHONE_DISPLAY, WA_PHONE_TEL } from '@/lib/wa'
 import type { FBPhoto, FBVideo } from '@/lib/facebook'
 
 type Tab = 'photos' | 'videos'
+
+function Lightbox({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onClose])
+  return (
+    <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={onClose}>
+      <button onClick={onClose} className="absolute top-4 right-4 text-white/60 hover:text-white text-3xl leading-none z-10">×</button>
+      <img src={src} alt="" className="max-w-full max-h-[90vh] object-contain" onClick={e => e.stopPropagation()} />
+    </div>
+  )
+}
+
+function VideoPlayer({ src, onClose }: { src: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onClose])
+  return (
+    <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" onClick={onClose}>
+      <button onClick={onClose} className="absolute top-4 right-4 text-white/60 hover:text-white text-3xl leading-none z-10">×</button>
+      <video
+        src={src}
+        controls
+        autoPlay
+        className="max-w-full max-h-[90vh]"
+        onClick={e => e.stopPropagation()}
+      />
+    </div>
+  )
+}
+
+function VideoCard({ video, onPlay }: { video: FBVideo; onPlay: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  return (
+    <div className="group relative overflow-hidden cursor-pointer" onClick={onPlay}>
+      <div className="aspect-video relative bg-black">
+        {video.source ? (
+          <video
+            ref={videoRef}
+            src={video.source}
+            className="w-full h-full object-cover"
+            muted
+            playsInline
+            preload="none"
+            onMouseEnter={() => videoRef.current?.play()}
+            onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 } }}
+          />
+        ) : (
+          <Image src={video.thumbnail} alt="" fill className="object-cover" unoptimized />
+        )}
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform">
+            <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+          </div>
+        </div>
+        {video.length && (
+          <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-1.5 py-0.5 font-sans">{formatDuration(video.length)}</span>
+        )}
+      </div>
+    </div>
+  )
+}
 
 function formatDuration(secs: number) {
   const m = Math.floor(secs / 60)
@@ -17,6 +83,8 @@ function formatDuration(secs: number) {
 export default function GalleryClient() {
   const { lang } = useLang()
   const [tab, setTab] = useState<Tab>('photos')
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
+  const [videoPlayerSrc, setVideoPlayerSrc] = useState<string | null>(null)
 
   const [photos, setPhotos] = useState<FBPhoto[]>([])
   const [photosCursor, setPhotosCursor] = useState<string | undefined>()
@@ -88,6 +156,8 @@ export default function GalleryClient() {
 
   return (
     <div className="min-h-screen bg-background pt-24 pb-20">
+      {lightboxSrc && <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+      {videoPlayerSrc && <VideoPlayer src={videoPlayerSrc} onClose={() => setVideoPlayerSrc(null)} />}
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* Header */}
@@ -132,7 +202,11 @@ export default function GalleryClient() {
             ) : (
               <div className="columns-2 sm:columns-3 md:columns-4 gap-2 space-y-2">
                 {photos.map(photo => (
-                  <div key={photo.id} className="break-inside-avoid relative overflow-hidden group mb-2">
+                  <div
+                    key={photo.id}
+                    className="break-inside-avoid relative overflow-hidden group mb-2 cursor-zoom-in"
+                    onClick={() => setLightboxSrc(photo.src)}
+                  >
                     <Image
                       src={photo.src}
                       alt=""
@@ -173,29 +247,11 @@ export default function GalleryClient() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {videos.map(video => (
-                  <a
+                  <VideoCard
                     key={video.id}
-                    href={video.fbUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative block overflow-hidden"
-                  >
-                    <div className="aspect-video relative">
-                      <Image src={video.thumbnail} alt="" fill className="object-cover group-hover:scale-[1.02] transition-transform duration-500" unoptimized />
-                      <div className="absolute inset-0 bg-black/35 group-hover:bg-black/45 transition-colors flex items-center justify-center">
-                        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/40 group-hover:scale-110 transition-transform">
-                          <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                      {video.length && (
-                        <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-1.5 py-0.5 font-sans">
-                          {formatDuration(video.length)}
-                        </span>
-                      )}
-                    </div>
-                  </a>
+                    video={video}
+                    onPlay={() => setVideoPlayerSrc(video.source || video.fbUrl)}
+                  />
                 ))}
               </div>
             )}
