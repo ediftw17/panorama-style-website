@@ -3,10 +3,6 @@
 import { useLang } from '@/lib/LanguageContext'
 
 const TOUR_URL = 'https://www.zooz360.co.il//templates/zooz360/user_files/VTour/VTour1465/vtour/tour.html?id=7a5'
-const VIDEOS = [
-  { id: 'Le6wp0G73Q8', label: 'Panorama Style — 55 sec' },
-  { id: 'IG21EmESQlM', label: 'Panorama Style — 1:23 min' },
-]
 
 export default function VirtualTour() {
   const { lang } = useLang()
@@ -36,24 +32,6 @@ export default function VirtualTour() {
           />
         </div>
 
-        {/* YouTube Videos */}
-        <div className="reveal">
-          <p className="text-white/30 text-[11px] tracking-[0.3em] uppercase font-sans mb-4">{videosLabel}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {VIDEOS.map(({ id }) => (
-              <div key={id} className="relative overflow-hidden border border-white/8" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${id}`}
-                  className="absolute inset-0 w-full h-full"
-                  allowFullScreen
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  title="Panorama Style video"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
 
       </div>
     </section>

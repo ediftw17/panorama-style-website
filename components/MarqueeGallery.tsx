@@ -64,7 +64,7 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
             className="flex-shrink-0 relative overflow-hidden group"
             style={{ width: itemW(item.isPortrait), height: ITEM_H, marginRight: GAP }}
           >
-            <Image src={item.src} alt="" fill className="object-cover object-center" sizes={item.isPortrait ? '147px' : '330px'} unoptimized />
+            <Image src={item.src} alt="" fill className={`object-cover ${item.isPortrait ? 'object-top' : 'object-center'}`} sizes={item.isPortrait ? '147px' : '330px'} unoptimized />
             {item.type === 'video' && (
               <a
                 href={item.fbUrl}
