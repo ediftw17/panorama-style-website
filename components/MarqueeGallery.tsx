@@ -92,8 +92,18 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
 }
 
 function splitRows(items: MediaItem[]): [MediaItem[], MediaItem[]] {
-  const r1 = items.filter((_, i) => i % 2 === 0)
-  const r2 = items.filter((_, i) => i % 2 === 1)
+  const landscapes = items.filter(i => !i.isPortrait)
+  const portraits = items.filter(i => i.isPortrait)
+  // Interleave: landscape, portrait, landscape, portrait...
+  const interleaved: MediaItem[] = []
+  const len = Math.max(landscapes.length, portraits.length)
+  for (let i = 0; i < len; i++) {
+    if (i < landscapes.length) interleaved.push(landscapes[i])
+    if (i < portraits.length) interleaved.push(portraits[i])
+  }
+  const half = Math.ceil(interleaved.length / 2)
+  const r1 = interleaved.slice(0, half)
+  const r2 = interleaved.slice(half)
   return [r1.length ? r1 : FALLBACK, r2.length ? r2 : FALLBACK]
 }
 
