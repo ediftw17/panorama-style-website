@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, Frank_Ruhl_Libre, Heebo } from 'next/font/google'
+import { Playfair_Display, Inter, Noto_Serif_Hebrew, Heebo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 import Nav from '@/components/Nav'
@@ -26,7 +26,7 @@ const inter = Inter({
 })
 
 // Hebrew headings
-const frankRuhl = Frank_Ruhl_Libre({
+const notoSerifHebrew = Noto_Serif_Hebrew({
   subsets: ['latin', 'hebrew'],
   weight: ['300', '400', '500', '700'],
   variable: '--font-frank-ruhl',
@@ -104,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${playfair.variable} ${inter.variable} ${frankRuhl.variable} ${heebo.variable}`}>
+    <html lang="he" dir="rtl" className={`${playfair.variable} ${inter.variable} ${notoSerifHebrew.variable} ${heebo.variable}`}>
       <head>
         <script
           type="application/ld+json"

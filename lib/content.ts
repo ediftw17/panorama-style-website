@@ -131,14 +131,10 @@ export const content = {
         tag: 'הכי פופולרי',
         includes: ['כל מה שב-Essential', 'צלם', 'צלם וידאו', 'DJ'],
       },
-      {
-        name: 'VIP',
-        price: '₪400',
-        perPerson: 'לאדם',
-        highlight: false,
-        tag: '',
-        includes: ['כל מה שב-Premium', 'מנחה אירוע', 'עיצוב ודקורציות', 'אולם VIP'],
-      },
+    ],
+    halls: [
+      { name: 'אולם בנקטים', capacity: '40–350', key: 'banquet' },
+      { name: 'אולם VIP', capacity: 'עד 70', key: 'vip' },
     ],
     faq: [
       { q: 'אפשר להביא אלכוהול?', a: 'כן, ניתן להביא אלכוהול בחינם ללא קורקז.' },
@@ -299,14 +295,10 @@ export const content = {
         tag: 'Самый популярный',
         includes: ['Всё из Essential', 'Фотограф', 'Видеооператор', 'DJ'],
       },
-      {
-        name: 'VIP',
-        price: '₪400',
-        perPerson: 'с человека',
-        highlight: false,
-        tag: '',
-        includes: ['Всё из Premium', 'Ведущий', 'Оформление и декор', 'VIP-зал'],
-      },
+    ],
+    halls: [
+      { name: 'Банкетный зал', capacity: '40–350', key: 'banquet' },
+      { name: 'VIP зал', capacity: 'до 70', key: 'vip' },
     ],
     faq: [
       { q: 'Можно ли принести свой алкоголь?', a: 'Да, corkage fee не взимается.' },
@@ -467,14 +459,10 @@ export const content = {
         tag: 'Most Popular',
         includes: ['Everything in Essential', 'Photographer', 'Videographer', 'DJ'],
       },
-      {
-        name: 'VIP',
-        price: '₪400',
-        perPerson: 'per person',
-        highlight: false,
-        tag: '',
-        includes: ['Everything in Premium', 'Event MC / Host', 'Decoration service', 'VIP hall'],
-      },
+    ],
+    halls: [
+      { name: 'Banquet Hall', capacity: '40–350', key: 'banquet' },
+      { name: 'VIP Hall', capacity: 'up to 70', key: 'vip' },
     ],
     faq: [
       { q: 'Can we bring our own alcohol?', a: 'Yes — no corkage fee.' },

@@ -22,6 +22,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 )
 
 interface FormData {
+  hall: string
   eventType: string
   name: string
   phone: string
@@ -36,6 +37,7 @@ export default function EventsClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [checkDate, setCheckDate] = useState('')
   const [form, setForm] = useState<FormData>({
+    hall: '',
     eventType: '',
     name: '',
     phone: '',
@@ -53,12 +55,13 @@ export default function EventsClient() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const eventLabel = form.eventType ? `${form.eventType}, ` : ''
+    const hallLabel = form.hall ? `${form.hall}, ` : ''
     const msg =
       lang === 'he'
-        ? `שלום, אני ${form.name}. ${eventLabel}תאריך: ${form.date}, כ-${form.guests} אורחים.${form.notes ? ' ' + form.notes : ''} טלפון: ${form.phone}`
+        ? `שלום, אני ${form.name}. ${hallLabel}${eventLabel}תאריך: ${form.date}, כ-${form.guests} אורחים.${form.notes ? ' ' + form.notes : ''} טלפון: ${form.phone}`
         : lang === 'en'
-        ? `Hello, my name is ${form.name}. ${eventLabel}Date: ${form.date}, ~${form.guests} guests.${form.notes ? ' ' + form.notes : ''} Phone: ${form.phone}`
-        : `Здравствуйте, меня зовут ${form.name}. ${eventLabel}Дата: ${form.date}, ~${form.guests} гостей.${form.notes ? ' ' + form.notes : ''} Телефон: ${form.phone}`
+        ? `Hello, my name is ${form.name}. ${hallLabel}${eventLabel}Date: ${form.date}, ~${form.guests} guests.${form.notes ? ' ' + form.notes : ''} Phone: ${form.phone}`
+        : `Здравствуйте, меня зовут ${form.name}. ${hallLabel}${eventLabel}Дата: ${form.date}, ~${form.guests} гостей.${form.notes ? ' ' + form.notes : ''} Телефон: ${form.phone}`
     window.open(`https://wa.me/972506461983?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
@@ -68,6 +71,8 @@ export default function EventsClient() {
     formTitle: lang === 'he' ? 'שלחו פרטים לתיאום' : lang === 'en' ? 'Send Inquiry' : 'Отправьте запрос',
     formLabel: lang === 'he' ? 'השאירו פרטים' : lang === 'en' ? 'Get in Touch' : 'Оставьте заявку',
     responseTime: lang === 'he' ? 'עונים תוך 2 שעות' : lang === 'en' ? 'We respond within 2 hours' : 'Отвечаем в течение 2 часов',
+    hall: lang === 'he' ? 'בחירת אולם' : lang === 'en' ? 'Select Hall' : 'Выбор зала',
+    hallPlaceholder: lang === 'he' ? 'בחרו אולם...' : lang === 'en' ? 'Choose hall...' : 'Выберите зал...',
     eventType: lang === 'he' ? 'סוג האירוע' : lang === 'en' ? 'Event Type' : 'Тип мероприятия',
     eventTypePlaceholder: lang === 'he' ? 'בחרו...' : lang === 'en' ? 'Select...' : 'Выберите...',
     name: lang === 'he' ? 'שם מלא' : lang === 'en' ? 'Full Name' : 'Имя',
@@ -250,6 +255,24 @@ export default function EventsClient() {
             onSubmit={handleSubmit}
             className="bg-darkcard border border-white/6 rounded-xl p-8 space-y-5"
           >
+            {/* Hall selector */}
+            <div>
+              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                {labels.hall}
+              </label>
+              <select
+                name="hall"
+                value={form.hall}
+                onChange={handleChange}
+                className="w-full bg-background border border-gold/15 text-cream/80 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
+              >
+                <option value="">{labels.hallPlaceholder}</option>
+                {t.halls.map((h) => (
+                  <option key={h.key} value={h.name}>{h.name} ({h.capacity} {lang === 'he' ? 'אורחים' : lang === 'en' ? 'guests' : 'гостей'})</option>
+                ))}
+              </select>
+            </div>
+
             {/* Event type */}
             <div>
               <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
