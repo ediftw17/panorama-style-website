@@ -16,6 +16,7 @@ export type FBVideo = {
   fbUrl: string
   description?: string
   length?: number
+  source?: string
 }
 
 export type MediaItem = {
@@ -23,6 +24,7 @@ export type MediaItem = {
   type: 'photo' | 'video'
   src: string
   fbUrl?: string
+  videoSrc?: string
   isPortrait: boolean
 }
 
@@ -73,7 +75,7 @@ export async function getPagePhotos(limit = 30, after?: string): Promise<{ photo
 export async function getPageVideos(limit = 12, after?: string): Promise<{ videos: FBVideo[]; nextCursor?: string }> {
   try {
     const params: Record<string, string> = {
-      fields: 'picture,description,length',
+      fields: 'picture,description,length,source',
       limit: String(limit),
     }
     if (after) params.after = after
@@ -85,6 +87,7 @@ export async function getPageVideos(limit = 12, after?: string): Promise<{ video
       fbUrl: `https://www.facebook.com/${PAGE_ID}/videos/${video.id}`,
       description: video.description || '',
       length: video.length,
+      source: video.source || undefined,
     })).filter((v: FBVideo) => v.thumbnail)
 
     return {
@@ -120,7 +123,7 @@ export function buildMediaList(photos: FBPhoto[], videos: FBVideo[], seed: numbe
     seed
   )
   const shuffledVideos = seededShuffle(
-    videos.map(v => ({ id: v.id, type: 'video' as const, src: v.thumbnail, fbUrl: v.fbUrl, isPortrait: false })),
+    videos.map(v => ({ id: v.id, type: 'video' as const, src: v.thumbnail, fbUrl: v.fbUrl, videoSrc: v.source, isPortrait: false })),
     seed + 1
   )
 

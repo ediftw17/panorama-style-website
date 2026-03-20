@@ -64,20 +64,41 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
             className="flex-shrink-0 relative overflow-hidden group"
             style={{ width: itemW(item.isPortrait), height: ITEM_H, marginRight: GAP }}
           >
-            <Image src={item.src} alt="" fill className={`object-cover ${item.isPortrait ? 'object-top' : 'object-center'}`} sizes={item.isPortrait ? '147px' : '330px'} unoptimized />
-            {item.type === 'video' && (
-              <a
-                href={item.fbUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/55 transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                  <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </a>
+            {item.type === 'video' && item.videoSrc ? (
+              <>
+                <video
+                  src={item.videoSrc}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+                <a
+                  href={item.fbUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors"
+                />
+              </>
+            ) : (
+              <>
+                <Image src={item.src} alt="" fill className={`object-cover ${item.isPortrait ? 'object-top' : 'object-center'}`} sizes={item.isPortrait ? '147px' : '330px'} unoptimized />
+                {item.type === 'video' && (
+                  <a
+                    href={item.fbUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/55 transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                      <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </a>
+                )}
+              </>
             )}
           </div>
         ))}
