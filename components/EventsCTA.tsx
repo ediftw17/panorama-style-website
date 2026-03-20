@@ -4,18 +4,27 @@ import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
 const eventIcons: Record<string, string> = {
+  // Hebrew
   'חתונות': '💍',
   'בר/בת מצווה': '✡',
   'ימי הולדת': '🎂',
   'אירועי חברה': '🏢',
   'ימי נישואין': '🥂',
   'מסיבות פרטיות': '🎉',
+  // Russian
   'Свадьбы': '💍',
   'Бар/Бат-мицвы': '✡',
   'Дни рождения': '🎂',
   'Корпоративы': '🏢',
   'Годовщины': '🥂',
   'Частные вечеринки': '🎉',
+  // English
+  'Weddings': '💍',
+  'Bar/Bat Mitzvahs': '✡',
+  'Birthdays': '🎂',
+  'Corporate events': '🏢',
+  'Anniversaries': '🥂',
+  'Private parties': '🎉',
 }
 
 export default function EventsCTA() {
@@ -28,6 +37,8 @@ export default function EventsCTA() {
   const whatsappMsg = encodeURIComponent(
     lang === 'he'
       ? 'שלום, אני מעוניין/ת לברר פרטים על אירוע בפנורמה סטייל'
+      : lang === 'en'
+      ? 'Hello, I would like to inquire about hosting an event at Panorama Style'
       : 'Здравствуйте, хочу узнать подробности о мероприятии в Panorama Style'
   )
 
@@ -59,7 +70,7 @@ export default function EventsCTA() {
             {/* Includes */}
             <div className="mb-6">
               <h3 className="text-gold/80 text-sm uppercase tracking-widest font-sans mb-3">
-                {lang === 'he' ? 'כלול במחיר' : 'Включено в стоимость'}
+                {lang === 'he' ? 'כלול במחיר' : lang === 'en' ? 'Included in price' : 'Включено в стоимость'}
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {t.includes.map((item, i) => (
@@ -74,7 +85,7 @@ export default function EventsCTA() {
             {/* Add-ons */}
             <div>
               <h3 className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-2">
-                {lang === 'he' ? 'תוספות (בתשלום נפרד)' : 'Дополнительно (за доп. плату)'}
+                {lang === 'he' ? 'תוספות (בתשלום נפרד)' : lang === 'en' ? 'Add-ons (extra charge)' : 'Дополнительно (за доп. плату)'}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {t.addons.map((addon, i) => (
@@ -92,7 +103,7 @@ export default function EventsCTA() {
           {/* Right: event types */}
           <div>
             <h3 className="text-gold/80 text-sm uppercase tracking-widest font-sans mb-6">
-              {lang === 'he' ? 'סוגי אירועים' : 'Типы мероприятий'}
+              {lang === 'he' ? 'סוגי אירועים' : lang === 'en' ? 'Event types' : 'Типы мероприятий'}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
               {t.types.map((type, i) => (
@@ -111,6 +122,8 @@ export default function EventsCTA() {
               <p className="text-cream/60 text-sm font-sans leading-relaxed">
                 {lang === 'he'
                   ? 'פתוחים בשבת · אפשר להביא אלכוהול · לא כשר'
+                  : lang === 'en'
+                  ? 'Open on Shabbat · Bring your own alcohol · Not kosher'
                   : 'Работаем в Шаббат · Можно со своим алкоголем · Не кошерно'}
               </p>
             </div>

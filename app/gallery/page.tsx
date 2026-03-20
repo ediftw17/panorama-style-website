@@ -2,6 +2,7 @@
 
 import GalleryGrid from '@/components/GalleryGrid'
 import { useLang } from '@/lib/LanguageContext'
+import { content } from '@/lib/content'
 
 const allGalleryImages = [
   '/images/gallery-1.jpg',
@@ -13,11 +14,11 @@ const allGalleryImages = [
   '/images/gallery-7.jpg',
   '/images/gallery-8.jpg',
   '/images/gallery-9.jpg',
-  '/images/venue-interior.jpg',
 ]
 
 export default function GalleryPage() {
   const { lang } = useLang()
+  const t = content[lang]
 
   return (
     <div className="min-h-screen bg-background pt-24 pb-20">
@@ -25,10 +26,10 @@ export default function GalleryPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-gold/60 text-xs uppercase tracking-widest font-sans">
-            {lang === 'he' ? 'צילומים' : 'Фотографии'}
+            {t.ui.photosLabel}
           </span>
           <h1 className="font-playfair text-5xl md:text-6xl font-bold text-cream mt-2">
-            {lang === 'he' ? 'גלריה' : 'Галерея'}
+            {t.ui.galleryTitle}
           </h1>
         </div>
 
@@ -38,8 +39,10 @@ export default function GalleryPage() {
         <div className="mt-16 text-center">
           <p className="text-cream/50 text-sm font-sans mb-4">
             {lang === 'he'
-              ? 'רוצים לערוך אירוע במקום? '
-              : 'Хотите провести мероприятие? '}
+              ? 'רוצים לערוך אירוע במקום?'
+              : lang === 'en'
+              ? 'Want to host an event here?'
+              : 'Хотите провести мероприятие?'}
           </p>
           <a
             href="https://wa.me/972506461983"
@@ -47,7 +50,7 @@ export default function GalleryPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold px-6 py-3 rounded-sm hover:bg-[#22c05e] transition-colors"
           >
-            {lang === 'he' ? 'צרו קשר בוואטסאפ' : 'Написать в WhatsApp'}
+            {t.events.ctaWhatsapp}
           </a>
         </div>
       </div>
