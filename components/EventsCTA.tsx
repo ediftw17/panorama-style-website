@@ -43,7 +43,7 @@ export default function EventsCTA() {
   )
 
   return (
-    <section className="relative bg-background border-t-2 border-gold/40 py-20 px-4">
+    <section className="relative bg-background py-20 px-4">
       <div className="max-w-7xl mx-auto">
 
         {/* Full-width header */}
@@ -60,7 +60,7 @@ export default function EventsCTA() {
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
           {/* Left: details */}
-          <div className="flex flex-col border border-white/[0.06] rounded-xl p-8">
+          <div className="flex flex-col p-8">
             {/* Badges */}
             <div className="flex flex-wrap gap-4 mb-8">
               <div className="bg-gold/10 border border-gold/30 rounded-sm px-4 py-2">
@@ -104,7 +104,7 @@ export default function EventsCTA() {
           </div>
 
           {/* Right: event types + note + CTAs */}
-          <div className="flex flex-col border border-white/[0.06] rounded-xl p-8">
+          <div className="flex flex-col p-8">
             <h3 className="text-gold/80 text-xs uppercase tracking-widest font-sans mb-5">
               {lang === 'he' ? 'סוגי אירועים' : lang === 'en' ? 'Event types' : 'Типы мероприятий'}
             </h3>
@@ -112,7 +112,7 @@ export default function EventsCTA() {
               {t.types.map((type, i) => (
                 <div
                   key={i}
-                  className="bg-darkcard border border-gold/10 rounded-sm p-4 text-center hover:border-gold/30 transition-colors"
+                  className="bg-darkcard rounded-sm p-4 text-center"
                 >
                   <div className="text-2xl mb-2">{eventIcons[type] || '★'}</div>
                   <div className="text-cream/80 text-xs font-sans">{type}</div>
@@ -121,7 +121,7 @@ export default function EventsCTA() {
             </div>
 
             {/* Note */}
-            <div className="bg-gold/5 border border-gold/20 rounded-sm p-4 mb-6">
+            <div className="bg-gold/5 rounded-sm p-4 mb-6">
               <p className="text-cream/60 text-sm font-sans leading-relaxed">
                 {lang === 'he'
                   ? 'פתוחים בשבת · אפשר להביא אלכוהול · לא כשר'
