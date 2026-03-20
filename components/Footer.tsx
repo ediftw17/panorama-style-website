@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-import { WAZE_URL } from '@/lib/wa'
+import { MAPS_URL } from '@/lib/wa'
 
 export default function Footer() {
   const { lang } = useLang()
@@ -57,7 +57,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-2.5 text-sm font-sans">
               <a
-                href={WAZE_URL}
+                href={MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-white/45 hover:text-gold transition-colors"

@@ -19,12 +19,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const stored = localStorage.getItem('lang') as Lang | null
-    if (stored && ['ru', 'he', 'en'].includes(stored)) {
-      setLangState(stored)
-      document.documentElement.dir = stored === 'he' ? 'rtl' : 'ltr'
-      document.documentElement.lang = stored
-    }
     setMounted(true)
   }, [])
 
@@ -34,7 +28,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLang = (l: Lang) => {
     setLangState(l)
-    localStorage.setItem('lang', l)
     document.documentElement.dir = l === 'he' ? 'rtl' : 'ltr'
     document.documentElement.lang = l
   }

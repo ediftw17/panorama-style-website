@@ -25,7 +25,7 @@ export const content = {
     },
     hero: {
       headline: 'המסעדה הטובה ביותר בחיפה',
-      subline: '40–350 אורחים · מוזיקה חיה · פתוחים בשבת · מ-₪250 לאדם',
+      subline: '40–350 אורחים · מוזיקה חיה · ו׳–ש׳ + שבת · מ-₪250 לאדם',
       ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'תאריכי קיץ 2026 מתמלאים במהירות',
@@ -111,7 +111,7 @@ export const content = {
       address: 'חלוצי התעשייה 19, חיפה, ישראל',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'ה׳–ש׳ מ-18:00 · שבת מ-12:00',
+      hoursNote: 'ו׳–ש׳ מ-18:00 · שבת מ-12:00 · ימי חול — בהזמנה מראש',
       facebookLabel: 'עמוד פייסבוק',
     },
     packages: [
@@ -189,7 +189,7 @@ export const content = {
     },
     hero: {
       headline: 'Лучший ресторан Хайфы',
-      subline: '40–350 гостей · живая музыка · работаем в Шаббат · от ₪250',
+      subline: '40–350 гостей · живая музыка · Пт–Сб + Шаббат · от ₪250',
       ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'Летние 2026 даты заполняются быстро',
@@ -275,7 +275,7 @@ export const content = {
       address: 'Халуцей ха-Тасия 19, Хайфа, Израиль',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'Чт–Сб с 18:00 · Шаббат с 12:00',
+      hoursNote: 'Пт–Сб с 18:00 · Шаббат с 12:00 · Будни — по предварительной записи',
       facebookLabel: 'Страница Facebook',
     },
     packages: [
@@ -353,7 +353,7 @@ export const content = {
     },
     hero: {
       headline: "Haifa's Best Restaurant",
-      subline: '40–350 guests · live entertainment · open on Shabbat · from ₪250',
+      subline: '40–350 guests · live entertainment · Fri–Sat + Shabbat · from ₪250',
       ctaPrimary: 'WhatsApp',
       ctaSecondary: 'WhatsApp',
       urgency: 'Summer 2026 dates filling fast',
@@ -439,7 +439,7 @@ export const content = {
       address: 'Halutzei HaTa\'asiya 19, Haifa, Israel',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'Thu–Sat from 18:00 · Shabbat from 12:00',
+      hoursNote: 'Fri–Sat from 18:00 · Shabbat from 12:00 · Weekdays by advance booking',
       facebookLabel: 'Facebook Page',
     },
     packages: [
