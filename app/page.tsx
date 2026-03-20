@@ -119,7 +119,7 @@ export default function HomePage() {
 
             <div className="relative rounded-lg overflow-hidden border border-white/8" style={{ height: '360px' }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.4536!2d35.01!3d32.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db816d5d3cb5f%3A0x8e6bc7b3a2e06ef0!2sPanorama%20Style!5e0!3m2!1sru!2sil!4v1710000000000!5m2!1sru!2sil"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.2472918172625!2d35.0657001!3d32.8122121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db15f4046c0e1%3A0xed6458322d423dae!2sPanorama%20Style!5e0!3m2!1sen!2sil!4v1773993356980!5m2!1sen!2sil"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
