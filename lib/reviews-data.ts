@@ -1,11 +1,14 @@
 export type ReviewSource = 'google' | 'restaurant-guru' | 'facebook'
 
+export type ReviewLang = 'en' | 'ru' | 'he'
+
 export interface Review {
   id: string
   text: string
   author: string
   rating: number // always 0–5 scale
   source: ReviewSource
+  lang: ReviewLang
   date?: string
 }
 
@@ -54,6 +57,7 @@ export const allReviews: Review[] = [
     author: 'Happy guest',
     rating: 5,
     source: 'restaurant-guru',
+    lang: 'en',
   },
   {
     id: 'rg-2',
@@ -61,6 +65,7 @@ export const allReviews: Review[] = [
     author: 'Visitor',
     rating: 5,
     source: 'restaurant-guru',
+    lang: 'en',
   },
   {
     id: 'rg-3',
@@ -68,6 +73,7 @@ export const allReviews: Review[] = [
     author: 'Event guest',
     rating: 4.6,
     source: 'restaurant-guru',
+    lang: 'en',
   },
   {
     id: 'rg-4',
@@ -75,6 +81,7 @@ export const allReviews: Review[] = [
     author: 'Guest',
     rating: 5,
     source: 'restaurant-guru',
+    lang: 'en',
   },
   {
     id: 'rg-he-1',
@@ -82,6 +89,7 @@ export const allReviews: Review[] = [
     author: 'לקוח מרוצה',
     rating: 5,
     source: 'restaurant-guru',
+    lang: 'he',
   },
   {
     id: 'rg-ru-1',
@@ -89,6 +97,7 @@ export const allReviews: Review[] = [
     author: 'Довольный гость',
     rating: 5,
     source: 'restaurant-guru',
+    lang: 'ru',
   },
   {
     id: 'rg-ru-2',
@@ -96,5 +105,6 @@ export const allReviews: Review[] = [
     author: 'Гость',
     rating: 4.6,
     source: 'restaurant-guru',
+    lang: 'ru',
   },
 ]

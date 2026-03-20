@@ -6,15 +6,15 @@ import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
 const allGalleryImages: GalleryImage[] = [
-  { src: '/images/gallery-1.jpg', category: 'venue', caption: 'Main hall' },
-  { src: '/images/gallery-2.jpg', category: 'venue', caption: 'Bar area' },
-  { src: '/images/gallery-3.jpg', category: 'venue', caption: 'Stage setup' },
-  { src: '/images/gallery-4.jpg', category: 'venue', caption: 'Dining hall' },
-  { src: '/images/gallery-5.jpg', category: 'venue', caption: 'VIP section' },
-  { src: '/images/gallery-6.jpg', category: 'venue', caption: 'Entrance' },
-  { src: '/images/gallery-7.jpg', category: 'venue', caption: 'Interior detail' },
-  { src: '/images/gallery-8.jpg', category: 'venue', caption: 'Table setting' },
-  { src: '/images/gallery-9.jpg', category: 'venue', caption: 'Evening atmosphere' },
+  { src: '/images/gallery-1.jpg', category: 'venue' },
+  { src: '/images/gallery-2.jpg', category: 'venue' },
+  { src: '/images/gallery-3.jpg', category: 'venue' },
+  { src: '/images/gallery-4.jpg', category: 'venue' },
+  { src: '/images/gallery-5.jpg', category: 'venue' },
+  { src: '/images/gallery-6.jpg', category: 'venue' },
+  { src: '/images/gallery-7.jpg', category: 'venue' },
+  { src: '/images/gallery-8.jpg', category: 'venue' },
+  { src: '/images/gallery-9.jpg', category: 'venue' },
 ]
 
 const CATEGORIES = [

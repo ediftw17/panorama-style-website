@@ -148,8 +148,8 @@ export const content = {
       { q: 'האם ניתן לבקר לפני האירוע?', a: 'בהחלט — שלחו הודעה בוואטסאפ לתיאום ביקור.' },
     ],
     whyUs: {
-      label: 'למה לבחור בנו',
-      title: 'ההבדל הוא בפרטים',
+      label: 'למה פנורמה סטייל?',
+      title: 'המקום המושלם לאירוע שלכם',
       stats: [
         { value: 'מ-₪250', label: 'לאדם — זול יותר ממרבית האולמות בחיפה' },
         { value: '#111', label: 'מתוך 1,850 מסעדות בחיפה' },
@@ -315,8 +315,8 @@ export const content = {
       { q: 'Можно ли посетить зал заранее?', a: 'Конечно — напишите в WhatsApp для записи на осмотр.' },
     ],
     whyUs: {
-      label: 'Почему мы',
-      title: 'Разница в деталях',
+      label: 'Почему Panorama Style?',
+      title: 'Идеальное место для вашего мероприятия',
       stats: [
         { value: 'от ₪250', label: 'с человека — дешевле большинства залов Хайфы' },
         { value: '#111', label: 'из 1850 ресторанов Хайфы' },
@@ -482,8 +482,8 @@ export const content = {
       { q: 'Can we visit the venue beforehand?', a: 'Absolutely — message us on WhatsApp to schedule a viewing.' },
     ],
     whyUs: {
-      label: 'Why Choose Us',
-      title: 'The Difference Is in the Details',
+      label: 'Why Panorama Style?',
+      title: 'The Ideal Venue for Your Event',
       stats: [
         { value: 'from ₪250', label: 'per person — more affordable than most halls in Haifa' },
         { value: '#111', label: 'of 1,850 restaurants in Haifa' },

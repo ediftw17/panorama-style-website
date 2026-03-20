@@ -1,6 +1,7 @@
 'use client'
 
 import { allReviews, aggregateScores, MIN_RATING, type ReviewSource } from '@/lib/reviews-data'
+import { useLang } from '@/lib/LanguageContext'
 
 const SOURCE_COLORS: Record<ReviewSource, string> = {
   google: '#4285F4',
@@ -48,8 +49,10 @@ const Stars = ({ rating }: { rating: number }) => (
 )
 
 export default function ReviewsStrip() {
+  const { lang } = useLang()
+
   const filtered = allReviews
-    .filter((r) => r.rating >= MIN_RATING)
+    .filter((r) => r.rating >= MIN_RATING && r.lang === lang)
     .sort((a, b) => b.rating - a.rating)
 
   const looped = [...filtered, ...filtered, ...filtered]
