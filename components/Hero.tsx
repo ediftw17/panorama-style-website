@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -10,6 +10,17 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
+  const bgRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (bgRef.current) {
+        bgRef.current.style.transform = `translateY(${window.scrollY * 0.4}px)`
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <section
       className="relative h-screen min-h-[600px] flex flex-col items-center justify-center overflow-hidden"
@@ -17,8 +28,9 @@ export default function Hero() {
     >
       {/* Background image */}
       <div
+        ref={bgRef}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero.jpg')", willChange: 'transform' }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/55" />
@@ -35,7 +47,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-5 max-w-5xl mx-auto">
         {/* Location eyebrow */}
-        <div className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8">
+        <div className="animate-fade-in-up inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8" style={{ animationDelay: '200ms' }}>
           <div className="w-1 h-1 rounded-full bg-gold" />
           <span className="text-white/60 text-[11px] font-sans tracking-[0.3em] uppercase">
             {t.ui.locationLabel}
@@ -44,8 +56,8 @@ export default function Hero() {
 
         {/* Main headline */}
         <h1
-          className="font-playfair font-light text-white leading-[0.9] tracking-tight mb-6"
-          style={{ fontSize: 'clamp(64px, 12vw, 140px)' }}
+          className="animate-fade-in-up font-playfair font-light text-white leading-[0.9] tracking-tight mb-6"
+          style={{ fontSize: 'clamp(64px, 12vw, 140px)', animationDelay: '400ms' }}
         >
           {lang === 'he' ? (
             <>פנורמה<br /><em className="text-gold/90">סטייל</em></>
@@ -55,15 +67,15 @@ export default function Hero() {
         </h1>
 
         {/* Gold rule */}
-        <div className="w-10 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
+        <div className="animate-fade-in-up w-10 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" style={{ animationDelay: '600ms' }} />
 
         {/* Subline */}
-        <p className="text-white/55 text-sm sm:text-base font-sans tracking-wide max-w-md mx-auto mb-10">
+        <p className="animate-fade-in-up text-white/55 text-sm sm:text-base font-sans tracking-wide max-w-md mx-auto mb-10" style={{ animationDelay: '700ms' }}>
           {t.hero.subline}
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div className="animate-fade-in-up flex flex-col sm:flex-row items-center justify-center gap-3" style={{ animationDelay: '850ms' }}>
           <a
             href="/events"
             className="inline-flex items-center gap-2 bg-gold text-black text-sm font-semibold px-7 py-3.5 tracking-wide hover:bg-gold/90 transition-all hover:-translate-y-px"

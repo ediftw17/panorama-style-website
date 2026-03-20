@@ -48,7 +48,7 @@ export default function EventsCTA() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: details */}
           <div>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-gold mb-4">
+            <h2 className="reveal font-playfair text-4xl md:text-5xl font-bold text-gold mb-4">
               {t.title}
             </h2>
             <p className="text-cream/70 text-lg mb-8 font-sans leading-relaxed">

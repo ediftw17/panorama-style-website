@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/lib/LanguageContext'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import ScrollReveal from '@/components/ScrollReveal'
 
 // Display/headings — Cormorant Garamond (Latin/Cyrillic) with Frank Ruhl Libre fallback (Hebrew)
 const cormorant = Cormorant_Garamond({
@@ -115,6 +116,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <WhatsAppButton />
+          <ScrollReveal />
         </LanguageProvider>
       </body>
     </html>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content, Lang } from '@/lib/content'
 
@@ -50,15 +49,14 @@ export default function Nav() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt="Panorama Style"
-              width={160}
-              height={56}
-              className="h-10 w-auto object-contain"
-              priority
-              unoptimized
-            />
+            <span
+              className={`font-playfair leading-none transition-all duration-700 ${
+                scrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3 pointer-events-none'
+              }`}
+            >
+              <span className="block text-base font-light tracking-[0.2em] text-white uppercase">Panorama</span>
+              <span className="block text-[10px] font-light tracking-[0.5em] text-gold/80 uppercase mt-0.5">Style</span>
+            </span>
           </Link>
 
           {/* Desktop nav links */}
