@@ -40,7 +40,7 @@ export default function ContactClient() {
                   <p className="text-cream/80 font-sans text-sm mb-3">{t.address}</p>
                   <div className="flex gap-2">
                     <a
-                      href={MAPS_URL}
+                      href={WAZE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-gold/40 hover:text-gold transition-colors"

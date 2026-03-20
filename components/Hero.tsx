@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-import { waUrl, WA_DISPLAY, WA_PHONE_DISPLAY, WA_PHONE_TEL, MAPS_URL } from '@/lib/wa'
+import { waUrl, WA_DISPLAY, WA_PHONE_DISPLAY, WA_PHONE_TEL, WAZE_URL } from '@/lib/wa'
 
 export default function Hero() {
   const { lang } = useLang()
@@ -51,7 +51,7 @@ export default function Hero() {
       <div className="relative z-10 text-center px-5 max-w-5xl mx-auto">
         {/* Location eyebrow */}
         <a
-          href={MAPS_URL}
+          href={WAZE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="animate-fade-in-up inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 hover:border-gold/40 transition-colors"
