@@ -22,7 +22,7 @@ export default function StickyContactBar() {
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-      <div className="bg-black/97 backdrop-blur-md border-t border-white/10 px-4 pt-3 pb-safe">
+      <div className="bg-black/97 backdrop-blur-md border-t border-white/10 px-4 py-3 pb-safe">
         <div className="flex gap-2.5 mb-2">
           <a
             href={`tel:${WA_PHONE_TEL}`}
@@ -35,13 +35,15 @@ export default function StickyContactBar() {
             href={waUrl(lang)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[2] flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-semibold py-3 rounded-sm hover:bg-[#22c05e] transition-colors"
+            className="flex-[2] flex flex-col items-center justify-center bg-[#25D366] text-white rounded-sm py-2.5 hover:bg-[#22c05e] transition-colors"
           >
-            <WaIcon />
-            WhatsApp
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <WaIcon />
+              WhatsApp
+            </div>
+            <span className="text-[11px] font-normal opacity-80 mt-0.5">{WA_PHONE_DISPLAY}</span>
           </a>
         </div>
-        <p className="text-center text-white/30 text-[11px] font-sans pb-1">{WA_PHONE_DISPLAY}</p>
       </div>
     </div>
   )
