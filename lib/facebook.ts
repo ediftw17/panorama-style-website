@@ -39,42 +39,82 @@ async function fbFetch(path: string, params: Record<string, string> = {}) {
   return res.json()
 }
 
+// Fetch all event album IDs (normal + wall types) — cached 1hr
+async function getEventAlbumIds(): Promise<string[]> {
+  const ids: string[] = []
+  let after: string | undefined
+  try {
+    do {
+      const params: Record<string, string> = { fields: 'id,type', limit: '50' }
+      if (after) params.after = after
+      const data = await fbFetch(`/${PAGE_ID}/albums`, params)
+      for (const a of (data.data || [])) {
+        if (a.type === 'normal' || a.type === 'wall') ids.push(a.id)
+      }
+      after = data.paging?.next ? data.paging?.cursors?.after : undefined
+    } while (after && ids.length < 100)
+  } catch (e) {
+    console.error('getEventAlbumIds error:', e)
+  }
+  return ids
+}
+
+function mapPhoto(photo: any): FBPhoto | null {
+  const images: any[] = photo.images || []
+  const best = images.find((img: any) => img.width >= 600 && img.width <= 2048) || images[0]
+  if (!best?.source) return null
+  return {
+    id: photo.id,
+    src: best.source,
+    width: best.width || 1080,
+    height: best.height || 1080,
+    isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
+  }
+}
+
+// Cursor format: "albumIdx:fbCursorWithinAlbum" (fbCursor can be empty)
 export async function getPagePhotos(limit = 30, after?: string): Promise<{ photos: FBPhoto[]; nextCursor?: string }> {
   try {
-    // Over-fetch to account for filtered photos (profile/cover/mobile promo images)
-    const fetchLimit = Math.min(limit * 3, 100)
-    const params: Record<string, string> = {
-      fields: 'images,album{type}',
-      limit: String(fetchLimit),
+    let albumIdx = 0
+    let photoAfter: string | undefined
+    if (after) {
+      const sep = after.indexOf(':')
+      albumIdx = parseInt(after.slice(0, sep)) || 0
+      photoAfter = after.slice(sep + 1) || undefined
     }
-    if (after) params.after = after
 
-    const data = await fbFetch(`/${PAGE_ID}/photos`, params)
-    const photos: FBPhoto[] = (data.data || [])
-      .filter((photo: any) => {
-        const albumType = photo.album?.type
-        // Only include event/wall photos — skip profile pics, cover photos, mobile promo uploads
-        return albumType === 'normal' || albumType === 'wall'
-      })
-      .map((photo: any) => {
-        const images: any[] = photo.images || []
-        const best = images.find((img: any) => img.width >= 600 && img.width <= 2048) || images[0]
-        if (!best?.source) return null
-        return {
-          id: photo.id,
-          src: best.source,
-          width: best.width || 1080,
-          height: best.height || 1080,
-          isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
-        }
-      })
-      .filter(Boolean)
-      .slice(0, limit)
+    const albumIds = await getEventAlbumIds()
+    if (!albumIds.length) return { photos: [] }
 
-    return {
-      photos,
-      nextCursor: data.paging?.cursors?.after,
+    const photos: FBPhoto[] = []
+    let nextCursor: string | undefined
+
+    while (photos.length < limit && albumIdx < albumIds.length) {
+      const albumId = albumIds[albumIdx]
+      const fetchLimit = Math.min((limit - photos.length) * 2, 50)
+      const params: Record<string, string> = { fields: 'images', limit: String(fetchLimit) }
+      if (photoAfter) params.after = photoAfter
+
+      const data = await fbFetch(`/${albumId}/photos`, params)
+      const batch = (data.data || []).map(mapPhoto).filter(Boolean) as FBPhoto[]
+      photos.push(...batch)
+
+      const fbNextCursor = data.paging?.cursors?.after
+      const hasMoreInAlbum = !!data.paging?.next
+
+      if (photos.length >= limit) {
+        nextCursor = hasMoreInAlbum
+          ? `${albumIdx}:${fbNextCursor}`
+          : `${albumIdx + 1}:`
+        break
+      }
+
+      // Need more photos — move to next album
+      albumIdx++
+      photoAfter = undefined
     }
+
+    return { photos: photos.slice(0, limit), nextCursor }
   } catch (e) {
     console.error('getPagePhotos error:', e)
     return { photos: [] }
@@ -137,6 +177,7 @@ export function buildMediaList(photos: FBPhoto[], videos: FBVideo[], seed: numbe
   )
 
   if (shuffledVideos.length === 0) return shuffledPhotos
+  if (shuffledPhotos.length === 0) return shuffledVideos
 
   const result: MediaItem[] = []
   let vi = 0

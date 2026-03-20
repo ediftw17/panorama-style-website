@@ -129,7 +129,7 @@ export default function MarqueeGallery() {
     ]).then(([photosRes, videosRes]) => {
       const photos: FBPhoto[] = photosRes.photos || []
       const videos: FBVideo[] = videosRes.videos || []
-      if (!photos.length) return
+      if (!photos.length && !videos.length) return
       const seed = getDailySeed()
       const all = buildMediaList(photos, videos, seed)
       const [r1, r2] = splitRows(all)
