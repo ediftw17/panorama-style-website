@@ -94,6 +94,14 @@ export default function Footer() {
               >
                 {t.contact.facebookLabel}
               </a>
+              <a
+                href="https://www.tiktok.com/@panorama.style.res"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white/45 hover:text-gold transition-colors"
+              >
+                <span className="text-white/25">TikTok:</span> @panorama.style.res
+              </a>
             </div>
           </div>
         </div>

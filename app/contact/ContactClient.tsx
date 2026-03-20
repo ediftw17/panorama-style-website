@@ -132,6 +132,30 @@ export default function ContactClient() {
               </div>
             </div>
 
+            {/* TikTok */}
+            <div className="bg-darkcard border border-gold/10 rounded-sm p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-white/5 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-1">
+                    TikTok
+                  </div>
+                  <a
+                    href="https://www.tiktok.com/@panorama.style.res"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cream/80 hover:text-gold font-sans text-sm transition-colors"
+                  >
+                    @panorama.style.res
+                  </a>
+                </div>
+              </div>
+            </div>
+
             {/* Hours note */}
             <div className="bg-gold/5 border border-gold/20 rounded-sm p-4">
               <p className="text-cream/50 text-sm font-sans">{t.hoursNote}</p>
