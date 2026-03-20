@@ -47,7 +47,7 @@ export default function EventsCTA() {
       <div className="max-w-7xl mx-auto">
 
         {/* Full-width header */}
-        <div className="mb-12 pb-10 border-b border-white/8">
+        <div className="mb-12">
           <h2 className="reveal font-playfair text-4xl md:text-5xl font-bold text-gold mb-4">
             {t.title}
           </h2>
@@ -60,7 +60,7 @@ export default function EventsCTA() {
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
           {/* Left: details */}
-          <div className="flex flex-col bg-white/[0.02] border border-white/8 rounded-xl p-8">
+          <div className="flex flex-col border border-white/[0.06] rounded-xl p-8">
             {/* Badges */}
             <div className="flex flex-wrap gap-4 mb-8">
               <div className="bg-gold/10 border border-gold/30 rounded-sm px-4 py-2">
@@ -104,7 +104,7 @@ export default function EventsCTA() {
           </div>
 
           {/* Right: event types + note + CTAs */}
-          <div className="flex flex-col bg-white/[0.02] border border-white/8 rounded-xl p-8">
+          <div className="flex flex-col border border-white/[0.06] rounded-xl p-8">
             <h3 className="text-gold/80 text-xs uppercase tracking-widest font-sans mb-5">
               {lang === 'he' ? 'סוגי אירועים' : lang === 'en' ? 'Event types' : 'Типы мероприятий'}
             </h3>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useLang } from '@/lib/LanguageContext'
-import { waUrl, WA_PHONE_TEL, WA_PHONE_DISPLAY } from '@/lib/wa'
+import { waUrl, WA_DISPLAY, WA_PHONE_TEL, WA_PHONE_DISPLAY } from '@/lib/wa'
 
 const WaIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -26,10 +26,13 @@ export default function StickyContactBar() {
         <div className="flex gap-2.5 mb-2">
           <a
             href={`tel:${WA_PHONE_TEL}`}
-            className="flex-1 flex items-center justify-center gap-2 border border-white/20 text-white/75 text-sm font-sans py-3 rounded-sm hover:border-white/40 transition-colors"
+            className="flex-1 flex flex-col items-center justify-center gap-0.5 border border-white/20 text-white/75 py-2.5 rounded-sm hover:border-white/40 transition-colors"
           >
-            <PhoneIcon />
-            {callLabel}
+            <div className="flex items-center gap-1.5 text-sm font-sans font-semibold">
+              <PhoneIcon />
+              {callLabel}
+            </div>
+            <span className="text-[11px] font-normal opacity-50">{WA_PHONE_DISPLAY}</span>
           </a>
           <a
             href={waUrl(lang)}
@@ -41,7 +44,7 @@ export default function StickyContactBar() {
               <WaIcon />
               WhatsApp
             </div>
-            <span className="text-[11px] font-normal opacity-80 mt-0.5">{WA_PHONE_DISPLAY}</span>
+            <span className="text-[11px] font-normal opacity-80 mt-0.5">{WA_DISPLAY}</span>
           </a>
         </div>
       </div>
