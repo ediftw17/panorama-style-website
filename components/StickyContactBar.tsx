@@ -38,7 +38,7 @@ export default function StickyContactBar() {
             href={waUrl(lang)}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-[2] flex flex-col items-center justify-center bg-gold text-black rounded-sm py-2.5 hover:bg-gold/90 transition-colors"
+            className="flex-1 flex flex-col items-center justify-center bg-gold text-black rounded-sm py-2.5 hover:bg-gold/90 transition-colors"
           >
             <div className="flex items-center gap-2 text-sm font-semibold">
               <WaIcon />

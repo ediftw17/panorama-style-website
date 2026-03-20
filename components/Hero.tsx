@@ -113,7 +113,7 @@ export default function Hero() {
         <div className="animate-fade-in-up flex flex-col sm:flex-row items-center justify-center gap-3 mb-4" style={{ animationDelay: '800ms' }}>
           <a
             href={`tel:${WA_PHONE_TEL}`}
-            className="inline-flex flex-col items-center justify-center gap-0.5 border border-white/25 text-white/75 px-8 py-3 hover:border-white/50 hover:text-white transition-all hover:-translate-y-px"
+            className="inline-flex flex-col items-center justify-center gap-0.5 border border-white/25 text-white/75 px-8 py-3 w-full sm:w-auto sm:min-w-[190px] hover:border-white/50 hover:text-white transition-all hover:-translate-y-px"
           >
             <span className="flex items-center gap-2 text-sm font-semibold tracking-wide">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@ export default function Hero() {
             href={waUrl(lang)}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-col items-center justify-center gap-0.5 bg-gold text-black px-8 py-3 hover:bg-gold/90 transition-all hover:-translate-y-px"
+            className="inline-flex flex-col items-center justify-center gap-0.5 bg-gold text-black px-8 py-3 w-full sm:w-auto sm:min-w-[190px] hover:bg-gold/90 transition-all hover:-translate-y-px"
           >
             <span className="flex items-center gap-2 text-sm font-semibold tracking-wide">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
