@@ -125,7 +125,7 @@ export const content = {
       },
       {
         name: 'Premium',
-        price: '₪320',
+        price: '₪290',
         perPerson: 'לאדם',
         highlight: true,
         tag: 'הכי פופולרי',
@@ -293,7 +293,7 @@ export const content = {
       },
       {
         name: 'Premium',
-        price: '₪320',
+        price: '₪290',
         perPerson: 'с человека',
         highlight: true,
         tag: 'Самый популярный',
@@ -461,7 +461,7 @@ export const content = {
       },
       {
         name: 'Premium',
-        price: '₪320',
+        price: '₪290',
         perPerson: 'per person',
         highlight: true,
         tag: 'Most Popular',
