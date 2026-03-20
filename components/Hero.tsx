@@ -33,9 +33,11 @@ export default function Hero() {
         style={{ backgroundImage: "url('/images/hero.jpg')", willChange: 'transform' }}
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-black/65" />
       {/* Bottom gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
+      {/* Radial vignette behind text for extra contrast */}
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 55%, rgba(0,0,0,0.45) 0%, transparent 100%)' }} />
       {/* Grain texture */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
