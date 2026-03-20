@@ -16,8 +16,10 @@ const config: Config = {
         darkcard: '#252525',
       },
       fontFamily: {
-        playfair: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        // Display headings — Cormorant (Latin/Cyrillic), Frank Ruhl Libre (Hebrew)
+        playfair: ['var(--font-playfair)', 'var(--font-frank-ruhl)', 'serif'],
+        // Body/UI — Manrope (Latin/Cyrillic), Heebo (Hebrew)
+        sans: ['var(--font-inter)', 'var(--font-heebo)', 'sans-serif'],
       },
     },
   },

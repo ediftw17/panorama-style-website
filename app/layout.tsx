@@ -1,23 +1,41 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Manrope, Frank_Ruhl_Libre, Heebo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
-const playfair = Playfair_Display({
+// Display/headings — Cormorant Garamond (Latin/Cyrillic) with Frank Ruhl Libre fallback (Hebrew)
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-playfair',
+  variable: '--font-playfair', // keeps existing font-playfair classes working
   display: 'swap',
 })
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-inter',
+// Body/UI — Manrope (full Cyrillic support), Heebo as fallback for Hebrew
+const manrope = Manrope({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter', // keeps existing font-sans classes working
+  display: 'swap',
+})
+
+// Hebrew headings
+const frankRuhl = Frank_Ruhl_Libre({
+  subsets: ['latin', 'hebrew'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-frank-ruhl',
+  display: 'swap',
+})
+
+// Hebrew body
+const heebo = Heebo({
+  subsets: ['latin', 'hebrew'],
+  weight: ['300', '400', '500'],
+  variable: '--font-heebo',
   display: 'swap',
 })
 
@@ -64,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="he" dir="rtl" className={`${cormorant.variable} ${manrope.variable} ${frankRuhl.variable} ${heebo.variable}`}>
       <head>
         <script
           type="application/ld+json"

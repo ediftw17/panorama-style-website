@@ -15,8 +15,6 @@ export const content = {
       openInMaps: 'פתח במפות Google',
       navLabel: 'ניווט מהיר',
       contactLabel: 'פרטי קשר',
-      ratingBadge: '#111 בחיפה מתוך 1,850',
-      ratingsCount: '386 דירוגים',
     },
     nav: {
       home: 'בית',
@@ -107,32 +105,6 @@ export const content = {
       ctaWhatsapp: 'שאלה בוואטסאפ',
       ctaPhone: 'התקשרו עכשיו',
     },
-    reviews: [
-      {
-        text: 'הכל היה מושלם: אוכל, עיצוב, אווירה, ריקודים, אבטחה',
-        author: 'לקוח מרוצה',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'מסעדה רוסית עם אוכל ומוזיקה מעולים',
-        author: 'מבקר',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'המחיר שווה במיוחד — כולל אוכל, משקאות ובידור. אומנים חיים מנגנים להיטים מהשנים 70, 80 ו-90',
-        author: 'אורח',
-        rating: 9.1,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'שירות מקצועי ואוכל טעים ומרווח',
-        author: 'מבקרת',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-    ],
     contact: {
       title: 'צור קשר',
       address: 'חלוצי התעשייה 19, חיפה, ישראל',
@@ -160,8 +132,6 @@ export const content = {
       openInMaps: 'Открыть в Google Maps',
       navLabel: 'Навигация',
       contactLabel: 'Контакты',
-      ratingBadge: '#111 в Хайфе из 1850',
-      ratingsCount: '386 оценок',
     },
     nav: {
       home: 'Главная',
@@ -252,32 +222,6 @@ export const content = {
       ctaWhatsapp: 'Написать в WhatsApp',
       ctaPhone: 'Позвонить сейчас',
     },
-    reviews: [
-      {
-        text: 'Всё было идеально: еда, декор, атмосфера, танцы, охрана',
-        author: 'Довольный гость',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Русский ресторан с отличной едой и музыкой',
-        author: 'Посетитель',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Цена особенно оправдана — включает еду, напитки и развлечения. Живые артисты исполняют хиты 70-х, 80-х и 90-х',
-        author: 'Гость',
-        rating: 9.1,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Профессиональный сервис и вкусная, обильная еда',
-        author: 'Гостья',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-    ],
     contact: {
       title: 'Контакты',
       address: 'Халуцей ха-Тасия 19, Хайфа, Израиль',
@@ -305,8 +249,6 @@ export const content = {
       openInMaps: 'Open in Google Maps',
       navLabel: 'Quick Links',
       contactLabel: 'Contact',
-      ratingBadge: '#111 in Haifa out of 1,850',
-      ratingsCount: '386 ratings',
     },
     nav: {
       home: 'Home',
@@ -397,32 +339,6 @@ export const content = {
       ctaWhatsapp: 'Message on WhatsApp',
       ctaPhone: 'Call Now',
     },
-    reviews: [
-      {
-        text: 'Everything was just perfect: food, decorations, atmosphere, dances, security',
-        author: 'Happy guest',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Russian restaurant with great food and music',
-        author: 'Visitor',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Price is especially worthwhile — includes food, beverages and entertainment. Live performers play hits from the 70s, 80s and 90s',
-        author: 'Event guest',
-        rating: 9.1,
-        source: 'Restaurant Guru',
-      },
-      {
-        text: 'Professional service and tasty, plentiful food',
-        author: 'Guest',
-        rating: 5,
-        source: 'Restaurant Guru',
-      },
-    ],
     contact: {
       title: 'Contact Us',
       address: 'Halutzei HaTa\'asiya 19, Haifa, Israel',

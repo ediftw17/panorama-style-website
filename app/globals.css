@@ -63,6 +63,15 @@ body {
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
+/* Reviews auto-scroll */
+@keyframes reviews-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-reviews-scroll {
+  animation: reviews-scroll 30s linear infinite;
+}
+
 /* Gold gradient text */
 .text-gold-gradient {
   background: linear-gradient(135deg, #c9a84c 0%, #e8c96b 50%, #c9a84c 100%);
