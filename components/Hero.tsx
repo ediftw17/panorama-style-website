@@ -34,7 +34,7 @@ export default function Hero() {
         style={{ backgroundImage: "url('/images/hero.jpg')", willChange: 'transform' }}
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-black/45" />
       {/* Bottom gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/40" />
       {/* Radial vignette behind text for extra contrast */}
@@ -100,6 +100,9 @@ export default function Hero() {
             </svg>
           </div>
           <span className="text-gold text-sm font-semibold font-sans">4.5</span>
+          <span className="text-white/30 text-[10px] font-sans">Facebook</span>
+          <span className="text-white/35 text-xs font-sans">·</span>
+          <span className="text-white/40 text-[10px] font-sans">4.2 Google</span>
           <span className="text-white/35 text-xs font-sans">·</span>
           <span className="text-white/50 text-xs font-sans">386 {lang === 'he' ? 'ביקורות' : lang === 'en' ? 'reviews' : 'отзывов'}</span>
           <span className="text-white/35 text-xs font-sans">·</span>

@@ -2,7 +2,7 @@
 
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-import { WAZE_URL } from '@/lib/wa'
+import { WAZE_URL, MAPS_URL } from '@/lib/wa'
 
 export default function ContactClient() {
   const { lang } = useLang()
@@ -40,7 +40,7 @@ export default function ContactClient() {
                   <p className="text-cream/80 font-sans text-sm mb-3">{t.address}</p>
                   <div className="flex gap-2">
                     <a
-                      href={WAZE_URL}
+                      href={MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-gold/40 hover:text-gold transition-colors"
@@ -158,9 +158,21 @@ export default function ContactClient() {
               </div>
             </div>
 
-            {/* Hours note */}
-            <div className="bg-gold/5 border border-gold/20 rounded-sm p-4">
-              <p className="text-cream/50 text-sm font-sans">{t.hoursNote}</p>
+            {/* Hours */}
+            <div className="bg-darkcard border border-gold/10 rounded-sm p-6">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-gold/10 rounded-sm flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-1">
+                    {lang === 'he' ? 'שעות פעילות' : lang === 'en' ? 'Opening Hours' : 'Часы работы'}
+                  </div>
+                  <p className="text-cream/80 font-sans text-sm">{t.hoursNote}</p>
+                </div>
+              </div>
             </div>
           </div>
 

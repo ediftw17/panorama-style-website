@@ -8,6 +8,12 @@ const LanguageContext = createContext<{ lang: Lang; setLang: (l: Lang) => void }
   setLang: () => {},
 })
 
+const PAGE_TITLES: Record<Lang, string> = {
+  ru: 'Panorama Style — Русский ресторан и банкетный зал, Хайфа',
+  he: 'Panorama Style — מסעדה רוסית ואולם אירועים, חיפה',
+  en: 'Panorama Style — Russian Restaurant & Event Hall, Haifa',
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>('ru')
   const [mounted, setMounted] = useState(false)
@@ -21,6 +27,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    document.title = PAGE_TITLES[lang]
+  }, [lang])
 
   const setLang = (l: Lang) => {
     setLangState(l)

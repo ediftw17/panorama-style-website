@@ -111,7 +111,7 @@ export const content = {
       address: 'חלוצי התעשייה 19, חיפה, ישראל',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'לשאלות שעות ופרטים — צרו קשר ישירות',
+      hoursNote: 'ה׳–ש׳ מ-18:00 · שבת מ-12:00',
       facebookLabel: 'עמוד פייסבוק',
     },
     packages: [
@@ -275,7 +275,7 @@ export const content = {
       address: 'Халуцей ха-Тасия 19, Хайфа, Израиль',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'Для уточнения часов работы — свяжитесь с нами напрямую',
+      hoursNote: 'Чт–Сб с 18:00 · Шаббат с 12:00',
       facebookLabel: 'Страница Facebook',
     },
     packages: [
@@ -439,7 +439,7 @@ export const content = {
       address: 'Halutzei HaTa\'asiya 19, Haifa, Israel',
       phone: '+972-50-646-1983',
       whatsapp: '+972-50-646-1983',
-      hoursNote: 'Contact us directly for opening hours and details',
+      hoursNote: 'Thu–Sat from 18:00 · Shabbat from 12:00',
       facebookLabel: 'Facebook Page',
     },
     packages: [

@@ -94,6 +94,9 @@ export default function Footer() {
               >
                 {lang === 'he' ? 'עמוד טיקטוק' : lang === 'en' ? 'TikTok Page' : 'Страница TikTok'}
               </a>
+              <p className="text-white/30 text-[11px] font-sans pt-1">
+                <span className="text-white/20">{lang === 'he' ? 'שעות' : lang === 'en' ? 'Hours' : 'Часы'}:</span> {t.contact.hoursNote}
+              </p>
             </div>
           </div>
         </div>

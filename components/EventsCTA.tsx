@@ -187,7 +187,7 @@ export default function EventsCTA() {
             </h3>
             <button onClick={() => setMenuOpen(false)} className="text-white/40 hover:text-white text-2xl leading-none">×</button>
           </div>
-          <div className="px-6 py-5 space-y-6 overflow-y-auto flex-1">
+          <div className="px-6 py-5 space-y-6 overflow-y-auto flex-1 min-h-0">
             {menuData.categories.map((cat: { name: string; items: string[] }) => (
               <div key={cat.name}>
                 <p className="text-gold/60 text-[10px] tracking-[0.3em] uppercase font-sans mb-2">{cat.name}</p>
