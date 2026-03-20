@@ -65,7 +65,7 @@ export default function ReviewsStrip() {
   const lastTimeRef = useRef<number | null>(null)
   const rafRef = useRef<number | null>(null)
 
-  const visibleReviews = allReviews.filter(r => r.rating >= MIN_RATING)
+  const visibleReviews = allReviews.filter(r => r.rating >= MIN_RATING && r.lang === lang)
   const doubled = [...visibleReviews, ...visibleReviews]
 
   useEffect(() => {
