@@ -36,11 +36,11 @@ export default function WhyUs() {
           </div>
 
           {/* Perks list */}
-          <div className="reveal reveal-delay-2 flex flex-col justify-between gap-3">
+          <div className="reveal reveal-delay-2 flex flex-col justify-start gap-3">
             {t.perks.map((perk) => (
               <div
                 key={perk}
-                className="flex items-center gap-3 bg-white/[0.02] border border-white/6 rounded-lg px-4 py-3 flex-1"
+                className="flex items-center gap-3 bg-white/[0.02] border border-white/6 rounded-lg px-4 py-3"
               >
                 <Check />
                 <span className="text-white/70 text-sm font-sans">{perk}</span>
