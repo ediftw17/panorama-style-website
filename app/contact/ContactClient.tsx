@@ -141,7 +141,7 @@ export default function ContactClient() {
           <div>
             <div className="rounded-sm overflow-hidden border border-gold/20 h-[440px]">
               <iframe
-                src="https://maps.google.com/maps?q=32.8122,35.0657&z=17&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.2472918172625!2d35.0657001!3d32.8122121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db15f4046c0e1%3A0xed6458322d423dae!2sPanorama%20Style!5e0!3m2!1sen!2sil!4v1773993356980!5m2!1sen!2sil"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
