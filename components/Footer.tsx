@@ -101,8 +101,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-12 pt-6 text-center">
+        <div className="border-t border-white/5 mt-12 pt-6 text-center space-y-2">
           <p className="text-white/20 text-xs font-sans">{t.footer.rights}</p>
+          <Link
+            href="/accessibility"
+            className="text-white/25 hover:text-gold text-xs font-sans transition-colors"
+          >
+            {lang === 'he' ? 'הצהרת נגישות' : lang === 'en' ? 'Accessibility Statement' : 'Заявление о доступности'}
+          </Link>
         </div>
       </div>
     </footer>

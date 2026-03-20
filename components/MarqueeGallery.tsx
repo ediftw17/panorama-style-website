@@ -152,7 +152,7 @@ export default function MarqueeGallery() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3" aria-hidden="true">
         <MarqueeRow items={row1} />
         <MarqueeRow items={row2} reverse />
       </div>

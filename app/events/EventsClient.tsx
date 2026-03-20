@@ -107,6 +107,7 @@ export default function EventsClient() {
               type="date"
               value={checkDate}
               onChange={e => setCheckDate(e.target.value)}
+              aria-label={lang === 'he' ? 'תאריך לבדיקת זמינות' : lang === 'en' ? 'Date to check availability' : 'Дата для проверки доступности'}
               className="flex-1 bg-background border border-gold/20 text-cream rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors"
             />
             <a
@@ -257,10 +258,11 @@ export default function EventsClient() {
           >
             {/* Hall selector */}
             <div>
-              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+              <label htmlFor="hall" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                 {labels.hall}
               </label>
               <select
+                id="hall"
                 name="hall"
                 value={form.hall}
                 onChange={handleChange}
@@ -275,10 +277,11 @@ export default function EventsClient() {
 
             {/* Event type */}
             <div>
-              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+              <label htmlFor="eventType" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                 {labels.eventType}
               </label>
               <select
+                id="eventType"
                 name="eventType"
                 value={form.eventType}
                 onChange={handleChange}
@@ -294,10 +297,11 @@ export default function EventsClient() {
             {/* Name + Phone */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                <label htmlFor="name" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.name}
                 </label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   value={form.name}
@@ -307,10 +311,11 @@ export default function EventsClient() {
                 />
               </div>
               <div>
-                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                <label htmlFor="phone" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.phone}
                 </label>
                 <input
+                  id="phone"
                   type="tel"
                   name="phone"
                   value={form.phone}
@@ -325,10 +330,11 @@ export default function EventsClient() {
             {/* Date + Guests */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                <label htmlFor="date" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.date}
                 </label>
                 <input
+                  id="date"
                   type="date"
                   name="date"
                   value={form.date}
@@ -338,10 +344,11 @@ export default function EventsClient() {
                 />
               </div>
               <div>
-                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                <label htmlFor="guests" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.guests}
                 </label>
                 <input
+                  id="guests"
                   type="number"
                   name="guests"
                   value={form.guests}
@@ -357,10 +364,11 @@ export default function EventsClient() {
 
             {/* Notes */}
             <div>
-              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+              <label htmlFor="notes" className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                 {labels.notes}
               </label>
               <textarea
+                id="notes"
                 name="notes"
                 value={form.notes}
                 onChange={handleChange}
