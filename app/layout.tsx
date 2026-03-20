@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     default: 'Panorama Style — Русский ресторан и банкетный зал, Хайфа',
     template: '%s | Panorama Style',
   },
-  description: 'Русский ресторан и банкетный зал в Хайфе. До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.5/5, #111 в Хайфе. От ₪250 с человека.',
+  description: 'Русский ресторан и банкетный зал в Хайфе. До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.2/5, #111 в Хайфе. От ₪250 с человека.',
   keywords: ['Panorama Style', 'Панорама стиль', 'русский ресторан Хайфа', 'банкетный зал Хайфа', 'ресторан Хайфа', 'аренда зала Хайфа', 'פנורמה סטייל', 'מסעדה רוסית חיפה', 'אולם אירועים חיפה'],
   openGraph: {
     type: 'website',
@@ -55,14 +55,14 @@ export const metadata: Metadata = {
     alternateLocale: ['he_IL', 'en_IL'],
     siteName: 'Panorama Style',
     title: 'Panorama Style — Русский ресторан и банкетный зал, Хайфа',
-    description: 'До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.5/5. От ₪250 с человека.',
+    description: 'До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.2/5. От ₪250 с человека.',
     url: 'https://panorama-style-hwox.vercel.app',
     images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Panorama Style Restaurant Haifa' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Panorama Style — Русский ресторан и банкетный зал, Хайфа',
-    description: 'До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.5/5. От ₪250 с человека.',
+    description: 'До 350 гостей, живая музыка, работаем в Шаббат. Рейтинг 4.2/5. От ₪250 с человека.',
     images: ['/images/og-image.jpg'],
   },
   robots: {

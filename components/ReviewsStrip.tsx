@@ -1,17 +1,15 @@
 'use client'
 
-import { allReviews, aggregateScores, MIN_RATING, type ReviewSource } from '@/lib/reviews-data'
+import { aggregateScores, type ReviewSource } from '@/lib/reviews-data'
 import { useLang } from '@/lib/LanguageContext'
 
 const SOURCE_COLORS: Record<ReviewSource, string> = {
   google: '#4285F4',
-  'restaurant-guru': '#FF6B35',
   facebook: '#1877F2',
 }
 
 const SOURCE_LABEL: Record<ReviewSource, string> = {
   google: 'Google',
-  'restaurant-guru': 'Rest. Guru',
   facebook: 'Facebook',
 }
 
@@ -32,8 +30,7 @@ const FacebookIcon = () => (
 
 const SourceIcon = ({ source }: { source: ReviewSource }) => {
   if (source === 'google') return <GoogleIcon />
-  if (source === 'facebook') return <FacebookIcon />
-  return <span className="text-[10px] font-semibold font-sans tracking-wider" style={{ color: '#FF6B35' }}>RG</span>
+  return <FacebookIcon />
 }
 
 const StarIcon = ({ filled }: { filled: boolean }) => (
@@ -50,12 +47,6 @@ const Stars = ({ rating }: { rating: number }) => (
 
 export default function ReviewsStrip() {
   const { lang } = useLang()
-
-  const filtered = allReviews
-    .filter((r) => r.rating >= MIN_RATING && r.lang === lang)
-    .sort((a, b) => b.rating - a.rating)
-
-  const looped = [...filtered, ...filtered, ...filtered]
 
   return (
     <div>
@@ -89,31 +80,6 @@ export default function ReviewsStrip() {
         ))}
       </div>
 
-      {/* Marquee carousel — CSS only pause, edge fade */}
-      <div className="reviews-marquee-container">
-        <div className="reviews-marquee-track">
-          {looped.map((review, i) => (
-            <div
-              key={`${review.id}-${i}`}
-              className="reviews-card"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <Stars rating={review.rating} />
-                <span
-                  className="text-[10px] font-sans tracking-wider uppercase opacity-60"
-                  style={{ color: SOURCE_COLORS[review.source] }}
-                >
-                  {SOURCE_LABEL[review.source]}
-                </span>
-              </div>
-              <p className="text-white/65 text-sm leading-relaxed font-sans line-clamp-3 mb-5 flex-1">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <span className="text-white/30 text-xs font-sans tracking-wide">{review.author}</span>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }

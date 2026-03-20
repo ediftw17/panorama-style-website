@@ -34,7 +34,7 @@ export default function Footer() {
             />
             <div className="text-white/35 text-xs font-sans mb-5 tracking-wide">{t.footer.tagline}</div>
             <div className="text-white/20 text-[11px] font-sans">
-              Restaurant Guru: 4.2/5 · #111 in Haifa
+              Google: 4.2/5 · Facebook: 4.5/5
             </div>
           </div>
 
