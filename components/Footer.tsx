@@ -20,7 +20,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-black border-t border-white/6">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14 pb-32 md:pb-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
           {/* Col 1: Tagline */}
