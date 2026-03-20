@@ -2,7 +2,7 @@
 
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-import { MAPS_URL, WAZE_URL } from '@/lib/wa'
+import { WAZE_URL } from '@/lib/wa'
 
 export default function ContactClient() {
   const { lang } = useLang()
@@ -168,7 +168,7 @@ export default function ContactClient() {
           <div>
             <div className="rounded-sm overflow-hidden border border-gold/20 h-[440px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.2472918172625!2d35.0657001!3d32.8122121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db15f4046c0e1%3A0xed6458322d423dae!2sPanorama%20Style!5e0!3m2!1sen!2sil!4v1773993356980!5m2!1sen!2sil"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d845.8118229543156!2d35.06570!3d32.81221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151db15f4046c0e1%3A0xed6458322d423dae!2sPanorama%20Style!5e0!3m2!1sen!2sil!4v1773993356980!5m2!1sen!2sil"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -177,26 +177,6 @@ export default function ContactClient() {
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Panorama Style location"
               />
-            </div>
-            <div className="flex gap-3 mt-3">
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-gold/40 hover:text-gold transition-colors"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                Google Maps
-              </a>
-              <a
-                href={WAZE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.54 6.63C19.3 4.46 17.28 2.86 14.9 2.25A9.98 9.98 0 0 0 2.25 14.9c.61 2.38 2.21 4.4 4.38 5.64l-.63 2.52 2.52-.63A9.95 9.95 0 0 0 12 23c5.52 0 10-4.48 10-10 0-2.36-.82-4.53-2.19-6.24l.73-.13zM12 21c-1.45 0-2.82-.4-4-1.09l-2.8.7.7-2.8A7.96 7.96 0 0 1 4 12C4 7.58 7.58 4 12 4s8 3.58 8 8-3.58 8-8 8zm4-6c-.22-.11-1.3-.64-1.5-.71-.2-.07-.35-.11-.5.11-.15.22-.58.71-.71.86-.13.15-.26.17-.48.06-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.52-.13-.22-.01-.34.1-.45.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.04-.28-.02-.39-.06-.11-.5-1.2-.68-1.65-.18-.43-.37-.37-.5-.38h-.43c-.15 0-.39.06-.59.28-.2.22-.78.76-.78 1.85s.8 2.15.91 2.3c.11.15 1.58 2.41 3.83 3.38.54.23.96.37 1.28.47.54.17 1.03.15 1.42.09.43-.07 1.3-.53 1.48-1.04.18-.51.18-.95.13-1.04-.06-.09-.2-.15-.43-.26z"/></svg>
-                Waze
-              </a>
             </div>
           </div>
         </div>

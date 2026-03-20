@@ -130,13 +130,13 @@ export default function EventsCTA() {
               </p>
             </div>
 
-            {/* View menu */}
+            {/* View menu — prominent outlined button */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="text-gold/60 hover:text-gold text-xs font-sans tracking-widest uppercase mb-5 flex items-center gap-1.5 transition-colors"
+              className="w-full border border-white/20 text-white/70 hover:border-gold/50 hover:text-gold text-sm font-sans tracking-wide py-3 mb-5 flex items-center justify-center gap-2 transition-all"
             >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-              {lang === 'he' ? 'לתפריט' : lang === 'en' ? 'View menu' : 'Смотреть меню'}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+              {lang === 'he' ? 'לצפות בתפריט' : lang === 'en' ? 'View Menu' : 'Смотреть меню'}
             </button>
 
             {/* CTA buttons */}
@@ -173,7 +173,8 @@ export default function EventsCTA() {
       <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" onClick={() => setMenuOpen(false)}>
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
         <div
-          className="relative w-full sm:max-w-lg bg-[#111] border-t sm:border border-white/10 sm:rounded-sm max-h-[80vh] overflow-y-auto"
+          className="relative w-full sm:max-w-lg bg-[#111] border-t sm:border border-white/10 sm:rounded-sm flex flex-col"
+          style={{ maxHeight: '80vh' }}
           onClick={e => e.stopPropagation()}
         >
           {/* Handle bar (mobile) */}
@@ -186,7 +187,7 @@ export default function EventsCTA() {
             </h3>
             <button onClick={() => setMenuOpen(false)} className="text-white/40 hover:text-white text-2xl leading-none">×</button>
           </div>
-          <div className="px-6 py-5 space-y-6">
+          <div className="px-6 py-5 space-y-6 overflow-y-auto flex-1">
             {menuData.categories.map((cat: { name: string; items: string[] }) => (
               <div key={cat.name}>
                 <p className="text-gold/60 text-[10px] tracking-[0.3em] uppercase font-sans mb-2">{cat.name}</p>

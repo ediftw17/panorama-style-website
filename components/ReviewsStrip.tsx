@@ -93,34 +93,34 @@ export default function ReviewsStrip() {
   return (
     <div>
       {/* Aggregate badges */}
-      <div className="flex flex-wrap gap-3 mb-10 justify-center">
+      <div className="flex flex-wrap gap-3 mb-10 justify-center items-stretch">
         {aggregateScores.map((agg) => (
           <a
             key={agg.source}
             href={agg.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 bg-white/[0.03] border border-white/[0.07] rounded-xl px-5 py-4 hover:border-gold/30 hover:bg-gold/5 transition-all duration-300"
+            className="group flex items-center gap-3 bg-white/[0.03] border border-white/[0.07] rounded-xl px-5 py-4 hover:border-gold/30 hover:bg-gold/5 transition-all duration-300 flex-1 min-w-[160px]"
           >
             <SourceIcon source={agg.source} />
-            <div>
+            <div className="flex flex-col justify-between">
               <div className="flex items-baseline gap-1">
                 <span className="font-playfair text-3xl font-light text-white leading-none tracking-tight">{agg.score}</span>
                 <span className="text-white/25 text-xs font-sans">/5</span>
               </div>
               <div dir="ltr" className="flex items-center gap-2 mt-1">
                 <Stars rating={agg.score} />
-                {agg.count && (
-                  <span className="text-white/25 text-[10px] font-sans">
-                    {agg.count.toLocaleString()} {lang === 'ru' ? 'отзывов' : lang === 'he' ? 'ביקורות' : 'reviews'}
-                  </span>
-                )}
+                <span className="text-white/25 text-[10px] font-sans">
+                  {agg.count
+                    ? `${agg.count.toLocaleString()} ${lang === 'ru' ? 'отзывов' : lang === 'he' ? 'ביקורות' : 'reviews'}`
+                    : '\u00A0'}
+                </span>
               </div>
-              {agg.rankLabel && (
-                <div dir="ltr" className="text-white/20 text-[10px] font-sans mt-0.5 tracking-wide">
-                  {lang === 'ru' ? '#111 в Хайфе' : lang === 'he' ? '#111 בחיפה' : '#111 in Haifa'}
-                </div>
-              )}
+              <div dir="ltr" className="text-white/20 text-[10px] font-sans mt-0.5 tracking-wide">
+                {agg.rankLabel
+                  ? (lang === 'ru' ? '#111 в Хайфе' : lang === 'he' ? '#111 בחיפה' : '#111 in Haifa')
+                  : '\u00A0'}
+              </div>
             </div>
           </a>
         ))}

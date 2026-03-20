@@ -114,7 +114,7 @@ export default function RootLayout({
       <body className="bg-background text-cream font-sans antialiased">
         <LanguageProvider>
           <Nav />
-          <main className="pb-14 md:pb-0">{children}</main>
+          <main>{children}</main>
           <Footer />
           <WhatsAppButton />
           <StickyContactBar />
