@@ -44,13 +44,29 @@ function VideoPlayer({ src, onClose }: { src: string; onClose: () => void }) {
 
 function VideoCard({ video, onPlay }: { video: FBVideo; onPlay: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const portrait = video.isPortrait
+
+  useEffect(() => {
+    const el = containerRef.current
+    const vid = videoRef.current
+    if (!el || !vid) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { vid.play().catch(() => {}) }
+        else { vid.pause(); vid.currentTime = 0 }
+      },
+      { threshold: 0.5 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <div
+      ref={containerRef}
       className="group relative overflow-hidden cursor-pointer bg-black"
       onClick={onPlay}
-      onMouseEnter={() => { videoRef.current?.play() }}
-      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 } }}
     >
       <div className={`relative ${portrait ? 'aspect-[9/16]' : 'aspect-video'}`}>
         {video.source ? (
