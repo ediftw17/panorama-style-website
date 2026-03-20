@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, Noto_Serif_Hebrew, Heebo } from 'next/font/google'
+import { Cormorant_Garamond, Inter, Noto_Serif_Hebrew, Heebo } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from '@/lib/LanguageContext'
 import Nav from '@/components/Nav'
@@ -8,10 +8,10 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import ScrollReveal from '@/components/ScrollReveal'
 import StickyContactBar from '@/components/StickyContactBar'
 
-// Display/headings — Playfair Display (Latin + Cyrillic)
-const playfair = Playfair_Display({
+// Display/headings — Cormorant Garamond (modern luxury, Latin + Cyrillic)
+const playfair = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
   display: 'swap',

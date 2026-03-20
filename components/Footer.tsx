@@ -23,16 +23,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-          {/* Col 1: Logo + tagline */}
+          {/* Col 1: Tagline */}
           <div>
-            <Image
-              src="/images/logo.png"
-              alt="Panorama Style"
-              width={180}
-              height={64}
-              className="h-12 w-auto object-contain mb-3"
-              unoptimized
-            />
             <div className="text-white/35 text-xs font-sans mb-5 tracking-wide">{t.footer.tagline}</div>
             <div className="text-white/20 text-[11px] font-sans">
               Google: 4.2/5 · Facebook: 4.5/5
@@ -76,7 +68,7 @@ export default function Footer() {
                 href={`tel:${t.contact.phone.replace(/[^+\d]/g, '')}`}
                 className="block text-white/45 hover:text-gold transition-colors"
               >
-                <span className="text-white/25">{lang === 'he' ? 'טלפון' : lang === 'en' ? 'Phone' : 'Телефон'}:</span> {t.contact.phone}
+                <span className="text-white/25">{lang === 'he' ? 'טלפון' : lang === 'en' ? 'Phone' : 'Телефон'}:</span> <span dir="ltr">{t.contact.phone}</span>
               </a>
               <a
                 href="https://wa.me/972506461983"
@@ -84,7 +76,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block text-white/45 hover:text-gold transition-colors"
               >
-                <span className="text-white/25">WhatsApp:</span> {t.contact.whatsapp}
+                <span className="text-white/25">WhatsApp:</span> <span dir="ltr">{t.contact.whatsapp}</span>
               </a>
               <a
                 href="https://www.facebook.com/people/Panorama-Style/100041307526123/"

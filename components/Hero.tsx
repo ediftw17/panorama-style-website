@@ -66,7 +66,7 @@ export default function Hero() {
         </a>
 
         {/* Venue name */}
-        <p className="animate-fade-in-up font-playfair text-white font-semibold tracking-normal mb-3" style={{ fontSize: 'clamp(52px, 8vw, 100px)', animationDelay: '300ms' }}>
+        <p className="animate-fade-in-up font-playfair text-white font-semibold tracking-normal mb-3 whitespace-nowrap" style={{ fontSize: 'clamp(36px, 8vw, 100px)', animationDelay: '300ms' }}>
           Panorama Style
         </p>
 

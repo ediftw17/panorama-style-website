@@ -32,7 +32,7 @@ export default function StickyContactBar() {
               <PhoneIcon />
               {callLabel}
             </div>
-            <span className="text-[11px] font-normal opacity-50">{WA_PHONE_DISPLAY}</span>
+            <span className="text-[11px] font-normal opacity-50" dir="ltr">{WA_PHONE_DISPLAY}</span>
           </a>
           <a
             href={waUrl(lang)}
@@ -44,7 +44,7 @@ export default function StickyContactBar() {
               <WaIcon />
               WhatsApp
             </div>
-            <span className="text-[11px] font-normal opacity-70 mt-0.5">{WA_DISPLAY}</span>
+            <span className="text-[11px] font-normal opacity-70 mt-0.5" dir="ltr">{WA_DISPLAY}</span>
           </a>
         </div>
       </div>
