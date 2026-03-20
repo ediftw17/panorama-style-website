@@ -103,6 +103,12 @@ export default function Footer() {
 
         <div className="border-t border-white/5 mt-12 pt-6 text-center space-y-2">
           <p className="text-white/20 text-xs font-sans">{t.footer.rights}</p>
+          <p className="text-white/15 text-xs font-sans">
+            Built by{' '}
+            <a href="mailto:getflowmate2026@gmail.com" className="hover:text-gold/50 transition-colors">
+              Getflowmate
+            </a>
+          </p>
           <Link
             href="/accessibility"
             className="text-white/25 hover:text-gold text-xs font-sans transition-colors"
