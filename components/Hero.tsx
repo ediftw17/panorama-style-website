@@ -57,7 +57,9 @@ export default function Hero() {
           className="animate-fade-in-up inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 hover:border-gold/40 transition-colors"
           style={{ animationDelay: '200ms' }}
         >
-          <div className="w-1 h-1 rounded-full bg-gold" />
+          <svg className="w-3 h-3 text-gold/70 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
           <span className="text-white/60 text-[11px] font-sans tracking-[0.3em] uppercase">
             {t.ui.locationLabel}
           </span>
@@ -83,21 +85,6 @@ export default function Hero() {
         <p className="animate-fade-in-up text-white/75 text-sm sm:text-base font-sans tracking-wide max-w-lg mx-auto mb-8" style={{ animationDelay: '650ms' }}>
           {t.hero.subline}
         </p>
-
-        {/* Address */}
-        <div className="animate-fade-in-up flex items-center justify-center gap-1.5 mb-6" style={{ animationDelay: '700ms' }}>
-          <svg className="w-3 h-3 text-gold/60 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
-          <a
-            href={MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/45 hover:text-white/70 text-xs font-sans transition-colors"
-          >
-            {content[lang].contact.address.split(',')[0]}
-          </a>
-        </div>
 
         {/* Social proof */}
         <div className="animate-fade-in-up flex items-center justify-center gap-1.5 mb-6" style={{ animationDelay: '800ms' }}>

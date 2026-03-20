@@ -32,7 +32,7 @@ export const aggregateScores: AggregateScore[] = [
     outOf: 5,
     count: 386,
     rankLabel: '#111 in Haifa',
-    url: 'https://www.google.com/maps?q=32.8122,35.0657',
+    url: 'https://www.google.com/maps/place/Panorama+Style/@32.8122121,35.0657001,17z/data=!4m6!3m5!1s0x151db15f4046c0e1:0xed6458322d423dae!8m2!3d32.8122121!4d35.0657001',
   },
   {
     source: 'facebook',

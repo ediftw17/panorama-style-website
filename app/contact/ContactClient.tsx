@@ -40,7 +40,7 @@ export default function ContactClient() {
                   <p className="text-cream/80 font-sans text-sm mb-3">{t.address}</p>
                   <div className="flex gap-2">
                     <a
-                      href="{MAPS_URL}"
+                      href={MAPS_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-gold/40 hover:text-gold transition-colors"
@@ -49,7 +49,7 @@ export default function ContactClient() {
                       Google Maps
                     </a>
                     <a
-                      href="{WAZE_URL}"
+                      href={WAZE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors"
@@ -154,7 +154,7 @@ export default function ContactClient() {
             </div>
             <div className="flex gap-3 mt-3">
               <a
-                href="{MAPS_URL}"
+                href={MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-gold/40 hover:text-gold transition-colors"
@@ -163,7 +163,7 @@ export default function ContactClient() {
                 Google Maps
               </a>
               <a
-                href="{WAZE_URL}"
+                href={WAZE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors"
