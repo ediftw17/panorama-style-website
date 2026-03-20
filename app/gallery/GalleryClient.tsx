@@ -244,13 +244,13 @@ export default function GalleryClient() {
         {tab === 'videos' && (
           <>
             {videosLoading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="aspect-video bg-white/5 animate-pulse" />
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-1">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div key={i} className="aspect-[9/16] bg-white/5 animate-pulse" />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-1">
                 {videos.map(video => (
                   <VideoCard
                     key={video.id}
