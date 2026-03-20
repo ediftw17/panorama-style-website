@@ -39,7 +39,8 @@ async function fbFetch(path: string, params: Record<string, string> = {}) {
   return res.json()
 }
 
-// Fetch all event album IDs (normal + wall types) — cached 1hr
+// Fetch event album IDs — only 'normal' type (actual event photo albums)
+// 'wall' excluded: contains promo banners and ads
 async function getEventAlbumIds(): Promise<string[]> {
   const ids: string[] = []
   let after: string | undefined
@@ -49,7 +50,7 @@ async function getEventAlbumIds(): Promise<string[]> {
       if (after) params.after = after
       const data = await fbFetch(`/${PAGE_ID}/albums`, params)
       for (const a of (data.data || [])) {
-        if (a.type === 'normal' || a.type === 'wall') ids.push(a.id)
+        if (a.type === 'normal') ids.push(a.id)
       }
       after = data.paging?.next ? data.paging?.cursors?.after : undefined
     } while (after && ids.length < 100)
@@ -66,9 +67,10 @@ function mapPhoto(photo: any): FBPhoto | null {
   const w = best.width || 1080
   const h = best.height || 1080
   const ratio = h / w
-  // Filter out near-square graphics (0.80–1.20) and very wide banners (< 0.50)
-  // Real event photos are ~0.60–0.78 (landscape) or ~1.28–1.60 (portrait)
-  if (ratio < 0.50 || (ratio > 0.80 && ratio < 1.20)) return null
+  // Filter out near-square/social-media graphics and ultra-wide banners
+  // Real event photos: ~0.60–0.78 (landscape) or ~1.32–1.60 (portrait)
+  // Filtered: ultra-wide (< 0.52), near-square/Instagram-template (0.80–1.30)
+  if (ratio < 0.52 || (ratio >= 0.80 && ratio < 1.30)) return null
   return {
     id: photo.id,
     src: best.source,
