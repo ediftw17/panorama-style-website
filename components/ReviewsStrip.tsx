@@ -108,14 +108,18 @@ export default function ReviewsStrip() {
                 <span className="font-playfair text-3xl font-light text-white leading-none tracking-tight">{agg.score}</span>
                 <span className="text-white/25 text-xs font-sans">/5</span>
               </div>
-              <div className="flex items-center gap-2 mt-1">
+              <div dir="ltr" className="flex items-center gap-2 mt-1">
                 <Stars rating={agg.score} />
                 {agg.count && (
-                  <span className="text-white/25 text-[10px] font-sans">{agg.count.toLocaleString()} reviews</span>
+                  <span className="text-white/25 text-[10px] font-sans">
+                    {agg.count.toLocaleString()} {lang === 'ru' ? 'отзывов' : lang === 'he' ? 'ביקורות' : 'reviews'}
+                  </span>
                 )}
               </div>
               {agg.rankLabel && (
-                <div className="text-white/20 text-[10px] font-sans mt-0.5 tracking-wide">{agg.rankLabel}</div>
+                <div dir="ltr" className="text-white/20 text-[10px] font-sans mt-0.5 tracking-wide">
+                  {lang === 'ru' ? '#111 в Хайфе' : lang === 'he' ? '#111 בחיפה' : '#111 in Haifa'}
+                </div>
               )}
             </div>
           </a>
@@ -125,6 +129,7 @@ export default function ReviewsStrip() {
       {/* Review carousel */}
       {visibleReviews.length > 0 && (
         <div
+          dir="ltr"
           className="overflow-hidden"
           style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}
           onMouseEnter={() => setPaused(true)}

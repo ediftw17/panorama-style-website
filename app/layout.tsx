@@ -104,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="he" dir="rtl" className={`${playfair.variable} ${inter.variable} ${notoSerifHebrew.variable} ${heebo.variable}`}>
+    <html lang="ru" dir="ltr" className={`${playfair.variable} ${inter.variable} ${notoSerifHebrew.variable} ${heebo.variable}`}>
       <head>
         <script
           type="application/ld+json"

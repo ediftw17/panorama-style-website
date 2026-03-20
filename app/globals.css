@@ -89,7 +89,6 @@ body {
 
 .gallery-marquee-track {
   display: flex;
-  gap: 10px;
   width: max-content;
   will-change: transform;
 }

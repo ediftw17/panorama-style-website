@@ -51,6 +51,7 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
 
   return (
     <div
+      dir="ltr"
       className="gallery-marquee-wrap"
       onMouseEnter={() => { targetSpeed.current = SLOW_SPEED }}
       onMouseLeave={() => { targetSpeed.current = BASE_SPEED }}
@@ -61,44 +62,27 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
         {tripled.map((item, i) => (
           <div
             key={`${item.id}-${i}`}
-            className="flex-shrink-0 relative overflow-hidden group"
+            className="flex-shrink-0 relative overflow-hidden"
             style={{ width: itemW(item.isPortrait), height: ITEM_H, marginRight: GAP }}
           >
             {item.type === 'video' && item.videoSrc ? (
-              <>
-                <video
-                  src={item.videoSrc}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-                <a
-                  href={item.fbUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors"
-                />
-              </>
+              <video
+                src={item.videoSrc}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
             ) : (
-              <>
-                <Image src={item.src} alt="" fill className={`object-cover ${item.isPortrait ? 'object-top' : 'object-center'}`} sizes={item.isPortrait ? '147px' : '330px'} unoptimized />
-                {item.type === 'video' && (
-                  <a
-                    href={item.fbUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/55 transition-colors"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
-                      <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </a>
-                )}
-              </>
+              <Image
+                src={item.src}
+                alt=""
+                fill
+                className={`object-cover ${item.isPortrait ? 'object-top' : 'object-center'}`}
+                sizes={item.isPortrait ? '147px' : '330px'}
+                unoptimized
+              />
             )}
           </div>
         ))}
@@ -108,12 +92,9 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
 }
 
 function splitRows(items: MediaItem[]): [MediaItem[], MediaItem[]] {
-  // Row 1: portrait-heavy, Row 2: landscape-heavy
-  const portraits = items.filter(i => i.isPortrait)
-  const landscapes = items.filter(i => !i.isPortrait)
-  const row1 = portraits.length >= 4 ? portraits : items.filter((_, idx) => idx % 2 === 0)
-  const row2 = landscapes.length >= 4 ? landscapes : items.filter((_, idx) => idx % 2 === 1)
-  return [row1.length ? row1 : FALLBACK, row2.length ? row2 : FALLBACK]
+  const r1 = items.filter((_, i) => i % 2 === 0)
+  const r2 = items.filter((_, i) => i % 2 === 1)
+  return [r1.length ? r1 : FALLBACK, r2.length ? r2 : FALLBACK]
 }
 
 export default function MarqueeGallery() {

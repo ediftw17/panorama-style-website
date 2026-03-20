@@ -63,12 +63,18 @@ function mapPhoto(photo: any): FBPhoto | null {
   const images: any[] = photo.images || []
   const best = images.find((img: any) => img.width >= 600 && img.width <= 2048) || images[0]
   if (!best?.source) return null
+  const w = best.width || 1080
+  const h = best.height || 1080
+  const ratio = h / w
+  // Filter out near-square graphics (0.80–1.20) and very wide banners (< 0.50)
+  // Real event photos are ~0.60–0.78 (landscape) or ~1.28–1.60 (portrait)
+  if (ratio < 0.50 || (ratio > 0.80 && ratio < 1.20)) return null
   return {
     id: photo.id,
     src: best.source,
-    width: best.width || 1080,
-    height: best.height || 1080,
-    isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
+    width: w,
+    height: h,
+    isPortrait: h > w * 1.2,
   }
 }
 
