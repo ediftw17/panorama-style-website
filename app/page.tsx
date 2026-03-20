@@ -28,16 +28,16 @@ export default function HomePage() {
 
       {/* About */}
       <section className="py-32 px-5 sm:px-8 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto">
-          <span className="reveal inline-block text-gold text-[10px] tracking-[0.35em] uppercase font-sans border border-gold/25 px-3 py-1 rounded-full mb-8">
+        <div className="reveal max-w-7xl mx-auto">
+          <span className="inline-block text-gold text-[10px] tracking-[0.35em] uppercase font-sans border border-gold/25 px-3 py-1 rounded-full mb-8">
             {t.ui.aboutLabel}
           </span>
-          <h2 className="reveal reveal-delay-1 font-playfair text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight max-w-3xl">
+          <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 leading-tight max-w-3xl">
             {t.about.title}
           </h2>
-          <p className="reveal reveal-delay-2 text-white/50 text-base leading-relaxed font-sans max-w-2xl">{t.about.text}</p>
+          <p className="text-white/50 text-base leading-relaxed font-sans max-w-2xl">{t.about.text}</p>
 
-          <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-8 mt-10 pt-10 border-t border-white/8">
+          <div className="flex flex-wrap items-center gap-8 mt-10 pt-10 border-t border-white/8">
             <div>
               <div className="font-playfair text-4xl font-light text-gold">{t.about.stat1Value}</div>
               <div className="text-white/35 text-xs font-sans tracking-wide mt-1">{t.about.stat1Label}</div>
@@ -59,12 +59,12 @@ export default function HomePage() {
       {/* Gallery — full bleed grid */}
       <section className="bg-black border-t border-white/5">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-4">
-          <div className="flex items-end justify-between mb-8">
+          <div className="reveal flex items-end justify-between mb-8">
             <div>
               <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-2">
                 {t.ui.photosLabel}
               </p>
-              <h2 className="reveal font-playfair text-3xl md:text-4xl font-bold text-white">
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white">
                 {t.ui.galleryTitle}
               </h2>
             </div>
@@ -111,15 +111,15 @@ export default function HomePage() {
       {/* Reviews */}
       <section className="py-20 px-5 sm:px-8 bg-[#0e0e0e]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10 text-center">
+          <div className="reveal mb-10 text-center">
             <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-2">
               {t.ui.reviewsLabel}
             </p>
-            <h2 className="reveal font-playfair text-3xl md:text-4xl font-light text-white">
+            <h2 className="font-playfair text-3xl md:text-4xl font-light text-white">
               {t.ui.reviewsTitle}
             </h2>
           </div>
-          <ReviewsStrip />
+          <div className="reveal reveal-delay-1"><ReviewsStrip /></div>
         </div>
       </section>
 

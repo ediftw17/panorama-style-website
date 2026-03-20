@@ -70,7 +70,7 @@ export default function Hero() {
         <div className="animate-fade-in-up w-10 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" style={{ animationDelay: '600ms' }} />
 
         {/* Subline */}
-        <p className="animate-fade-in-up text-white/55 text-sm sm:text-base font-sans tracking-wide max-w-md mx-auto mb-10" style={{ animationDelay: '700ms' }}>
+        <p className="animate-fade-in-up text-white/80 text-sm sm:text-base font-sans tracking-wide max-w-md mx-auto mb-10" style={{ animationDelay: '700ms' }}>
           {t.hero.subline}
         </p>
 

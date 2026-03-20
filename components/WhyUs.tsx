@@ -16,9 +16,9 @@ export default function WhyUs() {
   return (
     <section className="py-20 px-5 sm:px-8 bg-[#111]">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
+        <div className="reveal mb-12">
           <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-2">{t.label}</p>
-          <h2 className="reveal font-playfair text-3xl md:text-4xl font-light text-white">{t.title}</h2>
+          <h2 className="font-playfair text-3xl md:text-4xl font-light text-white">{t.title}</h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
