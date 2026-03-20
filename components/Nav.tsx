@@ -3,7 +3,13 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLang } from '@/lib/LanguageContext'
-import { content } from '@/lib/content'
+import { content, Lang } from '@/lib/content'
+
+const langs: { code: Lang; label: string }[] = [
+  { code: 'ru', label: 'RU' },
+  { code: 'he', label: 'HE' },
+  { code: 'en', label: 'EN' },
+]
 
 export default function Nav() {
   const { lang, setLang } = useLang()
@@ -32,72 +38,93 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-black/80 backdrop-blur-sm'
-      } border-b border-gold/20`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-black/95 backdrop-blur-md shadow-[0_1px_0_rgba(201,168,76,0.15)]'
+          : 'bg-gradient-to-b from-black/70 to-transparent backdrop-blur-none'
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-18 py-4">
+
           {/* Logo */}
-          <Link href="/" className="font-playfair text-xl font-bold text-gold tracking-wide">
-            פנורמה סטייל
+          <Link href="/" className="flex flex-col leading-none">
+            <span className="font-playfair text-lg font-bold text-gold tracking-widest uppercase">
+              Panorama Style
+            </span>
+            <span className="text-[10px] text-cream/40 tracking-[0.2em] uppercase font-light">
+              Haifa
+            </span>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-cream/80 hover:text-gold transition-colors text-sm font-medium"
+                className="relative text-cream/60 hover:text-cream text-[13px] font-medium tracking-widest uppercase transition-colors duration-200 group"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-gold group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
 
-          {/* Language toggle + mobile hamburger */}
-          <div className="flex items-center gap-3">
+          {/* Right side: lang selector + hamburger */}
+          <div className="flex items-center gap-4">
+            {/* Language pill selector */}
+            <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5 gap-0.5">
+              {langs.map(({ code, label }) => (
+                <button
+                  key={code}
+                  onClick={() => setLang(code)}
+                  className={`text-[11px] font-semibold tracking-widest px-3 py-1 rounded-full transition-all duration-200 ${
+                    lang === code
+                      ? 'bg-gold text-black'
+                      : 'text-cream/50 hover:text-cream'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile hamburger */}
             <button
-              onClick={() => setLang(lang === 'he' ? 'ru' : 'he')}
-              className="text-xs text-gold/80 hover:text-gold border border-gold/30 hover:border-gold/60 rounded px-2 py-1 transition-all"
-            >
-              {lang === 'he' ? 'Русский' : 'עברית'}
-            </button>
-            <button
-              className="md:hidden text-cream/80 hover:text-gold p-1"
+              className="md:hidden text-cream/70 hover:text-gold transition-colors p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
-              {menuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              <div className="w-5 flex flex-col gap-1.5">
+                <span className={`block h-px bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block h-px bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block h-px bg-current transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </div>
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile drawer */}
-      {menuOpen && (
-        <div className="md:hidden bg-black/95 border-t border-gold/20 px-4 py-4">
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="bg-black/98 backdrop-blur-md border-t border-white/5 px-5 py-2">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block py-3 text-cream/80 hover:text-gold transition-colors text-base font-medium border-b border-gold/10 last:border-0"
+              className="flex items-center py-3.5 text-cream/60 hover:text-cream text-[13px] font-medium tracking-widest uppercase transition-colors border-b border-white/5 last:border-0"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
         </div>
-      )}
+      </div>
     </nav>
   )
 }

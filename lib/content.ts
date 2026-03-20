@@ -1,4 +1,4 @@
-export type Lang = 'he' | 'ru'
+export type Lang = 'ru' | 'he' | 'en'
 
 export const content = {
   he: {
@@ -257,6 +257,135 @@ export const content = {
     footer: {
       rights: '© 2026 Panorama Style. Все права защищены.',
       tagline: 'Русский ресторан и банкетный зал — Хайфа',
+    },
+  },
+  en: {
+    nav: {
+      home: 'Home',
+      menu: 'Menu',
+      events: 'Events',
+      gallery: 'Gallery',
+      contact: 'Contact',
+    },
+    hero: {
+      headline: 'Panorama Style',
+      subline: 'Russian restaurant and event hall in Haifa — an unforgettable culinary experience',
+      ctaPrimary: 'Book an Event',
+      ctaSecondary: 'Get in Touch',
+    },
+    about: {
+      title: 'About Panorama Style',
+      text: 'A unique Russian and Eastern European restaurant in Haifa, blending authentic cuisine with a festive atmosphere. The perfect venue for family dinners and events of any kind — from weddings to corporate nights. Open on Shabbat, accommodating up to 350 guests.',
+      stat1Label: 'Rating',
+      stat1Value: '4.2/5',
+      stat2Label: 'Ranked in Haifa',
+      stat2Value: '#111 of 1,850',
+      stat3Label: 'Guest Capacity',
+      stat3Value: '40–350',
+    },
+    menu: {
+      title: 'Our Menu',
+      priceNote: 'Prices available on request',
+      categories: [
+        {
+          name: 'Starters',
+          items: ['Bruschetta', 'Mussels', 'Sushi'],
+        },
+        {
+          name: 'Mains — Meat',
+          items: ['Kebab', 'Kiev Cutlet', 'Pork Knuckle', 'Shashlik', 'Steak'],
+        },
+        {
+          name: 'Seafood',
+          items: ['Fish', 'Prawns', 'Mussels'],
+        },
+        {
+          name: 'Soups',
+          items: ['Shurpa', 'Ukha (fish soup)'],
+        },
+        {
+          name: 'Drinks',
+          items: ['Panorama Style Signature Cocktail', 'Wine', 'Beer', 'Spirits', 'Soft Drinks', 'Coffee'],
+        },
+        {
+          name: 'Desserts',
+          items: ['Seasonal dessert selection'],
+        },
+      ],
+    },
+    events: {
+      title: 'Events & Banquet Hall',
+      subtitle: 'The perfect venue for any occasion — from weddings to birthdays',
+      capacityLabel: 'Capacity',
+      capacity: '40–350 guests',
+      priceLabel: 'Price',
+      price: 'from ₪250 per person',
+      includes: [
+        'Food & drinks',
+        'Live music',
+        'Dancers & performers',
+        'LED screens',
+        'Stage',
+        'VIP hall',
+        'Parking',
+        'Open on Shabbat',
+        'Bring your own alcohol',
+      ],
+      addons: [
+        'Photographer',
+        'Videographer',
+        'DJ',
+        'Event host / MC',
+        'Decoration services',
+      ],
+      types: [
+        'Weddings',
+        'Bar/Bat Mitzvahs',
+        'Birthdays',
+        'Corporate events',
+        'Anniversaries',
+        'Private parties',
+      ],
+      ctaWhatsapp: 'Message on WhatsApp',
+      ctaPhone: 'Call Now',
+    },
+    reviews: [
+      {
+        text: 'Everything was just perfect: food, decorations, atmosphere, dances, security',
+        author: 'Happy guest',
+        rating: 5,
+        source: 'Restaurant Guru',
+      },
+      {
+        text: 'Russian restaurant with great food and music',
+        author: 'Visitor',
+        rating: 5,
+        source: 'Restaurant Guru',
+      },
+      {
+        text: 'Price is especially worthwhile — includes food, beverages and entertainment. Live performers play hits from the 70s, 80s and 90s',
+        author: 'Event guest',
+        rating: 9.1,
+        source: 'Restaurant Guru',
+      },
+      {
+        text: 'Professional service and tasty, plentiful food',
+        author: 'Guest',
+        rating: 5,
+        source: 'Restaurant Guru',
+      },
+    ],
+    contact: {
+      title: 'Contact Us',
+      address: 'Halutzei HaTa\'asiya 19, Haifa, Israel',
+      phone: '+972-50-800-5606',
+      whatsapp: '+972-50-646-1983',
+      hoursNote: 'Contact us directly for opening hours and details',
+      facebookLabel: 'Facebook Page',
+    },
+    footer: {
+      rights: '© 2026 Panorama Style. All rights reserved.',
+      tagline: 'Russian Restaurant & Event Hall — Haifa',
     },
   },
 }
