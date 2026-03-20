@@ -1,6 +1,7 @@
 'use client'
 
-import { aggregateScores, type ReviewSource } from '@/lib/reviews-data'
+import { useRef, useEffect, useState } from 'react'
+import { aggregateScores, allReviews, MIN_RATING, type ReviewSource } from '@/lib/reviews-data'
 import { useLang } from '@/lib/LanguageContext'
 
 const SOURCE_COLORS: Record<ReviewSource, string> = {
@@ -45,8 +46,49 @@ const Stars = ({ rating }: { rating: number }) => (
   </div>
 )
 
+const ReviewCard = ({ review }: { review: typeof allReviews[0] }) => (
+  <div className="flex-shrink-0 w-72 bg-white/[0.03] border border-white/[0.07] rounded-xl p-5 mx-2">
+    <div className="flex items-center justify-between mb-3">
+      <Stars rating={review.rating} />
+      <SourceIcon source={review.source} />
+    </div>
+    <p className="text-white/65 text-sm font-sans leading-relaxed line-clamp-3 mb-3">{review.text}</p>
+    <p className="text-white/30 text-xs font-sans">{review.author}</p>
+  </div>
+)
+
 export default function ReviewsStrip() {
   const { lang } = useLang()
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [paused, setPaused] = useState(false)
+  const posRef = useRef(0)
+  const lastTimeRef = useRef<number | null>(null)
+  const rafRef = useRef<number | null>(null)
+
+  const visibleReviews = allReviews.filter(r => r.rating >= MIN_RATING)
+  const doubled = [...visibleReviews, ...visibleReviews]
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const cardW = 288 + 16 // w-72 + mx-2*2
+    const halfWidth = visibleReviews.length * cardW
+
+    const animate = (ts: number) => {
+      if (!paused) {
+        const dt = lastTimeRef.current ? ts - lastTimeRef.current : 0
+        posRef.current += (dt / 1000) * 30 // 30px/s
+        if (posRef.current >= halfWidth) posRef.current -= halfWidth
+        if (track) track.style.transform = `translateX(-${posRef.current}px)`
+      }
+      lastTimeRef.current = ts
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+  }, [paused, visibleReviews.length])
 
   return (
     <div>
@@ -80,6 +122,22 @@ export default function ReviewsStrip() {
         ))}
       </div>
 
+      {/* Review carousel */}
+      {visibleReviews.length > 0 && (
+        <div
+          className="overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          onTouchEnd={() => setPaused(false)}
+        >
+          <div ref={trackRef} className="flex will-change-transform">
+            {doubled.map((review, i) => (
+              <ReviewCard key={`${review.id}-${i}`} review={review} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

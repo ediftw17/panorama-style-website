@@ -39,7 +39,7 @@ export default function ContactClient() {
                   <p className="text-cream/80 font-sans text-sm mb-3">{t.address}</p>
                   <div className="flex gap-2">
                     <a
-                      href="https://maps.google.com/maps?q=חלוצי+התעשייה+19+חיפה"
+                      href="https://www.google.com/maps/dir/?api=1&destination=32.8122,35.0657"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-gold/40 hover:text-gold transition-colors"
@@ -48,7 +48,7 @@ export default function ContactClient() {
                       Google Maps
                     </a>
                     <a
-                      href="https://waze.com/ul?q=חלוצי+התעשייה+19+חיפה&navigate=yes"
+                      href="https://waze.com/ul?ll=32.8122,35.0657&navigate=yes"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[11px] font-sans px-3 py-1.5 rounded-sm border border-white/15 text-white/60 hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors"
@@ -141,7 +141,7 @@ export default function ContactClient() {
           <div>
             <div className="rounded-sm overflow-hidden border border-gold/20 h-[440px]">
               <iframe
-                src="https://maps.google.com/maps?q=%D7%97%D7%9C%D7%95%D7%A6%D7%99+%D7%94%D7%AA%D7%A2%D7%A9%D7%99%D7%99%D7%94+19+%D7%97%D7%99%D7%A4%D7%94&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=32.8122,35.0657&z=17&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -153,7 +153,7 @@ export default function ContactClient() {
             </div>
             <div className="flex gap-3 mt-3">
               <a
-                href="https://maps.google.com/maps?q=חלוצי+התעשייה+19+חיפה"
+                href="https://www.google.com/maps/dir/?api=1&destination=32.8122,35.0657"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-gold/40 hover:text-gold transition-colors"
@@ -162,7 +162,7 @@ export default function ContactClient() {
                 Google Maps
               </a>
               <a
-                href="https://waze.com/ul?q=חלוצי+התעשייה+19+חיפה&navigate=yes"
+                href="https://waze.com/ul?ll=32.8122,35.0657&navigate=yes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-3 rounded-sm border border-white/15 text-white/60 text-sm font-sans hover:border-[#00d4ff]/40 hover:text-[#00d4ff] transition-colors"
