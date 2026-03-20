@@ -58,7 +58,7 @@ export default function Hero() {
         </div>
 
         {/* Venue name */}
-        <p className="animate-fade-in-up font-playfair text-white text-2xl sm:text-3xl font-light tracking-[0.15em] mb-3" style={{ animationDelay: '300ms' }}>
+        <p className="animate-fade-in-up font-playfair text-white text-4xl sm:text-5xl font-light tracking-normal mb-3" style={{ animationDelay: '300ms' }}>
           Panorama Style
         </p>
 
@@ -78,8 +78,23 @@ export default function Hero() {
           {t.hero.subline}
         </p>
 
+        {/* Address */}
+        <div className="animate-fade-in-up flex items-center justify-center gap-1.5 mb-6" style={{ animationDelay: '700ms' }}>
+          <svg className="w-3 h-3 text-gold/60 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <a
+            href="https://maps.google.com/maps?q=חלוצי+התעשייה+19+חיפה"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/45 hover:text-white/70 text-xs font-sans transition-colors"
+          >
+            {content[lang].contact.address}
+          </a>
+        </div>
+
         {/* Social proof */}
-        <div className="animate-fade-in-up flex items-center justify-center gap-1.5 mb-6" style={{ animationDelay: '750ms' }}>
+        <div className="animate-fade-in-up flex items-center justify-center gap-1.5 mb-6" style={{ animationDelay: '800ms' }}>
           <div className="flex">
             {[1,2,3,4].map(i => (
               <svg key={i} className="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20">
