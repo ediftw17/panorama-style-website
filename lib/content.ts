@@ -34,7 +34,7 @@ export const content = {
       title: 'אודות פנורמה סטייל',
       text: 'מסעדה רוסית ומזרח אירופאית ייחודית בחיפה, המשלבת מטבח אותנטי עם אווירה חגיגית. מקום מושלם לארוחות משפחתיות ואירועים מכל הסוגים — מחתונות ועד אירועי חברה. פתוחים בשבת, מקבלים עד 350 אורחים.',
       stat1Label: 'דירוג',
-      stat1Value: '4.2/5',
+      stat1Value: '4.5/5',
       stat2Label: 'דירוג בחיפה',
       stat2Value: '#111 מתוך 1,850',
       stat3Label: 'קיבולת אורחים',
@@ -150,7 +150,7 @@ export const content = {
       stats: [
         { value: 'מ-₪250', label: 'לאדם — זול יותר ממרבית האולמות בחיפה' },
         { value: '#111', label: 'מתוך 1,850 מסעדות בחיפה' },
-        { value: '4.2★', label: '386 ביקורות מאומתות' },
+        { value: '4.5★', label: '386 ביקורות מאומתות' },
       ],
       perks: [
         'פתוחים בשבת',
@@ -198,7 +198,7 @@ export const content = {
       title: 'О Panorama Style',
       text: 'Уникальный русский и восточноевропейский ресторан в Хайфе, сочетающий аутентичную кухню с праздничной атмосферой. Идеальное место для семейных ужинов и мероприятий любого формата — от свадеб до корпоративов. Работаем в Шаббат, вмещаем до 350 гостей.',
       stat1Label: 'Рейтинг',
-      stat1Value: '4.2/5',
+      stat1Value: '4.5/5',
       stat2Label: 'Место в Хайфе',
       stat2Value: '#111 из 1850',
       stat3Label: 'Вместимость',
@@ -314,7 +314,7 @@ export const content = {
       stats: [
         { value: 'от ₪250', label: 'с человека — дешевле большинства залов Хайфы' },
         { value: '#111', label: 'из 1850 ресторанов Хайфы' },
-        { value: '4.2★', label: '386 проверенных отзывов' },
+        { value: '4.5★', label: '386 проверенных отзывов' },
       ],
       perks: [
         'Работаем в Шаббат',
@@ -362,7 +362,7 @@ export const content = {
       title: 'About Panorama Style',
       text: 'A unique Russian and Eastern European restaurant in Haifa, blending authentic cuisine with a festive atmosphere. The perfect venue for family dinners and events of any kind — from weddings to corporate nights. Open on Shabbat, accommodating up to 350 guests.',
       stat1Label: 'Rating',
-      stat1Value: '4.2/5',
+      stat1Value: '4.5/5',
       stat2Label: 'Ranked in Haifa',
       stat2Value: '#111 of 1,850',
       stat3Label: 'Guest Capacity',
@@ -478,7 +478,7 @@ export const content = {
       stats: [
         { value: 'from ₪250', label: 'per person — more affordable than most halls in Haifa' },
         { value: '#111', label: 'of 1,850 restaurants in Haifa' },
-        { value: '4.2★', label: '386 verified reviews' },
+        { value: '4.5★', label: '386 verified reviews' },
       ],
       perks: [
         'Open on Shabbat',
