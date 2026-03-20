@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -30,8 +31,10 @@ const eventIcons: Record<string, string> = {
 export default function EventsCTA() {
   const { lang } = useLang()
   const t = content[lang].events
+  const menuData = content[lang].menu
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  const phone = '+972508005606'
+  const phone = '+972506461983'
   const whatsapp = '972506461983'
 
   const whatsappMsg = encodeURIComponent(
@@ -43,6 +46,7 @@ export default function EventsCTA() {
   )
 
   return (
+    <>
     <section className="relative bg-background py-20 px-4">
       <div className="max-w-7xl mx-auto">
 
@@ -61,17 +65,12 @@ export default function EventsCTA() {
 
           {/* Left: details */}
           <div className="flex flex-col p-8">
-            {/* Badges */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <div className="bg-gold/10 border border-gold/30 rounded-sm px-4 py-2">
-                <div className="text-gold/60 text-xs font-sans">{t.capacityLabel}</div>
-                <div className="text-cream font-semibold text-sm font-sans">{t.capacity}</div>
-              </div>
-              <div className="bg-gold/10 border border-gold/30 rounded-sm px-4 py-2">
-                <div className="text-gold/60 text-xs font-sans">{t.priceLabel}</div>
-                <div className="text-cream font-semibold text-sm font-sans">{t.price}</div>
-              </div>
-            </div>
+            {/* Inline capacity + price — no cards */}
+            <p className="text-white/35 text-xs font-sans tracking-wide mb-8">
+              <span className="text-gold/70">{t.capacity}</span>
+              <span className="mx-2 opacity-30">·</span>
+              <span className="text-gold/70">{t.price}</span>
+            </p>
 
             {/* Includes */}
             <div className="mb-6 flex-1">
@@ -131,6 +130,15 @@ export default function EventsCTA() {
               </p>
             </div>
 
+            {/* View menu */}
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="text-gold/60 hover:text-gold text-xs font-sans tracking-widest uppercase mb-5 flex items-center gap-1.5 transition-colors"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+              {lang === 'he' ? 'לתפריט' : lang === 'en' ? 'View menu' : 'Смотреть меню'}
+            </button>
+
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -159,5 +167,43 @@ export default function EventsCTA() {
         </div>
       </div>
     </section>
+
+    {/* Menu popup — bottom sheet on mobile, centered modal on desktop */}
+    {menuOpen && (
+      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" onClick={() => setMenuOpen(false)}>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+        <div
+          className="relative w-full sm:max-w-lg bg-[#111] border-t sm:border border-white/10 sm:rounded-sm max-h-[80vh] overflow-y-auto"
+          onClick={e => e.stopPropagation()}
+        >
+          {/* Handle bar (mobile) */}
+          <div className="flex justify-center pt-3 pb-1 sm:hidden">
+            <div className="w-8 h-0.5 bg-white/20 rounded-full" />
+          </div>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/8">
+            <h3 className="font-playfair text-xl text-white">
+              {lang === 'he' ? 'תפריט' : lang === 'en' ? 'Menu' : 'Меню'}
+            </h3>
+            <button onClick={() => setMenuOpen(false)} className="text-white/40 hover:text-white text-2xl leading-none">×</button>
+          </div>
+          <div className="px-6 py-5 space-y-6">
+            {menuData.categories.map((cat: { name: string; items: string[] }) => (
+              <div key={cat.name}>
+                <p className="text-gold/60 text-[10px] tracking-[0.3em] uppercase font-sans mb-2">{cat.name}</p>
+                <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  {cat.items.map((item: string) => (
+                    <span key={item} className="text-white/60 text-sm font-sans">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <p className="text-white/25 text-xs font-sans pt-2 border-t border-white/6">
+              {lang === 'he' ? '* התפריט עשוי להשתנות' : lang === 'en' ? '* Menu subject to change' : '* Меню может изменяться'}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   )
 }
