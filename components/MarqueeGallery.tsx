@@ -70,6 +70,7 @@ function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: b
   const handleHoverOut = () => { targetRef.current = reverse ? -BASE_SPEED : BASE_SPEED }
 
   const tripled = [...images, ...images, ...images]
+  const initialX = reverse ? -singleWidth : 0
 
   return (
     <div
@@ -82,7 +83,7 @@ function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: b
       <div
         ref={trackRef}
         className="flex"
-        style={{ willChange: 'transform' }}
+        style={{ willChange: 'transform', transform: `translateX(${initialX}px)` }}
       >
         {tripled.map((src, i) => (
           <div
