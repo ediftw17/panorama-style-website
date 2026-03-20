@@ -17,6 +17,7 @@ export type FBVideo = {
   description?: string
   length?: number
   source?: string
+  isPortrait?: boolean
 }
 
 export type MediaItem = {
@@ -132,20 +133,30 @@ export async function getPagePhotos(limit = 30, after?: string): Promise<{ photo
 export async function getPageVideos(limit = 12, after?: string): Promise<{ videos: FBVideo[]; nextCursor?: string }> {
   try {
     const params: Record<string, string> = {
-      fields: 'picture,description,length,source',
+      fields: 'picture,description,length,source,format',
       limit: String(limit),
     }
     if (after) params.after = after
 
     const data = await fbFetch(`/${PAGE_ID}/videos`, params)
-    const videos: FBVideo[] = (data.data || []).map((video: any) => ({
-      id: video.id,
-      thumbnail: video.picture || '',
-      fbUrl: `https://www.facebook.com/${PAGE_ID}/videos/${video.id}`,
-      description: video.description || '',
-      length: video.length,
-      source: video.source || undefined,
-    })).filter((v: FBVideo) => v.thumbnail)
+    const videos: FBVideo[] = (data.data || []).map((video: any) => {
+      // Detect portrait from format thumbnails (first entry with valid dimensions)
+      let isPortrait: boolean | undefined
+      const fmt = video.format as any[] | undefined
+      if (fmt?.length) {
+        const f = fmt.find((x: any) => x.width && x.height) || fmt[0]
+        if (f?.width && f?.height) isPortrait = f.height > f.width * 1.1
+      }
+      return {
+        id: video.id,
+        thumbnail: video.picture || '',
+        fbUrl: `https://www.facebook.com/${PAGE_ID}/videos/${video.id}`,
+        description: video.description || '',
+        length: video.length,
+        source: video.source || undefined,
+        isPortrait,
+      }
+    }).filter((v: FBVideo) => v.thumbnail)
 
     return {
       videos,
@@ -180,7 +191,7 @@ export function buildMediaList(photos: FBPhoto[], videos: FBVideo[], seed: numbe
     seed
   )
   const shuffledVideos = seededShuffle(
-    videos.map(v => ({ id: v.id, type: 'video' as const, src: v.thumbnail, fbUrl: v.fbUrl, videoSrc: v.source, isPortrait: false })),
+    videos.map(v => ({ id: v.id, type: 'video' as const, src: v.thumbnail, fbUrl: v.fbUrl, videoSrc: v.source, isPortrait: v.isPortrait ?? false })),
     seed + 1
   )
 
