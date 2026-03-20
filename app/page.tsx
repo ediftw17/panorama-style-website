@@ -111,11 +111,11 @@ export default function HomePage() {
       {/* Reviews */}
       <section className="py-20 px-5 sm:px-8 bg-[#0e0e0e]">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-10">
+          <div className="mb-10 text-center">
             <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-2">
               {t.ui.reviewsLabel}
             </p>
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white">
+            <h2 className="font-playfair text-3xl md:text-4xl font-light text-white">
               {t.ui.reviewsTitle}
             </h2>
           </div>

@@ -57,7 +57,7 @@ export default function ReviewsStrip() {
   return (
     <div>
       {/* Aggregate badges */}
-      <div className="flex flex-wrap gap-3 mb-10">
+      <div className="flex flex-wrap gap-3 mb-10 justify-center">
         {aggregateScores.map((agg) => (
           <a
             key={agg.source}
