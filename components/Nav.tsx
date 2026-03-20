@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content, Lang } from '@/lib/content'
 
@@ -48,13 +49,16 @@ export default function Nav() {
         <div className="flex items-center justify-between h-18 py-4">
 
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-none">
-            <span className="font-playfair text-lg font-bold text-gold tracking-widest uppercase">
-              Panorama Style
-            </span>
-            <span className="text-[10px] text-cream/40 tracking-[0.2em] uppercase font-light">
-              Haifa
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.png"
+              alt="Panorama Style"
+              width={160}
+              height={56}
+              className="h-10 w-auto object-contain"
+              priority
+              unoptimized
+            />
           </Link>
 
           {/* Desktop nav links */}

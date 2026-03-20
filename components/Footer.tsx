@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -23,9 +24,14 @@ export default function Footer() {
 
           {/* Col 1: Logo + tagline */}
           <div>
-            <div className="font-playfair text-xl font-bold text-gold mb-1 tracking-wide">
-              Panorama Style
-            </div>
+            <Image
+              src="/images/logo.png"
+              alt="Panorama Style"
+              width={180}
+              height={64}
+              className="h-12 w-auto object-contain mb-3"
+              unoptimized
+            />
             <div className="text-white/35 text-xs font-sans mb-5 tracking-wide">{t.footer.tagline}</div>
             <div className="text-white/20 text-[11px] font-sans">
               Restaurant Guru: 4.2/5 · {t.ui.ratingBadge}
