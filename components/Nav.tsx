@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useLang } from '@/lib/LanguageContext'
 import { content, Lang } from '@/lib/content'
+import { WA_PHONE_DISPLAY, WA_PHONE_TEL } from '@/lib/wa'
 
 const langs: { code: Lang; label: string }[] = [
   { code: 'ru', label: 'RU' },
@@ -73,8 +74,18 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Right side: lang selector + hamburger */}
+          {/* Right side: phone + lang selector + hamburger */}
           <div className="flex items-center gap-4">
+            {/* Phone — desktop only */}
+            <a
+              href={`tel:${WA_PHONE_TEL}`}
+              className="hidden md:flex items-center gap-1.5 text-cream/50 hover:text-cream text-[12px] font-sans tracking-wide transition-colors"
+            >
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {WA_PHONE_DISPLAY}
+            </a>
             {/* Language pill selector */}
             <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-0.5 gap-0.5">
               {langs.map(({ code, label }) => (

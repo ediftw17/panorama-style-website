@@ -9,30 +9,31 @@ import { content } from '@/lib/content'
 
 type Img = { src: string; portrait: boolean }
 
+// Strict alternating portrait/landscape order
 const ROW1: Img[] = [
-  { src: '/images/gallery-1.jpg', portrait: false },
-  { src: '/images/gallery-2.jpg', portrait: false },
   { src: '/images/gallery-3.jpg', portrait: true },
+  { src: '/images/gallery-1.jpg', portrait: false },
   { src: '/images/gallery-4.jpg', portrait: true },
+  { src: '/images/gallery-2.jpg', portrait: false },
   { src: '/images/gallery-5.jpg', portrait: true },
-  { src: '/images/gallery-6.jpg', portrait: true },
+  { src: '/images/gallery-7.jpg', portrait: false },
 ]
 
 const ROW2: Img[] = [
-  { src: '/images/gallery-7.jpg', portrait: false },
   { src: '/images/gallery-8.jpg', portrait: false },
+  { src: '/images/gallery-6.jpg', portrait: true },
+  { src: '/images/gallery-1.jpg', portrait: false },
   { src: '/images/gallery-9.jpg', portrait: true },
   { src: '/images/gallery-2.jpg', portrait: false },
   { src: '/images/gallery-4.jpg', portrait: true },
-  { src: '/images/gallery-6.jpg', portrait: true },
 ]
 
 const ITEM_H = 220
-const GAP = 10
+const GAP = 4
 const LANDSCAPE_W = 330   // 220 × (1600/1066)
 const PORTRAIT_W = 147    // 220 × (1066/1600)
-const BASE_SPEED = 55     // px/s normal
-const SLOW_SPEED = 10     // px/s on hover
+const BASE_SPEED = 18     // px/s normal
+const SLOW_SPEED = 5      // px/s on hover
 
 function itemW(portrait: boolean) {
   return portrait ? PORTRAIT_W : LANDSCAPE_W
@@ -74,7 +75,7 @@ function MarqueeRow({ images, reverse = false }: { images: Img[]; reverse?: bool
           <div
             key={i}
             className="flex-shrink-0 relative overflow-hidden"
-            style={{ width: itemW(img.portrait), height: ITEM_H, marginRight: GAP }}
+            style={{ width: itemW(img.portrait), height: ITEM_H, marginRight: GAP, flexShrink: 0 }}
           >
             <Image
               src={img.src}

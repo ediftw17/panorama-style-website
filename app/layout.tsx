@@ -6,6 +6,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ScrollReveal from '@/components/ScrollReveal'
+import StickyContactBar from '@/components/StickyContactBar'
 
 // Display/headings — Playfair Display (Latin + Cyrillic)
 const playfair = Playfair_Display({
@@ -116,6 +117,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <WhatsAppButton />
+          <StickyContactBar />
           <ScrollReveal />
         </LanguageProvider>
       </body>
