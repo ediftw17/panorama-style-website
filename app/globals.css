@@ -35,6 +35,24 @@ html[dir='ltr'] {
   direction: ltr;
 }
 
+/* Hebrew fonts — override Next.js synthetic fallback that blocks Hebrew glyph lookup */
+html[dir='rtl'] body,
+html[dir='rtl'] .font-sans,
+html[dir='rtl'] p,
+html[dir='rtl'] span,
+html[dir='rtl'] a,
+html[dir='rtl'] button,
+html[dir='rtl'] li {
+  font-family: var(--font-heebo), sans-serif;
+}
+html[dir='rtl'] .font-playfair,
+html[dir='rtl'] h1,
+html[dir='rtl'] h2,
+html[dir='rtl'] h3,
+html[dir='rtl'] h4 {
+  font-family: var(--font-frank-ruhl), serif;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

@@ -7,7 +7,7 @@ export const content = {
       aboutLabel: 'מי אנחנו',
       photosLabel: 'צילומים',
       galleryTitle: 'גלריה',
-      seeAllPhotos: 'לכל התמונות →',
+      seeAllPhotos: '← לכל התמונות',
       reviewsLabel: 'מה אומרים עלינו',
       reviewsTitle: 'ביקורות',
       whereWeAreLabel: 'איפה אנחנו',

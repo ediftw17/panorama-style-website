@@ -77,6 +77,7 @@ export default function ContactClient() {
                   <a
                     href={`tel:${t.phone.replace(/[^+\d]/g, '')}`}
                     className="text-cream/80 hover:text-gold font-sans text-sm transition-colors"
+                    dir="ltr"
                   >
                     {t.phone}
                   </a>
@@ -101,6 +102,7 @@ export default function ContactClient() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-cream/80 hover:text-gold font-sans text-sm transition-colors"
+                    dir="ltr"
                   >
                     {t.whatsapp}
                   </a>
