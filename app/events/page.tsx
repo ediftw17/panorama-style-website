@@ -5,121 +5,257 @@ import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 import EventsCTA from '@/components/EventsCTA'
 
+const CheckIcon = () => (
+  <svg className="w-3.5 h-3.5 text-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+  </svg>
+)
+
+const ChevronIcon = ({ open }: { open: boolean }) => (
+  <svg
+    className={`w-4 h-4 text-gold/60 transition-transform duration-200 flex-shrink-0 ${open ? 'rotate-180' : ''}`}
+    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+)
+
 interface FormData {
+  eventType: string
   name: string
   phone: string
   date: string
   guests: string
-  message: string
+  notes: string
 }
 
 export default function EventsPage() {
   const { lang } = useLang()
-  const t = content[lang].events
-
+  const t = content[lang]
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [form, setForm] = useState<FormData>({
+    eventType: '',
     name: '',
     phone: '',
     date: '',
     guests: '',
-    message: '',
+    notes: '',
   })
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const eventLabel = form.eventType ? `${form.eventType}, ` : ''
     const msg =
       lang === 'he'
-        ? `שלום, אני ${form.name}. מעוניין/ת לברר לגבי אירוע בתאריך ${form.date}, לכ-${form.guests} אורחים. ${form.message ? 'הודעה: ' + form.message : ''} טלפון: ${form.phone}`
-        : `Здравствуйте, меня зовут ${form.name}. Хочу узнать о мероприятии на ${form.date}, ~${form.guests} гостей. ${form.message ? 'Сообщение: ' + form.message : ''} Телефон: ${form.phone}`
-
-    const waUrl = `https://wa.me/972506461983?text=${encodeURIComponent(msg)}`
-    window.open(waUrl, '_blank')
+        ? `שלום, אני ${form.name}. ${eventLabel}תאריך: ${form.date}, כ-${form.guests} אורחים.${form.notes ? ' ' + form.notes : ''} טלפון: ${form.phone}`
+        : lang === 'en'
+        ? `Hello, my name is ${form.name}. ${eventLabel}Date: ${form.date}, ~${form.guests} guests.${form.notes ? ' ' + form.notes : ''} Phone: ${form.phone}`
+        : `Здравствуйте, меня зовут ${form.name}. ${eventLabel}Дата: ${form.date}, ~${form.guests} гостей.${form.notes ? ' ' + form.notes : ''} Телефон: ${form.phone}`
+    window.open(`https://wa.me/972506461983?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
-  const labels =
-    lang === 'he'
-      ? {
-          formTitle: 'שלחו פרטים לתיאום',
-          name: 'שם מלא',
-          phone: 'טלפון',
-          date: 'תאריך האירוע',
-          guests: 'מספר אורחים',
-          message: 'הודעה (אופציונלי)',
-          submit: 'שלח בוואטסאפ',
-        }
-      : {
-          formTitle: 'Отправьте запрос',
-          name: 'Имя',
-          phone: 'Телефон',
-          date: 'Дата мероприятия',
-          guests: 'Количество гостей',
-          message: 'Сообщение (необязательно)',
-          submit: 'Отправить в WhatsApp',
-        }
+  const labels = {
+    packagesTitle: lang === 'he' ? 'חבילות אירוע' : lang === 'en' ? 'Event Packages' : 'Пакеты мероприятий',
+    faqTitle: lang === 'he' ? 'שאלות נפוצות' : lang === 'en' ? 'FAQ' : 'Часто задаваемые вопросы',
+    formTitle: lang === 'he' ? 'שלחו פרטים לתיאום' : lang === 'en' ? 'Send Inquiry' : 'Отправьте запрос',
+    formLabel: lang === 'he' ? 'השאירו פרטים' : lang === 'en' ? 'Get in Touch' : 'Оставьте заявку',
+    responseTime: lang === 'he' ? 'עונים תוך 2 שעות' : lang === 'en' ? 'We respond within 2 hours' : 'Отвечаем в течение 2 часов',
+    eventType: lang === 'he' ? 'סוג האירוע' : lang === 'en' ? 'Event Type' : 'Тип мероприятия',
+    eventTypePlaceholder: lang === 'he' ? 'בחרו...' : lang === 'en' ? 'Select...' : 'Выберите...',
+    name: lang === 'he' ? 'שם מלא' : lang === 'en' ? 'Full Name' : 'Имя',
+    phone: lang === 'he' ? 'טלפון' : lang === 'en' ? 'Phone' : 'Телефон',
+    date: lang === 'he' ? 'תאריך האירוע' : lang === 'en' ? 'Event Date' : 'Дата мероприятия',
+    guests: lang === 'he' ? 'מספר אורחים' : lang === 'en' ? 'Guest Count' : 'Количество гостей',
+    notes: lang === 'he' ? 'הערות (אופציונלי)' : lang === 'en' ? 'Notes (optional)' : 'Примечания (необязательно)',
+    submit: lang === 'he' ? 'שלח בוואטסאפ' : lang === 'en' ? 'Send via WhatsApp' : 'Отправить в WhatsApp',
+  }
+
+  const eventTypes = t.events.types
 
   return (
     <div className="min-h-screen bg-background pt-20">
-      {/* Events CTA section */}
       <EventsCTA />
 
-      {/* Booking form */}
+      {/* Pricing Packages */}
+      <section className="py-20 px-4 sm:px-8 bg-[#0a0a0a]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-gold/60 text-xs uppercase tracking-[0.25em] font-sans">
+              {labels.packagesTitle}
+            </span>
+            <h2 className="font-playfair text-4xl font-light text-white mt-2">
+              {lang === 'he' ? 'בחרו את החבילה המתאימה' : lang === 'en' ? 'Choose Your Package' : 'Выберите пакет'}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {t.packages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-xl p-6 border flex flex-col ${
+                  pkg.highlight
+                    ? 'bg-gold/8 border-gold/40 ring-1 ring-gold/20'
+                    : 'bg-white/[0.02] border-white/8'
+                }`}
+              >
+                {pkg.tag && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="bg-gold text-black text-[10px] font-semibold px-3 py-1 rounded-full tracking-wide uppercase">
+                      {pkg.tag}
+                    </span>
+                  </div>
+                )}
+                <div className="mb-5">
+                  <h3 className="font-playfair text-xl text-white mb-1">{pkg.name}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className={`font-playfair text-3xl font-light ${pkg.highlight ? 'text-gold' : 'text-white'}`}>
+                      {pkg.price}
+                    </span>
+                    <span className="text-white/30 text-xs font-sans">{pkg.perPerson}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-2.5 flex-1 mb-6">
+                  {pkg.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckIcon />
+                      <span className="text-white/65 text-xs font-sans leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={`https://wa.me/972506461983?text=${encodeURIComponent(
+                    lang === 'he'
+                      ? `שלום, מעוניין/ת בחבילת ${pkg.name} (${pkg.price} לאדם)`
+                      : lang === 'en'
+                      ? `Hello, I'm interested in the ${pkg.name} package (${pkg.price} ${pkg.perPerson})`
+                      : `Здравствуйте, интересует пакет ${pkg.name} (${pkg.price} ${pkg.perPerson})`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block text-center text-xs font-semibold py-3 rounded-lg transition-all ${
+                    pkg.highlight
+                      ? 'bg-gold text-black hover:bg-gold/90'
+                      : 'border border-white/15 text-white/60 hover:border-gold/40 hover:text-gold'
+                  }`}
+                >
+                  {lang === 'he' ? 'בחרו חבילה זו' : lang === 'en' ? 'Select Package' : 'Выбрать пакет'}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-4 sm:px-8 bg-[#0e0e0e]">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-gold/60 text-xs uppercase tracking-[0.25em] font-sans">
+              {labels.faqTitle}
+            </span>
+          </div>
+
+          <div className="space-y-2">
+            {t.faq.map((item, i) => (
+              <div
+                key={i}
+                className="border border-white/7 rounded-lg overflow-hidden"
+              >
+                <button
+                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <span className="text-white/80 text-sm font-sans">{item.q}</span>
+                  <ChevronIcon open={openFaq === i} />
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-4">
+                    <p className="text-white/45 text-sm font-sans leading-relaxed">{item.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Form */}
       <section className="py-20 px-4 bg-[#111]">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-gold/60 text-xs uppercase tracking-widest font-sans">
-              {lang === 'he' ? 'השאירו פרטים' : 'Оставьте заявку'}
+            <span className="text-gold/60 text-xs uppercase tracking-[0.25em] font-sans">
+              {labels.formLabel}
             </span>
-            <h2 className="font-playfair text-4xl font-bold text-cream mt-2">
+            <h2 className="font-playfair text-4xl font-light text-cream mt-2">
               {labels.formTitle}
             </h2>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="bg-darkcard border border-gold/10 rounded-sm p-8 space-y-5"
+            className="bg-darkcard border border-white/6 rounded-xl p-8 space-y-5"
           >
-            {/* Name */}
+            {/* Event type */}
             <div>
-              <label className="block text-cream/60 text-xs uppercase tracking-widest font-sans mb-2">
-                {labels.name}
+              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                {labels.eventType}
               </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
+              <select
+                name="eventType"
+                value={form.eventType}
                 onChange={handleChange}
-                required
-                className="w-full bg-background border border-gold/20 text-cream placeholder-cream/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                placeholder={labels.name}
-              />
+                className="w-full bg-background border border-gold/15 text-cream/80 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors appearance-none"
+              >
+                <option value="">{labels.eventTypePlaceholder}</option>
+                {eventTypes.map((type) => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
             </div>
 
-            {/* Phone */}
-            <div>
-              <label className="block text-cream/60 text-xs uppercase tracking-widest font-sans mb-2">
-                {labels.phone}
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={form.phone}
-                onChange={handleChange}
-                required
-                className="w-full bg-background border border-gold/20 text-cream placeholder-cream/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors"
-                placeholder="+972-50-..."
-              />
-            </div>
-
-            {/* Date + Guests side by side */}
+            {/* Name + Phone */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-cream/60 text-xs uppercase tracking-widest font-sans mb-2">
+                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                  {labels.name}
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-background border border-gold/15 text-cream placeholder-white/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                />
+              </div>
+              <div>
+                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                  {labels.phone}
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="+972-50-..."
+                  className="w-full bg-background border border-gold/15 text-cream placeholder-white/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors"
+                />
+              </div>
+            </div>
+
+            {/* Date + Guests */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.date}
                 </label>
                 <input
@@ -128,11 +264,11 @@ export default function EventsPage() {
                   value={form.date}
                   onChange={handleChange}
                   required
-                  className="w-full bg-background border border-gold/20 text-cream placeholder-cream/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors"
+                  className="w-full bg-background border border-gold/15 text-cream rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors"
                 />
               </div>
               <div>
-                <label className="block text-cream/60 text-xs uppercase tracking-widest font-sans mb-2">
+                <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
                   {labels.guests}
                 </label>
                 <input
@@ -143,28 +279,26 @@ export default function EventsPage() {
                   min="40"
                   max="350"
                   required
-                  className="w-full bg-background border border-gold/20 text-cream placeholder-cream/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors"
                   placeholder="40–350"
+                  className="w-full bg-background border border-gold/15 text-cream placeholder-white/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors"
                 />
               </div>
             </div>
 
-            {/* Message */}
+            {/* Notes */}
             <div>
-              <label className="block text-cream/60 text-xs uppercase tracking-widest font-sans mb-2">
-                {labels.message}
+              <label className="block text-white/40 text-[10px] uppercase tracking-widest font-sans mb-2">
+                {labels.notes}
               </label>
               <textarea
-                name="message"
-                value={form.message}
+                name="notes"
+                value={form.notes}
                 onChange={handleChange}
-                rows={4}
-                className="w-full bg-background border border-gold/20 text-cream placeholder-cream/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/50 transition-colors resize-none"
-                placeholder={lang === 'he' ? 'סוג האירוע, בקשות מיוחדות...' : 'Тип мероприятия, особые пожелания...'}
+                rows={3}
+                className="w-full bg-background border border-gold/15 text-cream placeholder-white/20 rounded-sm px-4 py-3 font-sans text-sm focus:outline-none focus:border-gold/40 transition-colors resize-none"
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold py-4 rounded-sm hover:bg-[#22c05e] transition-colors"
@@ -174,6 +308,8 @@ export default function EventsPage() {
               </svg>
               {labels.submit}
             </button>
+
+            <p className="text-center text-white/25 text-xs font-sans">{labels.responseTime}</p>
           </form>
         </div>
       </section>

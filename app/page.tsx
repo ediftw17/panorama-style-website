@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Hero from '@/components/Hero'
 import ReviewsStrip from '@/components/ReviewsStrip'
 import EventsCTA from '@/components/EventsCTA'
+import WhyUs from '@/components/WhyUs'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -124,6 +125,9 @@ export default function HomePage() {
 
       {/* Events CTA */}
       <EventsCTA />
+
+      {/* Why Us */}
+      <WhyUs />
 
       {/* Contact snippet */}
       <section className="py-20 px-5 sm:px-8 bg-black">

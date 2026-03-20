@@ -13,7 +13,7 @@ export default function ContactPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-gold/60 text-xs uppercase tracking-widest font-sans">
-            {lang === 'he' ? 'בואו לבקר' : 'Приходите к нам'}
+            {lang === 'he' ? 'בואו לבקר' : lang === 'en' ? 'Come Visit Us' : 'Приходите к нам'}
           </span>
           <h1 className="font-playfair text-5xl md:text-6xl font-bold text-cream mt-2">
             {t.title}
@@ -34,7 +34,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-1">
-                    {lang === 'he' ? 'כתובת' : 'Адрес'}
+                    {lang === 'he' ? 'כתובת' : lang === 'en' ? 'Address' : 'Адрес'}
                   </div>
                   <p className="text-cream/80 font-sans text-sm">{t.address}</p>
                   <a
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <div className="text-gold/60 text-xs uppercase tracking-widest font-sans mb-1">
-                    {lang === 'he' ? 'טלפון' : 'Телефон'}
+                    {lang === 'he' ? 'טלפון' : lang === 'en' ? 'Phone' : 'Телефон'}
                   </div>
                   <a
                     href={`tel:${t.phone.replace(/[^+\d]/g, '')}`}
