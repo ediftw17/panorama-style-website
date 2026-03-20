@@ -43,7 +43,6 @@ export async function getPagePhotos(limit = 30, after?: string): Promise<{ photo
   try {
     const params: Record<string, string> = {
       fields: 'images',
-      type: 'uploaded',
       limit: String(limit),
     }
     if (after) params.after = after
@@ -58,7 +57,7 @@ export async function getPagePhotos(limit = 30, after?: string): Promise<{ photo
         src: best.source,
         width: best.width || 1080,
         height: best.height || 1080,
-        isPortrait: (best.height || 1080) > (best.width || 1080),
+        isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
       }
     }).filter(Boolean)
 
