@@ -3,55 +3,60 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRef } from 'react'
-import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/react'
+import { motion, useMotionValue, useAnimationFrame } from 'motion/react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
-const ROW1 = [
-  '/images/gallery-1.jpg',
-  '/images/gallery-2.jpg',
-  '/images/gallery-3.jpg',
-  '/images/gallery-4.jpg',
-  '/images/gallery-5.jpg',
-  '/images/gallery-6.jpg',
+type Img = { src: string; portrait: boolean }
+
+const ROW1: Img[] = [
+  { src: '/images/gallery-1.jpg', portrait: false },
+  { src: '/images/gallery-2.jpg', portrait: false },
+  { src: '/images/gallery-3.jpg', portrait: true },
+  { src: '/images/gallery-4.jpg', portrait: true },
+  { src: '/images/gallery-5.jpg', portrait: true },
+  { src: '/images/gallery-6.jpg', portrait: true },
 ]
 
-const ROW2 = [
-  '/images/gallery-7.jpg',
-  '/images/gallery-8.jpg',
-  '/images/gallery-9.jpg',
-  '/images/gallery-2.jpg',
-  '/images/gallery-4.jpg',
-  '/images/gallery-6.jpg',
+const ROW2: Img[] = [
+  { src: '/images/gallery-7.jpg', portrait: false },
+  { src: '/images/gallery-8.jpg', portrait: false },
+  { src: '/images/gallery-9.jpg', portrait: true },
+  { src: '/images/gallery-2.jpg', portrait: false },
+  { src: '/images/gallery-4.jpg', portrait: true },
+  { src: '/images/gallery-6.jpg', portrait: true },
 ]
 
-const ITEM_W = 300
+const ITEM_H = 220
 const GAP = 10
-const BASE_SPEED = 55     // px/s at normal
+const LANDSCAPE_W = 330   // 220 × (1600/1066)
+const PORTRAIT_W = 147    // 220 × (1066/1600)
+const BASE_SPEED = 55     // px/s normal
 const SLOW_SPEED = 10     // px/s on hover
 
-function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: boolean }) {
-  const setWidth = images.length * (ITEM_W + GAP)
-  const x = useMotionValue(reverse ? -setWidth : 0)
+function itemW(portrait: boolean) {
+  return portrait ? PORTRAIT_W : LANDSCAPE_W
+}
+
+// Include one GAP after every item (even last) for seamless loop reset
+function setWidth(images: Img[]) {
+  return images.reduce((sum, img) => sum + itemW(img.portrait) + GAP, 0)
+}
+
+function MarqueeRow({ images, reverse = false }: { images: Img[]; reverse?: boolean }) {
+  const sw = setWidth(images)
+  const x = useMotionValue(reverse ? -sw : 0)
   const speed = useRef(BASE_SPEED)
   const targetSpeed = useRef(BASE_SPEED)
-  const isHovered = useRef(false)
 
   useAnimationFrame((_, delta) => {
-    // Lerp speed toward target
     speed.current += (targetSpeed.current - speed.current) * 0.05
-
     const dir = reverse ? -1 : 1
     const next = x.get() - (speed.current * delta / 1000) * dir
 
-    // Seamless loop reset
-    if (!reverse && next <= -setWidth) {
-      x.set(next + setWidth)
-    } else if (reverse && next >= 0) {
-      x.set(next - setWidth)
-    } else {
-      x.set(next)
-    }
+    if (!reverse && next <= -sw) x.set(next + sw)
+    else if (reverse && next >= 0) x.set(next - sw)
+    else x.set(next)
   })
 
   const tripled = [...images, ...images, ...images]
@@ -59,15 +64,26 @@ function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: b
   return (
     <div
       className="gallery-marquee-wrap"
-      onMouseEnter={() => { targetSpeed.current = SLOW_SPEED; isHovered.current = true }}
-      onMouseLeave={() => { targetSpeed.current = BASE_SPEED; isHovered.current = false }}
+      onMouseEnter={() => { targetSpeed.current = SLOW_SPEED }}
+      onMouseLeave={() => { targetSpeed.current = BASE_SPEED }}
       onTouchStart={() => { targetSpeed.current = SLOW_SPEED }}
       onTouchEnd={() => { targetSpeed.current = BASE_SPEED }}
     >
       <motion.div className="gallery-marquee-track" style={{ x }}>
-        {tripled.map((src, i) => (
-          <div key={i} className="gallery-marquee-item">
-            <Image src={src} alt="" fill className="object-cover" sizes="300px" unoptimized />
+        {tripled.map((img, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 relative overflow-hidden"
+            style={{ width: itemW(img.portrait), height: ITEM_H, marginRight: GAP }}
+          >
+            <Image
+              src={img.src}
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes={img.portrait ? '147px' : '330px'}
+              unoptimized
+            />
           </div>
         ))}
       </motion.div>
@@ -103,7 +119,7 @@ export default function MarqueeGallery() {
       </div>
 
       <div className="text-center mt-8">
-        <Link href="/gallery" className="inline-flex items-center gap-2 text-white/40 hover:text-gold text-sm transition-colors font-sans tracking-widest uppercase">
+        <Link href="/gallery" className="text-white/40 hover:text-gold text-sm transition-colors font-sans tracking-widest uppercase">
           {t.ui.seeAllPhotos}
         </Link>
       </div>

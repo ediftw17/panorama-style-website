@@ -94,13 +94,7 @@ body {
   will-change: transform;
 }
 
-.gallery-marquee-item {
-  flex-shrink: 0;
-  position: relative;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-}
+/* gallery-marquee-item widths/heights set inline per image orientation */
 
 /* Reviews marquee */
 @keyframes reviews-scroll {
