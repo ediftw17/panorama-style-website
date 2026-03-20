@@ -1,22 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import Hero from '@/components/Hero'
 import ReviewsStrip from '@/components/ReviewsStrip'
 import EventsCTA from '@/components/EventsCTA'
 import WhyUs from '@/components/WhyUs'
+import MarqueeGallery from '@/components/MarqueeGallery'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
-
-const galleryImages = [
-  '/images/gallery-1.jpg',
-  '/images/gallery-2.jpg',
-  '/images/gallery-3.jpg',
-  '/images/gallery-4.jpg',
-  '/images/gallery-5.jpg',
-  '/images/gallery-6.jpg',
-]
 
 export default function HomePage() {
   const { lang } = useLang()
@@ -56,57 +47,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Gallery — full bleed grid */}
-      <section className="bg-black border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-4">
-          <div className="reveal flex items-end justify-between mb-8">
-            <div>
-              <p className="text-gold/60 text-[11px] tracking-[0.3em] uppercase font-sans mb-2">
-                {t.ui.photosLabel}
-              </p>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white">
-                {t.ui.galleryTitle}
-              </h2>
-            </div>
-            <Link
-              href="/gallery"
-              className="text-white/50 hover:text-gold text-sm transition-colors font-sans tracking-wide"
-            >
-              {t.ui.seeAllPhotos}
-            </Link>
-          </div>
-        </div>
-
-        {/* Asymmetric photo grid — full bleed, no horizontal padding */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-[2px]">
-          {galleryImages.map((src, i) => (
-            <Link
-              key={src}
-              href="/gallery"
-              className={`relative overflow-hidden group bg-[#111] ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
-              style={{ aspectRatio: i === 0 ? '16/9' : '4/3' }}
-            >
-              <Image
-                src={src}
-                alt={`Gallery ${i + 1}`}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-            </Link>
-          ))}
-        </div>
-
-        <div className="text-center py-8">
-          <Link
-            href="/gallery"
-            className="inline-flex items-center gap-2 text-white/40 hover:text-gold text-sm transition-colors font-sans tracking-widest uppercase"
-          >
-            {t.ui.seeAllPhotos}
-          </Link>
-        </div>
-      </section>
+      {/* Gallery — infinite marquee */}
+      <MarqueeGallery />
 
       {/* Reviews */}
       <section className="py-20 px-5 sm:px-8 bg-[#0e0e0e]">
