@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { waUrl, WA_PHONE_TEL } from '@/lib/wa'
 
@@ -17,24 +16,13 @@ const PhoneIcon = () => (
 )
 
 export default function StickyContactBar() {
-  const [visible, setVisible] = useState(false)
   const { lang } = useLang()
 
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.75)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   const callLabel = lang === 'he' ? 'התקשר' : lang === 'en' ? 'Call' : 'Позвонить'
-  const waLabel  = lang === 'he' ? 'קבל הצעת מחיר' : lang === 'en' ? 'Free Quote' : 'Бесплатный расчёт'
+  const waLabel   = lang === 'he' ? 'קבל הצעת מחיר' : lang === 'en' ? 'Free Quote' : 'Бесплатный расчёт'
 
   return (
-    <div
-      className={`md:hidden fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        visible ? 'translate-y-0' : 'translate-y-full'
-      }`}
-    >
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-50">
       <div className="bg-black/97 backdrop-blur-md border-t border-white/10 px-4 py-3 pb-safe flex gap-2.5">
         <a
           href={`tel:${WA_PHONE_TEL}`}
