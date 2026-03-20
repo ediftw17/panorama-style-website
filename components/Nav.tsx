@@ -90,7 +90,7 @@ export default function Nav() {
                 <button
                   key={code}
                   onClick={() => setLang(code)}
-                  className={`text-[11px] font-semibold tracking-widest px-3 py-1 rounded-full transition-all duration-200 ${
+                  className={`text-[11px] font-semibold tracking-widest w-9 py-1 text-center rounded-full transition-all duration-200 ${
                     lang === code
                       ? 'bg-gold text-black'
                       : 'text-cream/50 hover:text-cream'

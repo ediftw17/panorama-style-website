@@ -44,19 +44,24 @@ function VideoPlayer({ src, onClose }: { src: string; onClose: () => void }) {
 
 function VideoCard({ video, onPlay }: { video: FBVideo; onPlay: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const portrait = video.isPortrait
   return (
-    <div className="group relative overflow-hidden cursor-pointer" onClick={onPlay}>
-      <div className="aspect-video relative bg-black">
+    <div
+      className="group relative overflow-hidden cursor-pointer bg-black"
+      onClick={onPlay}
+      onMouseEnter={() => { videoRef.current?.play() }}
+      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 } }}
+    >
+      <div className={`relative ${portrait ? 'aspect-[9/16]' : 'aspect-video'}`}>
         {video.source ? (
           <video
             ref={videoRef}
             src={video.source}
+            poster={video.thumbnail}
             className="w-full h-full object-cover"
             muted
             playsInline
             preload="none"
-            onMouseEnter={() => videoRef.current?.play()}
-            onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0 } }}
           />
         ) : (
           <Image src={video.thumbnail} alt="" fill className="object-cover" unoptimized />
