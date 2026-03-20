@@ -6,60 +6,53 @@ import { content } from '@/lib/content'
 
 export default function Hero() {
   const { lang } = useLang()
-  const t = content[lang].hero
+  const t = content[lang]
 
   return (
     <section
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-end overflow-hidden"
       style={{
         backgroundImage: 'url(/images/hero.jpg)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'center 30%',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/60 to-black/80" />
+      {/* Layered gradient — bottom heavy */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="mb-4">
-          <span className="inline-block text-gold/60 text-sm tracking-[0.3em] uppercase font-sans mb-4">
-            חיפה, ישראל
-          </span>
-        </div>
-        <h1 className="font-playfair text-5xl md:text-7xl font-bold text-gold mb-6 leading-tight">
-          {t.headline}
-        </h1>
-        <p className="text-cream/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed font-sans">
-          {t.subline}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/events"
-            className="bg-gold text-background font-semibold px-8 py-4 rounded-sm hover:bg-gold/90 transition-colors text-base"
-          >
-            {t.ctaPrimary}
-          </Link>
-          <Link
-            href="/contact"
-            className="border border-gold text-gold font-semibold px-8 py-4 rounded-sm hover:bg-gold/10 transition-colors text-base"
-          >
-            {t.ctaSecondary}
-          </Link>
+      {/* Content — pinned to bottom left */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 pb-20">
+        <div className="max-w-2xl">
+          <p className="text-gold/70 text-[11px] tracking-[0.35em] uppercase font-sans mb-5">
+            {t.ui.locationLabel}
+          </p>
+          <h1 className="font-playfair text-6xl md:text-8xl font-bold text-white leading-none mb-6">
+            {t.hero.headline}
+          </h1>
+          <p className="text-white/60 text-base md:text-lg leading-relaxed font-sans mb-10 max-w-lg">
+            {t.hero.subline}
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/events"
+              className="bg-gold text-black font-semibold px-8 py-3.5 text-sm tracking-wide uppercase hover:bg-gold/90 transition-colors"
+            >
+              {t.hero.ctaPrimary}
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-white/30 text-white font-semibold px-8 py-3.5 text-sm tracking-wide uppercase hover:border-white/60 hover:bg-white/5 transition-all"
+            >
+              {t.hero.ctaSecondary}
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce-slow">
-        <svg
-          className="w-6 h-6 text-gold/50"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+      {/* Scroll hint */}
+      <div className="absolute bottom-8 right-8 z-10 flex flex-col items-center gap-2 opacity-40">
+        <div className="w-px h-12 bg-white animate-pulse" />
       </div>
     </section>
   )

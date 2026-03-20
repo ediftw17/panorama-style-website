@@ -2,6 +2,22 @@ export type Lang = 'ru' | 'he' | 'en'
 
 export const content = {
   he: {
+    ui: {
+      locationLabel: 'חיפה, ישראל',
+      aboutLabel: 'מי אנחנו',
+      photosLabel: 'צילומים',
+      galleryTitle: 'גלריה',
+      seeAllPhotos: 'לכל התמונות →',
+      reviewsLabel: 'מה אומרים עלינו',
+      reviewsTitle: 'ביקורות',
+      whereWeAreLabel: 'איפה אנחנו',
+      contactPageLink: 'לדף יצירת קשר',
+      openInMaps: 'פתח במפות Google',
+      navLabel: 'ניווט מהיר',
+      contactLabel: 'פרטי קשר',
+      ratingBadge: '#111 בחיפה מתוך 1,850',
+      ratingsCount: '386 דירוגים',
+    },
     nav: {
       home: 'בית',
       menu: 'תפריט',
@@ -131,6 +147,22 @@ export const content = {
     },
   },
   ru: {
+    ui: {
+      locationLabel: 'Хайфа, Израиль',
+      aboutLabel: 'О нас',
+      photosLabel: 'Фотографии',
+      galleryTitle: 'Галерея',
+      seeAllPhotos: 'Все фото →',
+      reviewsLabel: 'Отзывы',
+      reviewsTitle: 'Что о нас говорят',
+      whereWeAreLabel: 'Как нас найти',
+      contactPageLink: 'Страница контактов',
+      openInMaps: 'Открыть в Google Maps',
+      navLabel: 'Навигация',
+      contactLabel: 'Контакты',
+      ratingBadge: '#111 в Хайфе из 1850',
+      ratingsCount: '386 оценок',
+    },
     nav: {
       home: 'Главная',
       menu: 'Меню',
@@ -260,6 +292,22 @@ export const content = {
     },
   },
   en: {
+    ui: {
+      locationLabel: 'Haifa, Israel',
+      aboutLabel: 'Who We Are',
+      photosLabel: 'Photography',
+      galleryTitle: 'Gallery',
+      seeAllPhotos: 'All Photos →',
+      reviewsLabel: 'Reviews',
+      reviewsTitle: 'What Guests Say',
+      whereWeAreLabel: 'Find Us',
+      contactPageLink: 'Contact Page',
+      openInMaps: 'Open in Google Maps',
+      navLabel: 'Quick Links',
+      contactLabel: 'Contact',
+      ratingBadge: '#111 in Haifa out of 1,850',
+      ratingsCount: '386 ratings',
+    },
     nav: {
       home: 'Home',
       menu: 'Menu',
