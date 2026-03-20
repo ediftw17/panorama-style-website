@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://panorama-style-hwox.vercel.app/sitemap.xml
