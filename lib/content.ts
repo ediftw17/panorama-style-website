@@ -24,7 +24,7 @@ export const content = {
       contact: 'צור קשר',
     },
     hero: {
-      headline: 'אולם האירועים המוביל בחיפה',
+      headline: 'המסעדה הטובה ביותר בחיפה',
       subline: '40–350 אורחים · מוזיקה חיה · פתוחים בשבת · מ-₪250 לאדם',
       ctaPrimary: 'קבל הצעת מחיר חינם',
       ctaSecondary: 'WhatsApp',
@@ -192,7 +192,7 @@ export const content = {
       contact: 'Контакты',
     },
     hero: {
-      headline: 'Лучший банкетный зал Хайфы',
+      headline: 'Лучший ресторан Хайфы',
       subline: '40–350 гостей · живая музыка · работаем в Шаббат · от ₪250',
       ctaPrimary: 'Получить бесплатный расчёт',
       ctaSecondary: 'WhatsApp',
@@ -360,7 +360,7 @@ export const content = {
       contact: 'Contact',
     },
     hero: {
-      headline: "Haifa's Premier Event Hall",
+      headline: "Haifa's Best Restaurant",
       subline: '40–350 guests · live entertainment · open on Shabbat · from ₪250',
       ctaPrimary: 'Get a Free Quote',
       ctaSecondary: 'WhatsApp',

@@ -57,10 +57,15 @@ export default function Hero() {
           </span>
         </div>
 
+        {/* Venue name */}
+        <p className="animate-fade-in-up font-playfair text-gold/70 text-lg sm:text-xl font-light tracking-[0.15em] mb-3" style={{ animationDelay: '300ms' }}>
+          Panorama Style
+        </p>
+
         {/* Main headline */}
         <h1
           className="animate-fade-in-up font-playfair font-light text-white leading-tight tracking-tight mb-5"
-          style={{ fontSize: 'clamp(40px, 7vw, 88px)', animationDelay: '400ms' }}
+          style={{ fontSize: 'clamp(36px, 6.5vw, 80px)', animationDelay: '400ms' }}
         >
           {t.hero.headline}
         </h1>
