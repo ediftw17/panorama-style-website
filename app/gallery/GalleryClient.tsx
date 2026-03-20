@@ -195,9 +195,6 @@ export default function GalleryClient() {
                         </span>
                       )}
                     </div>
-                    {video.description && (
-                      <p className="text-white/50 text-xs font-sans p-3 line-clamp-2 bg-white/[0.02]">{video.description}</p>
-                    )}
                   </a>
                 ))}
               </div>

@@ -19,7 +19,7 @@ export default function HomePage() {
       <Hero />
 
       {/* About */}
-      <section className="py-32 px-5 sm:px-8 bg-[#0a0a0a]">
+      <section className="py-16 px-5 sm:px-8 bg-[#0a0a0a]">
         <div className="reveal max-w-7xl mx-auto">
           <span className="inline-block text-gold text-[10px] tracking-[0.35em] uppercase font-sans border border-gold/25 px-3 py-1 rounded-full mb-8">
             {t.ui.aboutLabel}

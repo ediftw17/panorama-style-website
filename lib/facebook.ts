@@ -41,25 +41,35 @@ async function fbFetch(path: string, params: Record<string, string> = {}) {
 
 export async function getPagePhotos(limit = 30, after?: string): Promise<{ photos: FBPhoto[]; nextCursor?: string }> {
   try {
+    // Over-fetch to account for filtered photos (profile/cover/mobile promo images)
+    const fetchLimit = Math.min(limit * 3, 100)
     const params: Record<string, string> = {
-      fields: 'images',
-      limit: String(limit),
+      fields: 'images,album{type}',
+      limit: String(fetchLimit),
     }
     if (after) params.after = after
 
     const data = await fbFetch(`/${PAGE_ID}/photos`, params)
-    const photos: FBPhoto[] = (data.data || []).map((photo: any) => {
-      const images: any[] = photo.images || []
-      const best = images.find((img: any) => img.width >= 600 && img.width <= 2048) || images[0]
-      if (!best?.source) return null
-      return {
-        id: photo.id,
-        src: best.source,
-        width: best.width || 1080,
-        height: best.height || 1080,
-        isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
-      }
-    }).filter(Boolean)
+    const photos: FBPhoto[] = (data.data || [])
+      .filter((photo: any) => {
+        const albumType = photo.album?.type
+        // Only include event/wall photos — skip profile pics, cover photos, mobile promo uploads
+        return albumType === 'normal' || albumType === 'wall'
+      })
+      .map((photo: any) => {
+        const images: any[] = photo.images || []
+        const best = images.find((img: any) => img.width >= 600 && img.width <= 2048) || images[0]
+        if (!best?.source) return null
+        return {
+          id: photo.id,
+          src: best.source,
+          width: best.width || 1080,
+          height: best.height || 1080,
+          isPortrait: (best.height || 1080) > (best.width || 1080) * 1.2,
+        }
+      })
+      .filter(Boolean)
+      .slice(0, limit)
 
     return {
       photos,
