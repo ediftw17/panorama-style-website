@@ -24,10 +24,11 @@ export const content = {
       contact: 'צור קשר',
     },
     hero: {
-      headline: 'פנורמה סטייל',
-      subline: 'מסעדה רוסית ואולם אירועים בחיפה — חוויה קולינרית בלתי נשכחת',
-      ctaPrimary: 'לפרטי אירועים',
-      ctaSecondary: 'צור קשר',
+      headline: 'אולם האירועים המוביל בחיפה',
+      subline: '40–350 אורחים · מוזיקה חיה · פתוחים בשבת · מ-₪250 לאדם',
+      ctaPrimary: 'קבל הצעת מחיר חינם',
+      ctaSecondary: 'WhatsApp',
+      urgency: 'תאריכי קיץ 2026 מתמלאים במהירות',
     },
     about: {
       title: 'אודות פנורמה סטייל',
@@ -191,10 +192,11 @@ export const content = {
       contact: 'Контакты',
     },
     hero: {
-      headline: 'Panorama Style',
-      subline: 'Русский ресторан и банкетный зал в Хайфе — незабываемый кулинарный опыт',
-      ctaPrimary: 'Заказать мероприятие',
-      ctaSecondary: 'Связаться с нами',
+      headline: 'Лучший банкетный зал Хайфы',
+      subline: '40–350 гостей · живая музыка · работаем в Шаббат · от ₪250',
+      ctaPrimary: 'Получить бесплатный расчёт',
+      ctaSecondary: 'WhatsApp',
+      urgency: 'Летние 2026 даты заполняются быстро',
     },
     about: {
       title: 'О Panorama Style',
@@ -358,10 +360,11 @@ export const content = {
       contact: 'Contact',
     },
     hero: {
-      headline: 'Panorama Style',
-      subline: 'Russian restaurant and event hall in Haifa — an unforgettable culinary experience',
-      ctaPrimary: 'Book an Event',
-      ctaSecondary: 'Get in Touch',
+      headline: "Haifa's Premier Event Hall",
+      subline: '40–350 guests · live entertainment · open on Shabbat · from ₪250',
+      ctaPrimary: 'Get a Free Quote',
+      ctaSecondary: 'WhatsApp',
+      urgency: 'Summer 2026 dates filling fast',
     },
     about: {
       title: 'About Panorama Style',

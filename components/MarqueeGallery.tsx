@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import { useRef } from 'react'
+import { motion, useMotionValue, useAnimationFrame, useTransform } from 'motion/react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -24,80 +25,52 @@ const ROW2 = [
   '/images/gallery-6.jpg',
 ]
 
-// Must match the CSS values below
 const ITEM_W = 300
 const GAP = 10
-const LERP = 0.04
-const BASE_SPEED = 0.28       // px per frame at 60fps — normal cruise
-const HOVER_SPEED = 0.05      // slows to ~18% on hover, doesn't stop
-
-function getSetWidth(count: number) {
-  // Each item contributes ITEM_W + GAP (including virtual gap after last item)
-  // This gives pixel-perfect seamless looping
-  return count * (ITEM_W + GAP)
-}
+const BASE_SPEED = 55     // px/s at normal
+const SLOW_SPEED = 10     // px/s on hover
 
 function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: boolean }) {
-  const wrapRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
-  const xRef = useRef(0)
-  const speedRef = useRef(BASE_SPEED)
-  const targetRef = useRef(BASE_SPEED)
-  const rafRef = useRef<number>()
-  const setWidth = getSetWidth(images.length)
+  const setWidth = images.length * (ITEM_W + GAP)
+  const x = useMotionValue(reverse ? -setWidth : 0)
+  const speed = useRef(BASE_SPEED)
+  const targetSpeed = useRef(BASE_SPEED)
+  const isHovered = useRef(false)
 
-  // Direction multiplier: +1 = left scroll, -1 = right scroll
-  const dir = reverse ? -1 : 1
+  useAnimationFrame((_, delta) => {
+    // Lerp speed toward target
+    speed.current += (targetSpeed.current - speed.current) * 0.05
 
-  useEffect(() => {
-    // Reverse row starts at -setWidth (mid-loop) so it scrolls toward 0 seamlessly
-    xRef.current = reverse ? -setWidth : 0
-    speedRef.current = BASE_SPEED
-    targetRef.current = BASE_SPEED
+    const dir = reverse ? -1 : 1
+    const next = x.get() - (speed.current * delta / 1000) * dir
 
-    const track = trackRef.current
-    if (!track) return
-
-    const loop = () => {
-      speedRef.current += (targetRef.current - speedRef.current) * LERP
-      xRef.current -= speedRef.current * dir
-
-      // Reset position for seamless loop
-      if (!reverse && xRef.current <= -setWidth) xRef.current += setWidth
-      if (reverse && xRef.current >= 0) xRef.current -= setWidth
-
-      track.style.transform = `translateX(${xRef.current}px)`
-      rafRef.current = requestAnimationFrame(loop)
+    // Seamless loop reset
+    if (!reverse && next <= -setWidth) {
+      x.set(next + setWidth)
+    } else if (reverse && next >= 0) {
+      x.set(next - setWidth)
+    } else {
+      x.set(next)
     }
-
-    // Set initial position before first frame
-    track.style.transform = `translateX(${xRef.current}px)`
-    rafRef.current = requestAnimationFrame(loop)
-
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
-  }, [reverse, setWidth, dir])
-
-  const slowDown = () => { targetRef.current = HOVER_SPEED }
-  const resume   = () => { targetRef.current = BASE_SPEED }
+  })
 
   const tripled = [...images, ...images, ...images]
 
   return (
     <div
-      ref={wrapRef}
       className="gallery-marquee-wrap"
-      onMouseEnter={slowDown}
-      onMouseLeave={resume}
-      onTouchStart={slowDown}
-      onTouchEnd={resume}
+      onMouseEnter={() => { targetSpeed.current = SLOW_SPEED; isHovered.current = true }}
+      onMouseLeave={() => { targetSpeed.current = BASE_SPEED; isHovered.current = false }}
+      onTouchStart={() => { targetSpeed.current = SLOW_SPEED }}
+      onTouchEnd={() => { targetSpeed.current = BASE_SPEED }}
     >
-      <div ref={trackRef} className="gallery-marquee-track">
+      <motion.div className="gallery-marquee-track" style={{ x }}>
         {tripled.map((src, i) => (
           <div key={i} className="gallery-marquee-item">
             <Image src={src} alt="" fill className="object-cover" sizes="300px" unoptimized />
           </div>
         ))}
-      </div>
+      </motion.div>
     </div>
   )
 }
@@ -118,10 +91,7 @@ export default function MarqueeGallery() {
               {t.ui.galleryTitle}
             </h2>
           </div>
-          <Link
-            href="/gallery"
-            className="text-white/50 hover:text-gold text-sm transition-colors font-sans tracking-wide"
-          >
+          <Link href="/gallery" className="text-white/50 hover:text-gold text-sm transition-colors font-sans tracking-wide">
             {t.ui.seeAllPhotos}
           </Link>
         </div>
@@ -133,10 +103,7 @@ export default function MarqueeGallery() {
       </div>
 
       <div className="text-center mt-8">
-        <Link
-          href="/gallery"
-          className="inline-flex items-center gap-2 text-white/40 hover:text-gold text-sm transition-colors font-sans tracking-widest uppercase"
-        >
+        <Link href="/gallery" className="inline-flex items-center gap-2 text-white/40 hover:text-gold text-sm transition-colors font-sans tracking-widest uppercase">
           {t.ui.seeAllPhotos}
         </Link>
       </div>
