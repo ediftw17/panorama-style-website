@@ -1,8 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -12,93 +11,30 @@ const ROW1 = [
   '/images/gallery-3.jpg',
   '/images/gallery-4.jpg',
   '/images/gallery-5.jpg',
+  '/images/gallery-6.jpg',
 ]
 
 const ROW2 = [
-  '/images/gallery-6.jpg',
   '/images/gallery-7.jpg',
   '/images/gallery-8.jpg',
   '/images/gallery-9.jpg',
-  '/images/gallery-1.jpg',
-  '/images/gallery-3.jpg',
+  '/images/gallery-2.jpg',
+  '/images/gallery-4.jpg',
+  '/images/gallery-6.jpg',
 ]
 
-const LERP = 0.06
-const BASE_SPEED = 0.45
-const ITEM_W = 320
-const ITEM_H = 210
-const GAP = 12 // matches mr-3 = 0.75rem = 12px
-
-// singleWidth = one full set width (each item contributes itemW + gap, including after last)
-function getSingleWidth(images: string[]) {
-  return images.length * (ITEM_W + GAP)
-}
-
 function MarqueeRow({ images, reverse = false }: { images: string[]; reverse?: boolean }) {
-  const trackRef = useRef<HTMLDivElement>(null)
-  const xRef = useRef(reverse ? -getSingleWidth(images) : 0)
-  const speedRef = useRef(reverse ? -BASE_SPEED : BASE_SPEED)
-  const targetRef = useRef(reverse ? -BASE_SPEED : BASE_SPEED)
-  const rafRef = useRef<number>()
-  const singleWidth = getSingleWidth(images)
-
-  useEffect(() => {
-    const track = trackRef.current
-    if (!track) return
-
-    const loop = () => {
-      speedRef.current += (targetRef.current - speedRef.current) * LERP
-      xRef.current -= speedRef.current
-
-      if (!reverse && xRef.current <= -singleWidth) {
-        xRef.current += singleWidth
-      } else if (reverse && xRef.current >= 0) {
-        xRef.current -= singleWidth
-      }
-
-      track.style.transform = `translateX(${xRef.current}px)`
-      rafRef.current = requestAnimationFrame(loop)
-    }
-
-    rafRef.current = requestAnimationFrame(loop)
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-    }
-  }, [reverse, singleWidth])
-
-  const handleHoverIn = () => { targetRef.current = 0 }
-  const handleHoverOut = () => { targetRef.current = reverse ? -BASE_SPEED : BASE_SPEED }
-
+  // Triple for seamless loop
   const tripled = [...images, ...images, ...images]
-  const initialX = reverse ? -singleWidth : 0
 
   return (
-    <div
-      className="overflow-hidden"
-      onMouseEnter={handleHoverIn}
-      onMouseLeave={handleHoverOut}
-      onTouchStart={handleHoverIn}
-      onTouchEnd={handleHoverOut}
-    >
+    <div className="gallery-marquee-wrap">
       <div
-        ref={trackRef}
-        className="flex"
-        style={{ willChange: 'transform', transform: `translateX(${initialX}px)` }}
+        className={`gallery-marquee-track ${reverse ? 'gallery-marquee-reverse' : ''}`}
       >
         {tripled.map((src, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 relative overflow-hidden"
-            style={{ width: ITEM_W, height: ITEM_H, marginRight: GAP }}
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="320px"
-              unoptimized
-            />
+          <div key={i} className="gallery-marquee-item">
+            <Image src={src} alt="" fill className="object-cover" sizes="300px" unoptimized />
           </div>
         ))}
       </div>
@@ -111,7 +47,7 @@ export default function MarqueeGallery() {
   const t = content[lang]
 
   return (
-    <section className="bg-black border-t border-white/5 py-16 overflow-hidden">
+    <section className="bg-black border-t border-white/5 py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 mb-10">
         <div className="reveal flex items-end justify-between">
           <div>

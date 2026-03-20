@@ -63,6 +63,46 @@ body {
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
+/* Gallery marquee */
+@keyframes gallery-scroll-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+@keyframes gallery-scroll-right {
+  from { transform: translateX(-33.333%); }
+  to   { transform: translateX(0); }
+}
+
+.gallery-marquee-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.gallery-marquee-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: gallery-scroll-left 32s linear infinite;
+  will-change: transform;
+}
+
+.gallery-marquee-reverse {
+  animation-name: gallery-scroll-right;
+}
+
+.gallery-marquee-wrap:hover .gallery-marquee-track {
+  animation-play-state: paused;
+}
+
+.gallery-marquee-item {
+  flex-shrink: 0;
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
 /* Reviews marquee */
 @keyframes reviews-scroll {
   from { transform: translateX(0); }
