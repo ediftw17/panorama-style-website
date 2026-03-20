@@ -94,16 +94,25 @@ function MarqueeRow({ items, reverse = false }: { items: MediaItem[]; reverse?: 
 function splitRows(items: MediaItem[]): [MediaItem[], MediaItem[]] {
   const landscapes = items.filter(i => !i.isPortrait)
   const portraits = items.filter(i => i.isPortrait)
-  // Interleave: landscape, portrait, landscape, portrait...
-  const interleaved: MediaItem[] = []
-  const len = Math.max(landscapes.length, portraits.length)
-  for (let i = 0; i < len; i++) {
-    if (i < landscapes.length) interleaved.push(landscapes[i])
-    if (i < portraits.length) interleaved.push(portraits[i])
+  const lMid = Math.ceil(landscapes.length / 2)
+  const pMid = Math.ceil(portraits.length / 2)
+  const l1 = landscapes.slice(0, lMid)
+  const l2 = landscapes.slice(lMid)
+  const p1 = portraits.slice(0, pMid)
+  const p2 = portraits.slice(pMid)
+
+  function interleave(ls: MediaItem[], ps: MediaItem[]): MediaItem[] {
+    const out: MediaItem[] = []
+    const len = Math.max(ls.length, ps.length)
+    for (let i = 0; i < len; i++) {
+      if (i < ls.length) out.push(ls[i])
+      if (i < ps.length) out.push(ps[i])
+    }
+    return out
   }
-  const half = Math.ceil(interleaved.length / 2)
-  const r1 = interleaved.slice(0, half)
-  const r2 = interleaved.slice(half)
+
+  const r1 = interleave(l1, p1)
+  const r2 = interleave(l2, p2)
   return [r1.length ? r1 : FALLBACK, r2.length ? r2 : FALLBACK]
 }
 
