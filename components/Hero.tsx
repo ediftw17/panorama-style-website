@@ -89,7 +89,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="text-white/45 hover:text-white/70 text-xs font-sans transition-colors"
           >
-            {content[lang].contact.address}
+            {content[lang].contact.address.split(',')[0]}
           </a>
         </div>
 
