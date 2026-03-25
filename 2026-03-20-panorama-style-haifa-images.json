@@ -1,0 +1,100 @@
+[
+  {
+    "url": "https://img02.restaurantguru.com/c253-Restaurant-Panorama-Style-food.jpg",
+    "type": "food",
+    "filename": "food-plated-dish-1.jpg",
+    "alt": "Food at Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c4c4-Restaurant-Panorama-Style-interior.jpg",
+    "type": "venue",
+    "filename": "venue-interior-1.jpg",
+    "alt": "The interior of Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/cf24-Restaurant-Panorama-Style-design.jpg",
+    "type": "venue",
+    "filename": "venue-design-1.jpg",
+    "alt": "Check out how Panorama Style looks inside",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c330-Panorama-Style-Haifa-interior.jpg",
+    "type": "venue",
+    "filename": "venue-seating-1.jpg",
+    "alt": "Take a seat at one of the tables at Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/cb69-Restaurant-Panorama-Style-sushi.jpg",
+    "type": "food",
+    "filename": "food-sushi-1.jpg",
+    "alt": "Order different sushi options",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c13c-Restaurant-Panorama-Style-bruschetta.jpg",
+    "type": "food",
+    "filename": "food-bruschetta-1.jpg",
+    "alt": "Bruschetta at Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/cacd-Restaurant-Panorama-Style-mussels.jpg",
+    "type": "food",
+    "filename": "food-mussels-1.jpg",
+    "alt": "Mussels at Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/ce6d-Restaurant-Panorama-Style-steak.jpg",
+    "type": "food",
+    "filename": "food-steak-1.jpg",
+    "alt": "Steak at Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c9/Restaurant-Panorama-Style-image.jpg",
+    "type": "unknown",
+    "filename": "unknown-1.jpg",
+    "alt": "See this pic of Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c9/Panorama-Style-Haifa-photo.jpg",
+    "type": "unknown",
+    "filename": "unknown-2.jpg",
+    "alt": "Here's a photo of Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c577-Restaurant-Panorama-Style-photo.jpg",
+    "type": "unknown",
+    "filename": "unknown-3.jpg",
+    "alt": "Panorama Style image",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/cf47-Restaurant-Panorama-Style-view.jpg",
+    "type": "venue",
+    "filename": "venue-exterior-or-view-1.jpg",
+    "alt": "See this pic of Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c28f-Restaurant-Panorama-Style-picture.jpg",
+    "type": "unknown",
+    "filename": "unknown-4.jpg",
+    "alt": "Here's a photo of Panorama Style",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  },
+  {
+    "url": "https://img02.restaurantguru.com/c28c-Panorama-Style-Haifa-photo.jpg",
+    "type": "unknown",
+    "filename": "unknown-5.jpg",
+    "alt": "Panorama Style image",
+    "accessible": "Not directly downloadable (CORS blocked from Playwright, but loads in browser)"
+  }
+]

@@ -1,0 +1,321 @@
+{
+  "google_rating": "Not directly available (Restaurant Guru: 4.2/5; Zips.co.il: 4.3/5; Rsrv.rest Events: 9.1/10)",
+  "google_review_count": "Multiple sources: Restaurant Guru 386 votes, Zips.co.il 338 reviews, Rsrv.rest 3 event reviews",
+  "hours": {
+    "status": "Not published online - contact restaurant directly at +972-50-800-5606"
+  },
+  "price_range": "₪250-300/person regular dining; ₪250+/person for events",
+  "cuisine_types": [
+    "Russian",
+    "East European",
+    "Mediterranean",
+    "World cuisines"
+  ],
+  "menu": [
+    {
+      "category": "Appetizers",
+      "items": [
+        {
+          "name": "Bruschetta",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Mussels",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Sushi",
+          "price": "Not specified",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "category": "Main Courses - Meat",
+      "items": [
+        {
+          "name": "Kebabs",
+          "price": "Not specified",
+          "description": "Popular dish"
+        },
+        {
+          "name": "Kiev Cutlets (Котлета Киевская)",
+          "price": "Not specified",
+          "description": "Popular dish"
+        },
+        {
+          "name": "Pork Knuckle",
+          "price": "Not specified",
+          "description": "Popular dish"
+        },
+        {
+          "name": "Shashlik (Шашлык)",
+          "price": "Not specified",
+          "description": "Grilled skewers"
+        },
+        {
+          "name": "Steak",
+          "price": "Not specified",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "category": "Seafood",
+      "items": [
+        {
+          "name": "Fish (various preparations)",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Prawns",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Mussels",
+          "price": "Not specified",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "category": "Soups",
+      "items": [
+        {
+          "name": "Shurpa (Шурпа)",
+          "price": "Not specified",
+          "description": "Traditional Eastern European soup"
+        },
+        {
+          "name": "Ukha",
+          "price": "Not specified",
+          "description": "Traditional fish soup"
+        }
+      ]
+    },
+    {
+      "category": "Beverages",
+      "items": [
+        {
+          "name": "Signature Panorama Style Cocktail",
+          "price": "Not specified",
+          "description": "House specialty cocktail"
+        },
+        {
+          "name": "Wine",
+          "price": "Not specified",
+          "description": "Full selection"
+        },
+        {
+          "name": "Beer",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Soft drinks",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Coffee",
+          "price": "Not specified",
+          "description": ""
+        },
+        {
+          "name": "Spirits",
+          "price": "Not specified",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "items": [
+        {
+          "name": "Various desserts",
+          "price": "Not specified",
+          "description": "Menu includes dessert options"
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "text": "Everything was just perfect: food, decorations, atmosphere, dances, security",
+      "author": "Customer (unnamed)",
+      "rating": 5,
+      "source": "Restaurant Guru / Review Aggregators"
+    },
+    {
+      "text": "Russian restaurant with great food and music",
+      "author": "Customer (unnamed)",
+      "rating": 5,
+      "source": "Restaurant Guru / Review Aggregators"
+    },
+    {
+      "text": "Price is especially worthwhile and includes food, beverages and entertainment; Live performers play many hits from the 70s, 80s and 90s",
+      "author": "Customer (event attendee)",
+      "rating": "9.1/10",
+      "source": "Rsrv.rest (Event venue review)"
+    },
+    {
+      "text": "Professional service (שרות מקצועי) and tasty, plentiful food",
+      "author": "Customer (Hebrew review)",
+      "rating": "High positive",
+      "source": "Zips.co.il"
+    },
+    {
+      "text": "The music is a little too loud, making it difficult to hold a conversation",
+      "author": "Customer (mixed experience)",
+      "rating": 3,
+      "source": "Restaurant Guru / Review Aggregators"
+    },
+    {
+      "text": "Plenty of dishes, but taste disappoints; food quality decline",
+      "author": "Customer (event attendee)",
+      "rating": "Lower rating",
+      "source": "Rsrv.rest"
+    },
+    {
+      "text": "Bad food, loud music, indoor smoking, no elevator access - not suitable for elderly people or disabled guests",
+      "author": "Customer (negative experience)",
+      "rating": "Low",
+      "source": "Review aggregators"
+    }
+  ],
+  "events": {
+    "description": "Full-service event venue and musical entertainment complex. Offers complete event organization from A to Z including food, beverages, live music, shows, attractions, dancers, and variety performers. Specializes in celebrations with flexible configurations for different group sizes.",
+    "capacity_range": "40-350 people",
+    "capacity_breakdown": {
+      "minimum": 40,
+      "maximum": 350,
+      "flexibility": "Multiple configurations available"
+    },
+    "price_from": "250₪ per person",
+    "types": [
+      "Weddings",
+      "Bar/Bat Mitzvahs",
+      "Brit celebrations (Brit Milah)",
+      "Birthday parties",
+      "Corporate events",
+      "Business meetings",
+      "Bachelor/Bachelorette parties",
+      "Family celebrations",
+      "Anniversaries"
+    ],
+    "included_services": [
+      "Food (full restaurant menu)",
+      "Beverages (alcoholic and non-alcoholic)",
+      "Live entertainment (musicians, dancers, performers)",
+      "Sound system and stage",
+      "Basic lighting",
+      "Private parking",
+      "Professional staff and coordination"
+    ],
+    "additional_services_at_extra_cost": [
+      "Professional photographer",
+      "Videographer",
+      "Wedding cake supply",
+      "DJ services",
+      "Additional live music acts",
+      "Event host/Master of Ceremonies",
+      "Decoration services"
+    ],
+    "venue_features": [
+      "Stage with professional setup",
+      "LED screens",
+      "Professional acoustic systems",
+      "Multiple private rooms including VIP hall",
+      "On-site kitchen with buffet service",
+      "Piano accompaniment available",
+      "Chuppah (inside venue)",
+      "Private parking",
+      "Bar service with alcohol available"
+    ],
+    "entertainment_style": "Live performers featuring 1970s-1990s music hits, including singers, dancers, and variety acts",
+    "special_policies": {
+      "kosher": false,
+      "open_on_shabbat": true,
+      "bring_your_own_alcohol": true,
+      "children_menu": true,
+      "tasting_available": "During event planning"
+    },
+    "accessibility": "No elevator access (per customer feedback); may not be suitable for guests with mobility issues",
+    "payment_methods": [
+      "Cash",
+      "Credit/Debit card",
+      "Bank transfer",
+      "Cheque"
+    ]
+  },
+  "photo_urls": [
+    "52 photos available on Restaurant Guru: https://restaurantguru.com/Panorama-Style-Haifa",
+    "Virtual 360° tour available at: https://www.zooz360.co.il/biz/PANORAMASTYLE/",
+    "Facebook page with photos: https://www.facebook.com/people/Panorama-Style/100041307526123/",
+    "Photos available on Zips.co.il and other review aggregators"
+  ],
+  "business_details": {
+    "name": "Panorama Style (פנורמה סטייל / Панорама стиль)",
+    "address": "Chalutzei HaTa'asiya 19, Haifa, Israel",
+    "phone": "+972-50-800-5606",
+    "website": "zooz360.co.il",
+    "facebook": "https://www.facebook.com/people/Panorama-Style/100041307526123/",
+    "business_type": "Restaurant + Event Venue + Musical Entertainment Complex",
+    "formerly_known_as": "Restaurant Alita",
+    "service_area": "Haifa, Krayot, Greater Haifa region"
+  },
+  "ratings_breakdown": {
+    "restaurant_guru": {
+      "overall_score": "4.2/5",
+      "votes": 386,
+      "reviews": 347,
+      "photos": 52,
+      "ranking": "#111 of 1850 restaurants in Haifa"
+    },
+    "zips_co_il": {
+      "overall_score": "4.3/5",
+      "reviews": 338
+    },
+    "rsrv_rest_events": {
+      "overall_score": "9.1/10",
+      "event_reviews": 3,
+      "cuisine_rating": "10/10",
+      "service_rating": "9.3/10",
+      "comfort_rating": "4/10"
+    }
+  },
+  "sources_checked": [
+    "https://restaurantguru.com/Panorama-Style-Haifa",
+    "https://restaurantguru.com/Panorama-Style-Haifa/menu",
+    "https://zips.co.il/עסקים/חיפה/מסעדות-מזרח-אירופאית/41813/פנורמה-סטייל-панорама-стиль",
+    "https://www.top-rated.online/cities/Haifa/place/p/2124569/Panorama+Style",
+    "https://rsrv.rest/en/haifa/place/Panorama-Style",
+    "https://www.zooz360.co.il/biz/PANORAMASTYLE/",
+    "https://openinghours.co.il/פנורמה-סטייל-панорама-стיль-חלוצי-התעשיה-19-חיפה",
+    "https://www.facebook.com/people/Panorama-Style/100041307526123/",
+    "Google Search results for multiple queries",
+    "WebSearch and WebFetch from various review aggregators"
+  ],
+  "data_quality_notes": {
+    "complete_information": [
+      "Business location and contact verified across multiple sources",
+      "Event capacity and pricing consistently reported",
+      "Ratings and reviews available",
+      "Cuisine types and signature dishes documented",
+      "Event services and included features detailed"
+    ],
+    "incomplete_information": [
+      "Specific menu item prices (only available on restaurant's official website)",
+      "Current business hours (listed as unavailable online)",
+      "Detailed capacity configurations for specific dates",
+      "Current staff and ownership information"
+    ],
+    "recommendation": "Contact restaurant directly at +972-50-800-5606 or visit zooz360.co.il for current hours, detailed pricing, and event-specific inquiries"
+  },
+  "research_date": "2026-03-20",
+  "report_file": "/Users/edwardabramov/Documents/Antigravity/Dambl/projects/research/2026-03-20-panorama-style-haifa.md"
+}

@@ -12,7 +12,6 @@ export default function Footer() {
 
   const links = [
     { label: t.nav.home, href: '/' },
-    { label: t.nav.menu, href: '/menu' },
     { label: t.nav.events, href: '/events' },
     { label: t.nav.gallery, href: '/gallery' },
     { label: t.nav.contact, href: '/contact' },

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { content } from '@/lib/content'
 
@@ -31,8 +30,6 @@ const eventIcons: Record<string, string> = {
 export default function EventsCTA() {
   const { lang } = useLang()
   const t = content[lang].events
-  const menuData = content[lang].menu
-  const [menuOpen, setMenuOpen] = useState(false)
 
   const phone = '+972506461983'
   const whatsapp = '972506461983'
@@ -130,14 +127,6 @@ export default function EventsCTA() {
               </p>
             </div>
 
-            {/* View menu — prominent outlined button */}
-            <button
-              onClick={() => setMenuOpen(true)}
-              className="w-full border border-white/20 text-white/70 hover:border-gold/50 hover:text-gold text-sm font-sans tracking-wide py-3 mb-5 flex items-center justify-center gap-2 transition-all"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-              {lang === 'he' ? 'לצפות בתפריט' : lang === 'en' ? 'View Menu' : 'Смотреть меню'}
-            </button>
 
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
@@ -168,43 +157,6 @@ export default function EventsCTA() {
       </div>
     </section>
 
-    {/* Menu popup — bottom sheet on mobile, centered modal on desktop */}
-    {menuOpen && (
-      <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center" onClick={() => setMenuOpen(false)}>
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-        <div
-          className="relative w-full sm:max-w-lg bg-[#111] border-t sm:border border-white/10 sm:rounded-sm flex flex-col"
-          style={{ maxHeight: '80vh' }}
-          onClick={e => e.stopPropagation()}
-        >
-          {/* Handle bar (mobile) */}
-          <div className="flex justify-center pt-3 pb-1 sm:hidden">
-            <div className="w-8 h-0.5 bg-white/20 rounded-full" />
-          </div>
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/8">
-            <h3 className="font-playfair text-xl text-white">
-              {lang === 'he' ? 'תפריט' : lang === 'en' ? 'Menu' : 'Меню'}
-            </h3>
-            <button onClick={() => setMenuOpen(false)} className="text-white/40 hover:text-white text-2xl leading-none">×</button>
-          </div>
-          <div className="px-6 py-5 space-y-6 overflow-y-auto flex-1 min-h-0">
-            {menuData.categories.map((cat: { name: string; items: string[] }) => (
-              <div key={cat.name}>
-                <p className="text-gold/60 text-[10px] tracking-[0.3em] uppercase font-sans mb-2">{cat.name}</p>
-                <div className="flex flex-wrap gap-x-3 gap-y-1">
-                  {cat.items.map((item: string) => (
-                    <span key={item} className="text-white/60 text-sm font-sans">{item}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-            <p className="text-white/25 text-xs font-sans pt-2 border-t border-white/6">
-              {lang === 'he' ? '* התפריט עשוי להשתנות' : lang === 'en' ? '* Menu subject to change' : '* Меню может изменяться'}
-            </p>
-          </div>
-        </div>
-      </div>
-    )}
     </>
   )
 }

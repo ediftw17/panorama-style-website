@@ -30,7 +30,6 @@ export default function Nav() {
 
   const links = [
     { label: t.home, href: '/' },
-    { label: t.menu, href: '/menu' },
     { label: t.events, href: '/events' },
     { label: t.contact, href: '/contact' },
   ]
